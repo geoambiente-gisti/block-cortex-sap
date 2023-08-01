@@ -1,5 +1,5 @@
 # Define the database connection to be used for this model.
-connection: "@{CONNECTION_NAME}"
+connection: "sap_reporting_bigquery"
 
 # include all the views
 include: "/views/**/*.view"
@@ -255,7 +255,7 @@ explore: inventory_metrics_overview {
     type: left_outer
     relationship: many_to_one
     fields: [inventory_by_plant.stock_characteristic]
-    sql_on: ${inventory_by_plant.client_mandt} = ${inventory_metrics_overview.client_mandt} 
+    sql_on: ${inventory_by_plant.client_mandt} = ${inventory_metrics_overview.client_mandt}
       and ${inventory_by_plant.company_code_bukrs} = ${inventory_metrics_overview.company_code_bukrs}
     ;;
   }
