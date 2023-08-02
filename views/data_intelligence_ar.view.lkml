@@ -33,7 +33,7 @@ view: data_intelligence_ar {
   parameter: Day_Sales_Outstanding {
     type: number
     description: "Enter the No.of Period"
-    default_value: "2"
+    default_value: "6"
   }
 
   parameter: Key_Date {
