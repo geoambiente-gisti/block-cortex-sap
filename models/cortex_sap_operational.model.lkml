@@ -35,6 +35,25 @@ explore: data_intelligence_ar {
 sql_always_where: ${Client_ID} = "320" ;;
 }
 
+explore: notification {}
+
+explore:  maintenance_orders {
+  join: language_map {
+    fields: []
+    type: left_outer
+    sql_on: ${language_map.looker_locale}='{{ _user_attributes['locale'] }}' ;;
+    relationship: many_to_one
+  }
+
+  join: maintenance_orders_status {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${maintenance_orders.client_mandt}=${maintenance_orders_status.client_mandt}
+            and ${maintenance_orders.order_number_aufnr}=${maintenance_orders_status.order_number_aufnr}
+            and ${maintenance_orders_status.language_key_spras}=${language_map.language_key};;
+  }
+}
+
 explore: sales_orders {
 
   join: language_map {
