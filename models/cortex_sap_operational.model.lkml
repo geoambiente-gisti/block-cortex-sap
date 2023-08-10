@@ -31,6 +31,23 @@ named_value_format: Greek_Number_Format {
   value_format: "[>=1000000000]0.0,,,\"B\";[>=1000000]0.0,,\"M\";[>=1000]0.0,\"K\";0.0"
 }
 
+explore: nota_pig_zspmlistnote {
+  label: "Notas PIG"
+  join: nota_pig_zpmtb_np {
+    type: left_outer
+    sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_zpmtb_np.nota} ;;
+    relationship: many_to_one
+  }
+
+  join: nota_by_motivo_n_tipo {
+    type: left_outer
+    sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_by_motivo_n_tipo.nota} ;;
+    relationship: one_to_one
+  }
+}
+
+explore: nota_pig_zpmtb_np {}
+
 explore: data_intelligence_ar {
 sql_always_where: ${Client_ID} = "320" ;;
 }
@@ -62,7 +79,8 @@ explore: notification {
     type: left_outer
     relationship: one_to_many
     sql_on: ${notification.client_mandt}=${notification_status.client_mandt}
-      and ${notification.notification_number_qmnum}=${notification_status.notification_number_qmnum};;
+      and ${notification.notification_number_qmnum}=${notification_status.notification_number_qmnum}
+      and ${notification_long_text.language_key_spras}=${language_map.language_key};;
   }
 
   join: notification_items {

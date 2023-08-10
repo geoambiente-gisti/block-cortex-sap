@@ -13,6 +13,11 @@ constant: REPORTING_DATASET {
   export: override_required
 }
 
+constant: LOG_DATASET {
+  value: "SAP_LOG"
+  export: override_required
+}
+
 constant: CLIENT {
   value: "800"
   export: override_required

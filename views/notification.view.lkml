@@ -73,4 +73,5 @@ view: notification {
   measure: count {
     type: count
   }
+
 }
