@@ -35,7 +35,44 @@ explore: data_intelligence_ar {
 sql_always_where: ${Client_ID} = "320" ;;
 }
 
-explore: notification {}
+explore: notification {
+  join: language_map {
+    fields: []
+    type: left_outer
+    sql_on: ${language_map.looker_locale}='{{ _user_attributes['locale'] }}' ;;
+    relationship: many_to_one
+  }
+
+  join: notification_causes {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${notification.client_mandt}=${notification_causes.client_mandt}
+            and ${notification.notification_number_qmnum}=${notification_causes.notification_number_qmnum};;
+  }
+
+  join: notification_long_text {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${notification.client_mandt}=${notification_long_text.client_mandt}
+      and ${notification.notification_number_qmnum}=${notification_long_text.notification_number_qmnum}
+      and ${notification_long_text.language_key_spras}=${language_map.language_key};;
+  }
+
+  join: notification_status {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${notification.client_mandt}=${notification_status.client_mandt}
+      and ${notification.notification_number_qmnum}=${notification_status.notification_number_qmnum};;
+  }
+
+  join: notification_items {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${notification.client_mandt}=${notification_items.client_mandt}
+      and ${notification.notification_number_qmnum}=${notification_items.notification_number_qmnum};;
+  }
+
+}
 
 explore:  maintenance_orders {
   join: language_map {
