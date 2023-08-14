@@ -31,6 +31,34 @@ named_value_format: Greek_Number_Format {
   value_format: "[>=1000000000]0.0,,,\"B\";[>=1000000]0.0,,\"M\";[>=1000]0.0,\"K\";0.0"
 }
 
+explore: nota_manutencao_zspmlistnote {
+  label: "Nota Manutenção"
+  join: zpmtb_no_nm {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+  }
+  join: nota_operacao_zspmlistnote {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+  }
+}
+
+explore: nota_operacao_zspmlistnote {
+  label: "Nota Operação"
+  join: zpmtb_no_nm {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+  }
+  join: nota_manutencao_zspmlistnote {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+  }
+}
+
 explore: nota_pig_zspmlistnote {
   label: "Notas PIG"
   join: nota_pig_zpmtb_np {
