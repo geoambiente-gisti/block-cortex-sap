@@ -44,6 +44,12 @@ explore: nota_pig_zspmlistnote {
     sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_by_motivo_n_tipo.nota} ;;
     relationship: one_to_one
   }
+
+  join: nota_pig_zspmtext {
+    type: left_outer
+    sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_zspmtext.qmnum} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: nota_pig_zpmtb_np {}

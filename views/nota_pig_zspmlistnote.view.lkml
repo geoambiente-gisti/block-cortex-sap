@@ -86,6 +86,10 @@ view: nota_pig_zspmlistnote {
     label: "Nº da nota"
     type: string
     description: "Nº da nota"
+    link: {
+      label: "Detalhe da Nota de Passagem PIG"
+      url: "https://tbgbr.cloud.looker.com/dashboards/2?N%C2%BA+da+nota={{ value }}&hide_filter=N%C2%BA+da+nota"
+    }
     sql: ${TABLE}.QMNUM ;;
   }
 
