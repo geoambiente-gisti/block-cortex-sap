@@ -83,6 +83,7 @@ view: nota_manutencao_zspmlistnote {
       url: "https://tbgbr.cloud.looker.com/dashboards/6?N%C2%BA+da+nota={{ value }}&hide_filter=N%C2%BA+da+nota"
     }
     type: string
+    primary_key: yes
     label: "Nº da nota"
     sql: ${TABLE}.QMNUM ;;
   }
