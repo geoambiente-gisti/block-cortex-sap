@@ -41,7 +41,13 @@ explore: nota_manutencao_zspmlistnote {
   join: nota_operacao_zspmlistnote {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_no} ;;
+  }
+
+  join: notification_long_text {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${notification_long_text.notification_number_qmnum} ;;
   }
 }
 
@@ -50,12 +56,18 @@ explore: nota_operacao_zspmlistnote {
   join: zpmtb_no_nm {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_no} ;;
   }
   join: nota_manutencao_zspmlistnote {
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+  }
+
+  join: notification_long_text {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${notification_long_text.notification_number_qmnum} ;;
   }
 }
 

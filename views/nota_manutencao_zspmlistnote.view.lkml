@@ -3,99 +3,121 @@ view: nota_manutencao_zspmlistnote {
 
   dimension: contactname {
     type: string
-    description: "Texto breve/denominação do objeto"
+    label: "Contato"
     sql: ${TABLE}.CONTACTNAME ;;
   }
   dimension: empac_atual {
     type: string
-    description: "Empacotamento Atual"
+    label: "Empacotamento Atual"
     sql: ${TABLE}.EMPAC_ATUAL ;;
   }
   dimension: empac_previsto {
     type: string
-    description: "Empacotamento Previsto"
+    label: "Empacotamento Previsto"
     sql: ${TABLE}.EMPAC_PREVISTO ;;
   }
   dimension: ltrmn {
     type: string
-    description: "Data de conclusão desejada"
+    label: "Data de conclusão desejada"
     sql: ${TABLE}.LTRMN ;;
   }
   dimension: modif {
     type: string
-    description: "PM - Nota pode ser modificada?"
+    label: "PM - Nota pode ser modificada?"
     sql: ${TABLE}.MODIF ;;
   }
   dimension: mzeit {
     type: string
-    description: "Hora da nota"
+    label: "Hora da nota"
     sql: ${TABLE}.MZEIT ;;
   }
   dimension: name {
     type: string
-    description: "Nome completo da pessoa"
+    label: "Nome completo da pessoa"
     sql: ${TABLE}.NAME ;;
   }
   dimension: occur_type {
     type: string
-    description: "Caractere 1024"
+    label: "Tipo Ocorrência"
     sql: ${TABLE}.OCCUR_TYPE ;;
   }
   dimension: orgname {
     type: string
-    description: "Valor da característica"
+    label: "Orgão"
     sql: ${TABLE}.ORGNAME ;;
   }
   dimension: pltxt {
     type: string
-    description: "Denominação do loc.instalação"
+    label: "Denominação do loc.instalação"
     sql: ${TABLE}.PLTXT ;;
   }
   dimension: prog_entrega {
     type: string
-    description: "Programação Entrega"
+    label: "Programação Entrega"
     sql: ${TABLE}.PROG_ENTREGA ;;
   }
   dimension: prog_receb {
     type: string
-    description: "Programação Recebimento"
+    label: "Programação Recebimento"
     sql: ${TABLE}.PROG_RECEB ;;
   }
-  dimension: qmdat {
-    type: string
+  dimension_group: qmdat {
+    label: "Data da nota"
     description: "Data da nota"
-    sql: ${TABLE}.QMDAT ;;
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql:  CAST(${TABLE}.QMDAT as DATE) ;;
   }
   dimension: qmnum {
+    link: {
+      label: "Detalhe da Nota de Manutenção"
+      url: "https://tbgbr.cloud.looker.com/dashboards/6?N%C2%BA+da+nota={{ value }}&hide_filter=N%C2%BA+da+nota"
+    }
     type: string
-    description: "Nº da nota"
+    label: "Nº da nota"
     sql: ${TABLE}.QMNUM ;;
   }
   dimension: qmtxt {
     type: string
-    description: "Texto breve"
+    label: "Descrição"
     sql: ${TABLE}.QMTXT ;;
   }
   dimension: tipo {
     type: string
-    description: "Tipo"
+    label: "Tipo"
     sql: ${TABLE}.TIPO ;;
   }
   dimension: titulo {
     type: string
-    description: "Título"
+    label: "Título"
     sql: ${TABLE}.TITULO ;;
   }
   dimension: tplnr {
     type: string
-    description: "Local de instalação"
+    label: "Local de instalação"
     sql: ${TABLE}.TPLNR ;;
   }
   dimension: txtstat {
     type: string
-    description: "Status individual de um objeto"
+    label: "Status individual de um objeto"
     sql: ${TABLE}.TXTSTAT ;;
   }
+
+  dimension: is_manutencao {
+    type: string
+    label: "Possui Operação"
+    sql: if(${zpmtb_no_nm.num_log_no}=${nota_operacao_zspmlistnote.qmnum}, "SIM", "NÃO") ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [contactname, orgname, name]

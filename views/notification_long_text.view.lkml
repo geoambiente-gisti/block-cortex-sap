@@ -10,6 +10,7 @@ view: notification_long_text {
     sql: ${TABLE}.LanguageKey_SPRAS ;;
   }
   dimension: long_text_tdline {
+    label: "Observações"
     type: string
     sql: ${TABLE}.LongText_TDLINE ;;
   }
