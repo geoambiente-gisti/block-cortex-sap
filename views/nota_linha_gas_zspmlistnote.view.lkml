@@ -3,101 +3,135 @@ view: nota_linha_gas_zspmlistnote {
 
   dimension: contactname {
     type: string
-    description: "Texto breve/denominação do objeto"
+    label: "Notificante"
     sql: ${TABLE}.CONTACTNAME ;;
   }
   dimension: empac_atual {
     type: string
-    description: "Empacotamento Atual"
+    label: "Empacotamento Atual"
     sql: ${TABLE}.EMPAC_ATUAL ;;
   }
   dimension: empac_previsto {
     type: string
-    description: "Empacotamento Previsto"
+    label: "Empacotamento Previsto"
     sql: ${TABLE}.EMPAC_PREVISTO ;;
   }
   dimension: ltrmn {
     type: string
-    description: "Data de conclusão desejada"
+    label: "Data de conclusão desejada"
     sql: ${TABLE}.LTRMN ;;
   }
   dimension: modif {
     type: string
-    description: "PM - Nota pode ser modificada?"
+    label: "PM - Nota pode ser modificada?"
     sql: ${TABLE}.MODIF ;;
   }
   dimension: mzeit {
     type: string
-    description: "Hora da nota"
+    label: "Hora da nota"
     sql: ${TABLE}.MZEIT ;;
   }
   dimension: name {
     type: string
-    description: "Nome completo da pessoa"
+    label: "Contato"
     sql: ${TABLE}.NAME ;;
   }
   dimension: occur_type {
     type: string
-    description: "Caractere 1024"
+    label: "Caractere 1024"
     sql: ${TABLE}.OCCUR_TYPE ;;
   }
   dimension: orgname {
     type: string
-    description: "Valor da característica"
+    label: "Valor da característica"
     sql: ${TABLE}.ORGNAME ;;
   }
   dimension: pltxt {
     type: string
-    description: "Denominação do loc.instalação"
+    label: "Denominação do loc.instalação"
     sql: ${TABLE}.PLTXT ;;
   }
   dimension: prog_entrega {
     type: string
-    description: "Programação Entrega"
+    label: "Programação Entrega"
     sql: ${TABLE}.PROG_ENTREGA ;;
   }
   dimension: prog_receb {
     type: string
-    description: "Programação Recebimento"
+    label: "Programação Recebimento"
     sql: ${TABLE}.PROG_RECEB ;;
   }
-  dimension: qmdat {
-    type: string
+
+  dimension_group: qmdat {
+    label: "Data Abertura"
     description: "Data da nota"
-    sql: ${TABLE}.QMDAT ;;
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql:  CAST(${TABLE}.QMDAT as DATE) ;;
+
   }
+
   dimension: qmnum {
+    link: {
+      label: "Detalhe da Nota de Linha de Gás"
+      url: "https://tbgbr.cloud.looker.com/dashboards/10?N%C2%BA+da+nota={{ value }}&hide_filter=N%C2%BA+da+nota"
+    }
     type: string
-    description: "Nº da nota"
+    primary_key: yes
+    label: "Nº da nota"
     sql: ${TABLE}.QMNUM ;;
   }
+
   dimension: qmtxt {
     type: string
-    description: "Texto breve"
+    label: "Texto breve"
     sql: ${TABLE}.QMTXT ;;
   }
   dimension: tipo {
     type: string
-    description: "Tipo"
+    label: "Tipo"
     sql: ${TABLE}.TIPO ;;
   }
   dimension: titulo {
     type: string
-    description: "Título"
+    label: "Título"
     sql: ${TABLE}.TITULO ;;
   }
   dimension: tplnr {
     type: string
-    description: "Local de instalação"
+    label: "Local de instalação"
     sql: ${TABLE}.TPLNR ;;
   }
   dimension: txtstat {
     type: string
-    description: "Status individual de um objeto"
+    label: "Status individual de um objeto"
     sql: ${TABLE}.TXTSTAT ;;
   }
   measure: count {
     type: count
-    drill_fields: [contactname, orgname, name]
+    drill_fields: [qmnum, tplnr, contactname]
+  }
+
+  measure: count_open {
+    type: sum
+    label: "Total Em Aberto"
+    drill_fields: [qmnum, tplnr, contactname]
+    sql: case when ${txtstat} = "Em Aberto" then 1 else 0 end;;
+  }
+
+  measure: count_close {
+    type: sum
+    label: "Total Encerrada"
+    drill_fields: [qmnum, tplnr, contactname]
+    sql: case when ${txtstat} = "Em Aberto" then 0 else 1 end;;
   }
 }
