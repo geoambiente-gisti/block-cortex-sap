@@ -31,6 +31,22 @@ named_value_format: Greek_Number_Format {
   value_format: "[>=1000000000]0.0,,,\"B\";[>=1000000]0.0,,\"M\";[>=1000]0.0,\"K\";0.0"
 }
 
+explore: nota_instrucao_operacional_zspmlistnote {
+  label: "Nota de Instrução Operacional"
+  join: nota_instrucao_operacional_obs {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_instrucao_operacional_zspmlistnote.qmnum}=${nota_instrucao_operacional_obs.qmnum} ;;
+  }
+
+  join: nota_instrucao_operacional_desc {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_instrucao_operacional_zspmlistnote.qmnum}=${nota_instrucao_operacional_desc.qmnum} ;;
+  }
+}
+
+
 explore: nota_manutencao_zspmlistnote {
   label: "Nota Manutenção"
   join: zpmtb_no_nm {

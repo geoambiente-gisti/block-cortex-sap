@@ -1,68 +1,83 @@
-view: nota_manutencao_zspmlistnote {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_manutencao_zspmlistnote` ;;
+view: nota_instrucao_operacional_zspmlistnote {
+  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_instrucao_operacional_zspmlistnote` ;;
 
   dimension: contactname {
     type: string
-    label: "Contato"
+    description: "Texto breve/denominação do objeto"
     sql: ${TABLE}.CONTACTNAME ;;
   }
   dimension: empac_atual {
     type: string
-    label: "Empacotamento Atual"
+    description: "Empacotamento Atual"
     sql: ${TABLE}.EMPAC_ATUAL ;;
   }
   dimension: empac_previsto {
     type: string
-    label: "Empacotamento Previsto"
+    description: "Empacotamento Previsto"
     sql: ${TABLE}.EMPAC_PREVISTO ;;
   }
-  dimension: ltrmn {
-    type: string
-    label: "Data de conclusão desejada"
-    sql: ${TABLE}.LTRMN ;;
+
+  dimension_group: ltrmn {
+    label: "Data Validade"
+    description: "Data de conclusão desejada"
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql:  CAST(${TABLE}.LTRMN as DATE) ;;
   }
+
   dimension: modif {
     type: string
-    label: "PM - Nota pode ser modificada?"
+    description: "PM - Nota pode ser modificada?"
     sql: ${TABLE}.MODIF ;;
   }
   dimension: mzeit {
+    label: "Hora"
     type: string
-    label: "Hora da nota"
+    description: "Hora da nota"
     sql: ${TABLE}.MZEIT ;;
   }
   dimension: name {
+    label: "Emitente"
     type: string
-    label: "Nome completo da pessoa"
+    description: "Nome completo da pessoa"
     sql: ${TABLE}.NAME ;;
   }
   dimension: occur_type {
     type: string
-    label: "Tipo Ocorrência"
+    description: "Caractere 1024"
     sql: ${TABLE}.OCCUR_TYPE ;;
   }
   dimension: orgname {
     type: string
-    label: "Orgão"
+    description: "Valor da característica"
     sql: ${TABLE}.ORGNAME ;;
   }
   dimension: pltxt {
     type: string
-    label: "Denominação do loc.instalação"
+    description: "Denominação do loc.instalação"
     sql: ${TABLE}.PLTXT ;;
   }
   dimension: prog_entrega {
     type: string
-    label: "Programação Entrega"
+    description: "Programação Entrega"
     sql: ${TABLE}.PROG_ENTREGA ;;
   }
   dimension: prog_receb {
     type: string
-    label: "Programação Recebimento"
+    description: "Programação Recebimento"
     sql: ${TABLE}.PROG_RECEB ;;
   }
   dimension_group: qmdat {
-    label: "Data da nota"
+    label: "Data Abertura"
     description: "Data da nota"
     type: time
     timeframes: [
@@ -77,10 +92,11 @@ view: nota_manutencao_zspmlistnote {
     datatype: date
     sql:  CAST(${TABLE}.QMDAT as DATE) ;;
   }
+
   dimension: qmnum {
     link: {
-      label: "Detalhe da Nota de Manutenção"
-      url: "https://tbgbr.cloud.looker.com/dashboards/6?N%C2%BA+da+nota={{ value }}&hide_filter=N%C2%BA+da+nota"
+      label: "Detalhe da Nota de Operação"
+      url: "https://tbgbr.cloud.looker.com/dashboards/8?Nº+da+Instrução+Operacional={{ value }}&hide_filter=Nº+da+Instrução+Operacional"
     }
     type: string
     primary_key: yes
@@ -89,47 +105,35 @@ view: nota_manutencao_zspmlistnote {
   }
   dimension: qmtxt {
     type: string
-    label: "Descrição"
+    description: "Texto breve"
     sql: ${TABLE}.QMTXT ;;
   }
   dimension: tipo {
     type: string
     label: "Tipo"
+    description: "Tipo"
     sql: ${TABLE}.TIPO ;;
   }
   dimension: titulo {
+    label: "Titulo"
     type: string
-    label: "Título"
+    description: "Título"
     sql: ${TABLE}.TITULO ;;
   }
   dimension: tplnr {
+    label: "Local de Instalação"
     type: string
-    label: "Local de instalação"
+    description: "Local de instalação"
     sql: ${TABLE}.TPLNR ;;
   }
   dimension: txtstat {
+    label: "Status"
     type: string
-    label: "Status individual de um objeto"
+    description: "Status individual de um objeto"
     sql: ${TABLE}.TXTSTAT ;;
   }
-
-  dimension: is_manutencao {
-    type: string
-    label: "Possui Operação"
-    sql: if(${zpmtb_no_nm.num_log_nm}=${nota_manutencao_zspmlistnote.qmnum} and ${zpmtb_no_nm.num_log_nm} is not null , "SIM", "NÃO") ;;
-  }
-
   measure: count {
     type: count
-    drill_fields: [qmnum, tplnr, contactname]
-  }
-
-  dimension: no_orderby {    type: number    sql: null ;;  }
-
-  measure: count_open {
-    type: sum
-    label: "Total Em Aberto"
-    drill_fields: [qmnum, tplnr, contactname]
-    sql: case when ${txtstat} = "Em Aberto" then 1 else 0 end;;
+    drill_fields: [contactname, orgname, name]
   }
 }
