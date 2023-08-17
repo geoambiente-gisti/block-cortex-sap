@@ -95,7 +95,7 @@ view: nota_instrucao_operacional_zspmlistnote {
 
   dimension: qmnum {
     link: {
-      label: "Detalhe da Nota de Operação"
+      label: "Detalhe da Nota de Instrução Operacional"
       url: "https://tbgbr.cloud.looker.com/dashboards/8?Nº+da+Instrução+Operacional={{ value }}&hide_filter=Nº+da+Instrução+Operacional"
     }
     type: string

@@ -60,10 +60,10 @@ explore: nota_manutencao_zspmlistnote {
     sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_no} ;;
   }
 
-  join: notification_long_text {
+  join: nota_manutencao_desc {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${notification_long_text.notification_number_qmnum} ;;
+    sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${nota_manutencao_desc.qmnum} ;;
   }
 }
 
@@ -80,10 +80,10 @@ explore: nota_operacao_zspmlistnote {
     sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
   }
 
-  join: notification_long_text {
+  join: nota_operacao_desc {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${notification_long_text.notification_number_qmnum} ;;
+    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${nota_operacao_desc.qmnum} ;;
   }
 }
 
@@ -101,9 +101,9 @@ explore: nota_pig_zspmlistnote {
     relationship: one_to_one
   }
 
-  join: nota_pig_zspmtext {
+  join: nota_pig_desc {
     type: left_outer
-    sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_zspmtext.qmnum} ;;
+    sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_desc.qmnum} ;;
     relationship: many_to_one
   }
 }
