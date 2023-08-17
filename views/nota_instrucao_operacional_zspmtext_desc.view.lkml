@@ -1,5 +1,5 @@
 view: nota_instrucao_operacional_zspmtext_desc {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_instrucao_operacional_zspmtext_desc` ;;
+  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_instrucao_operacional_zspmtext_desc_table` ;;
 
   dimension: qmnum {
     type: string
