@@ -48,7 +48,7 @@ view: nota_linha_gas_zspmlistnote {
   }
   dimension: pltxt {
     type: string
-    label: "Denominação do loc.instalação"
+    label: "Descrição"
     sql: ${TABLE}.PLTXT ;;
   }
   dimension: prog_entrega {
@@ -108,7 +108,7 @@ view: nota_linha_gas_zspmlistnote {
   }
   dimension: tplnr {
     type: string
-    label: "Local de instalação"
+    label: "Local da Ocorrência"
     sql: ${TABLE}.TPLNR ;;
   }
   dimension: txtstat {
