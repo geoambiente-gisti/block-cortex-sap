@@ -1,5 +1,5 @@
 view: notification_causes {
-  sql_table_name: `tbg-cloud-dev.REPORTING.NotificationCauses` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.NotificationCauses` ;;
 
   dimension: cause_catalog_urkat {
     type: string

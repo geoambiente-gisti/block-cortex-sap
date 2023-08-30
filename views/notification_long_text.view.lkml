@@ -1,5 +1,5 @@
 view: notification_long_text {
-  sql_table_name: `tbg-cloud-dev.REPORTING.NotificationLongText` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.NotificationLongText` ;;
 
   dimension: client_mandt {
     type: string

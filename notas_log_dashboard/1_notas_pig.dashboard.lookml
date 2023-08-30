@@ -1,4 +1,4 @@
-- dashboard: notas_de_passagem_de__pig_look_ml
+- dashboard: notas_de_passagem_de_pig_look_ml
   title: Notas de Passagem de  PIG
   layout: newspaper
   preferred_viewer: dashboards-next

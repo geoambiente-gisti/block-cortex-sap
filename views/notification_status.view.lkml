@@ -1,5 +1,5 @@
 view: notification_status {
-  sql_table_name: `tbg-cloud-dev.REPORTING.NotificationStatus` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.NotificationStatus` ;;
 
   dimension: client_mandt {
     type: string

@@ -1,4 +1,4 @@
-- dashboard: notas_de_linha_de_gs_look_ml
+- dashboard: notas_de_linha_de_gas_look_ml
   title: Notas de Linha de Gás
   layout: newspaper
   preferred_viewer: dashboards-next

@@ -1,5 +1,5 @@
 view: nota_linha_gas_zspmtext {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_linha_gas_zspmtext` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_linha_gas_zspmtext` ;;
 
   dimension: qmnum {
     type: string

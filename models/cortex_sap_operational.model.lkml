@@ -33,6 +33,37 @@ named_value_format: Greek_Number_Format {
   value_format: "[>=1000000000]0.0,,,\"B\";[>=1000000]0.0,,\"M\";[>=1000]0.0,\"K\";0.0"
 }
 
+explore: alarmes {
+  join: instalacoes_alarmes {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${alarmes.tagname}=${instalacoes_alarmes.alarm_tag} ;;
+  }
+  join: local_instalacao {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_alarmes.sap_local_instalacao}=${local_instalacao.nome_local_novo};;
+  }
+}
+
+
+explore: notification_mn {
+  label: "Notificações - Eventos"
+  join: local_instalacao {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local_novo} or
+          ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local} or
+          ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local_antigo};;
+  }
+  join: language_map {
+    fields: []
+    type: left_outer
+    sql_on: ${language_map.looker_locale}='{{ _user_attributes['locale'] }}' ;;
+    relationship: many_to_one
+  }
+
+}
 explore: nota_linha_gas_zspmlistnote {
   label: "Nota de Linha de Gás"
   join: nota_linha_gas_desc {
@@ -125,7 +156,14 @@ explore: data_intelligence_ar {
 sql_always_where: ${Client_ID} = "320" ;;
 }
 
+
 explore: notification {
+  label: "Notificações"
+  join: local_instalacao {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${notification.functional_location_tplnr}=${local_instalacao.nome_local_novo} ;;
+  }
   join: language_map {
     fields: []
     type: left_outer

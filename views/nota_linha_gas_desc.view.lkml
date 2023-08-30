@@ -1,5 +1,5 @@
 view: nota_linha_gas_desc {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_linha_gas_desc_table` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_linha_gas_desc_table` ;;
 
   dimension: descricao {
     html: <div style="white-space:pre">{{ value }}</div> ;;

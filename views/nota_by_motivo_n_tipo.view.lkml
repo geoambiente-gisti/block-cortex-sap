@@ -1,5 +1,5 @@
 view: nota_by_motivo_n_tipo {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_by_motivo_n_tipo` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_by_motivo_n_tipo` ;;
 
   dimension: motivo {
     label: "Motivo da Operação"

@@ -1,5 +1,5 @@
 view: nota_pig_zpmtb_pignotif {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_pig_zpmtb_pignotif` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_pig_zpmtb_pignotif` ;;
 
   dimension: bypassfactor {
     type: number

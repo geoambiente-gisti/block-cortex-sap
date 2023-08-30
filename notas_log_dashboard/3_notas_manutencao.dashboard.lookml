@@ -1,4 +1,4 @@
-- dashboard: notas_de_manutencao_look_ml
+- dashboard: notas_de_manutencao_loook_ml
   title: Notas de Manutenção
   layout: newspaper
   preferred_viewer: dashboards-next

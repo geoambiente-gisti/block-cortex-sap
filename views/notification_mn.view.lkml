@@ -1,5 +1,5 @@
-view: notification {
-  sql_table_name: `@{GCP_PROJECT}.@{REPORTING_DATASET}.Notification` ;;
+view: notification_mn {
+  sql_table_name: `tbg-cloud-dev.REPORTING.NotificationMN` ;;
 
   dimension: client_mandt {
     type: string
@@ -10,6 +10,7 @@ view: notification {
     sql: ${TABLE}.CompanyCode_BUKRS ;;
   }
   dimension_group: create_date_erdat {
+    label: "Data Criação"
     type: time
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
@@ -38,6 +39,7 @@ view: notification {
   }
   dimension: notification_number_qmnum {
     type: string
+    primary_key: yes
     sql: ${TABLE}.NotificationNumber_QMNUM ;;
   }
   dimension: notification_type_qmart {
@@ -74,8 +76,6 @@ view: notification {
     type: count
   }
 
-
-
   measure: count_current_month {
     label: "Eventos por mês"
     type: sum
@@ -87,5 +87,4 @@ view: notification {
     type: sum
     sql:  case when ${TABLE}.CreateDate_ERDAT > cast(concat(format_date('%Y', current_date()), '-', '01-01') as date) THEN 1 else 0 end;;
   }
-
 }
