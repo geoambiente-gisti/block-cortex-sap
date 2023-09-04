@@ -40,6 +40,11 @@ view: local_instalacao {
     sql: ${TABLE}.tipo_instalacao ;;
   }
 
+  dimension: instalacao {
+    type: string
+    sql: ${TABLE}.instalacao ;;
+  }
+
   measure: count {
     type: count
   }

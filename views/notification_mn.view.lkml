@@ -72,6 +72,13 @@ view: notification_mn {
     type: string
     sql: ${TABLE}.ProcessingPhase_PHASE ;;
   }
+
+  dimension: estacao_entrega {
+    type: string
+    sql: CONCAT(IF(ARRAY_LENGTH(SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')) >= 2, SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')[OFFSET(1)], NULL), '-',
+         IF(ARRAY_LENGTH(SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')) >= 4, SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')[OFFSET(2)], NULL)) ;;
+  }
+
   measure: count {
     type: count
   }

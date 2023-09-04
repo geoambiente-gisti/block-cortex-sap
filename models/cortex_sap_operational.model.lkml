@@ -46,15 +46,14 @@ explore: alarmes {
   }
 }
 
+explore: estacoes_entrega {}
 
 explore: notification_mn {
   label: "Notificações - Eventos"
   join: local_instalacao {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local_novo} or
-          ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local} or
-          ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local_antigo};;
+    sql_on: ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local_antigo};;
   }
   join: language_map {
     fields: []
@@ -62,7 +61,6 @@ explore: notification_mn {
     sql_on: ${language_map.looker_locale}='{{ _user_attributes['locale'] }}' ;;
     relationship: many_to_one
   }
-
 }
 explore: nota_linha_gas_zspmlistnote {
   label: "Nota de Linha de Gás"
