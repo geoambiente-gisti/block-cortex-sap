@@ -53,7 +53,7 @@ explore: notification_mn {
   join: local_instalacao {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${notification_mn.functional_location_tplnr}=${local_instalacao.nome_local_antigo};;
+    sql_on: ${notification_mn.normalize_tplnr}=${local_instalacao.nome_local_novo};;
   }
   join: language_map {
     fields: []

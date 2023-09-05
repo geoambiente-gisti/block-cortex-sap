@@ -25,6 +25,10 @@ view: notification_mn {
     type: string
     sql: ${TABLE}.FunctionalLocation_TPLNR ;;
   }
+  dimension: normalize_tplnr {
+    type: string
+    sql: ${TABLE}.Normalize_TPLNR ;;
+  }
   dimension: location_technical_object_iloan {
     type: string
     sql: ${TABLE}.LocationTechnicalObject_ILOAN ;;
@@ -75,8 +79,8 @@ view: notification_mn {
 
   dimension: estacao_entrega {
     type: string
-    sql: CONCAT(IF(ARRAY_LENGTH(SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')) >= 2, SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')[OFFSET(1)], NULL), '-',
-         IF(ARRAY_LENGTH(SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')) >= 4, SPLIT( ${TABLE}.FunctionalLocation_TPLNR, '-')[OFFSET(2)], NULL)) ;;
+    sql: CONCAT(IF(ARRAY_LENGTH(SPLIT( ${TABLE}.Normalize_TPLNR, '-')) >= 2, SPLIT( ${TABLE}.Normalize_TPLNR, '-')[OFFSET(1)], NULL), '-',
+         IF(ARRAY_LENGTH(SPLIT( ${TABLE}.Normalize_TPLNR, '-')) >= 4, SPLIT( ${TABLE}.Normalize_TPLNR, '-')[OFFSET(2)], NULL)) ;;
   }
 
   measure: count {
@@ -87,6 +91,12 @@ view: notification_mn {
     label: "Eventos por mês"
     type: sum
     sql:  case when ${TABLE}.CreateDate_ERDAT > cast(concat(format_date('%Y-%m', current_date()), '-', '01') as date) THEN 1 else 0 end;;
+  }
+
+  measure: average {
+    label: "Media"
+    type: average
+    sql:  ${TABLE}.NotificationNumber_QMNUM;;
   }
 
   measure: count_current_year {
