@@ -252,7 +252,7 @@ view: sales_orders {
   dimension: client_mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    # primary_key: yes
     hidden:no
   }
 
@@ -597,7 +597,7 @@ view: sales_orders {
   dimension: distribution_channel_vtweg {
     type: string
     sql: ${TABLE}.DistributionChannel_VTWEG ;;
-    primary_key: yes
+    # primary_key: yes
   }
 
   dimension: division_hdr_spart {
@@ -784,7 +784,7 @@ view: sales_orders {
   dimension: item_posnr {
     type: string
     sql: ${TABLE}.Item_POSNR ;;
-    primary_key: yes
+    # primary_key: yes
     hidden: no
   }
 
@@ -912,7 +912,7 @@ view: sales_orders {
   dimension: material_number_matnr {
     type: string
     sql: ${TABLE}.MaterialNumber_MATNR ;;
-    primary_key: yes
+    # primary_key: yes
     hidden: no
   }
 
@@ -1412,7 +1412,7 @@ view: sales_orders {
   dimension: sales_document_vbeln {
     type: string
     sql: ${TABLE}.SalesDocument_VBELN ;;
-    primary_key: yes
+    # primary_key: yes
     hidden: no
   }
 
@@ -1451,7 +1451,7 @@ view: sales_orders {
   dimension: sales_organization_vkorg {
     type: string
     sql: ${TABLE}.SalesOrganization_VKORG ;;
-    primary_key: yes
+    # primary_key: yes
   }
 
   dimension: sales_probability_awahr {
@@ -1502,7 +1502,7 @@ view: sales_orders {
   dimension: sold_to_party_kunnr {
     type: string
     sql: ${TABLE}.SoldToParty_KUNNR ;;
-    primary_key: yes
+    # primary_key: yes
   }
 
   dimension: sold_to_party_name {
@@ -1548,7 +1548,7 @@ view: sales_orders {
           OR ${sales_order_partner_function.item_posnr} = '000000'),
             ${sales_order_partner_function_header.customer_kunnr},
             ${sales_order_partner_function.customer_kunnr}) ;;
-    primary_key: yes
+    # primary_key: yes
     hidden: no
   }
 

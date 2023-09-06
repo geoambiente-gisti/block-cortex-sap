@@ -33,7 +33,7 @@ view: inventory_metrics_overview {
   dimension: client_mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    # primary_key: yes
   }
 
   dimension: company_code_bukrs {

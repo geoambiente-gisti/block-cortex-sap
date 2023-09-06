@@ -70,6 +70,10 @@ view: alarmes {
     type: string
     sql: ${TABLE}.tagname ;;
   }
+  dimension: full_tagname {
+    type: string
+    sql: ${TABLE}.full_tagname ;;
+  }
   dimension: type {
     type: string
     sql: ${TABLE}.type ;;

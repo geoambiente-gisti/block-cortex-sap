@@ -37,19 +37,19 @@ view: one_touch_order {
 
   dimension: vbapclient_mandt {
     type: string
-    primary_key: yes
+    # primary_key: yes
     sql: ${TABLE}.VBAPClient_MANDT ;;
   }
 
   dimension: vbapsales_document_item_posnr {
-    type: string
+    # type: string
     primary_key: yes
     sql: ${TABLE}.VBAPSalesDocument_Item_POSNR ;;
   }
 
   dimension: vbapsales_document_vbeln {
     type: string
-    primary_key: yes
+    # primary_key: yes
     sql: ${TABLE}.VBAPSalesDocument_VBELN ;;
   }
 

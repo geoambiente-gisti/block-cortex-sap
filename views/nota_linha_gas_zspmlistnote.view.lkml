@@ -1,5 +1,5 @@
 view: nota_linha_gas_zspmlistnote {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_linha_gas` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_linha_gas_looker` ;;
 
   dimension: contactname {
     type: string

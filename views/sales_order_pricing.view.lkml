@@ -120,7 +120,7 @@ view: sales_order_pricing {
 
   dimension: client_mandt {
     type: string
-    primary_key: yes
+    # primary_key: yes
     sql: ${TABLE}.Client_MANDT ;;
   }
 
@@ -361,7 +361,7 @@ view: sales_order_pricing {
 
   dimension: number_of_the_document_condition_knumv {
     type: string
-    primary_key: yes
+    # primary_key: yes
     sql: ${TABLE}.NumberOfTheDocumentCondition_KNUMV ;;
   }
 

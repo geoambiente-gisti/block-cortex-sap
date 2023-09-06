@@ -42,7 +42,7 @@ view: currency_conversion_new {
   dimension: fcurr {
     type: string
     sql: ${TABLE}.FromCurrency_FCURR ;;
-    primary_key: yes
+    # primary_key: yes
   }
 
   dimension: kurst {
@@ -53,7 +53,7 @@ view: currency_conversion_new {
   dimension: mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    # primary_key: yes
   }
 
   dimension_group: start {
@@ -74,7 +74,7 @@ view: currency_conversion_new {
   dimension: tcurr {
     type: string
     sql: ${TABLE}.ToCurrency_TCURR ;;
-    primary_key: yes
+    # primary_key: yes
     hidden: no
   }
 

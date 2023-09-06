@@ -253,7 +253,7 @@ view: customers_md {
   dimension: client_mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    # primary_key: yes
     hidden: no
   }
 
