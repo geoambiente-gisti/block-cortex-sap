@@ -29,7 +29,13 @@ view: nota_linha_gas_zspmlistnote {
   dimension: mzeit {
     type: string
     label: "Hora da nota"
-    sql: split(cast(${TABLE}.data_hora as string), " ")[1] ;;
+    sql: extract(TIME from ${TABLE}.data_hora) ;;
+  }
+  dimension: turno {
+    type: string
+    label: "Turno"
+    sql:  case when extract(TIME from ${TABLE}.data_hora) between '07:00:00' and '15:00:00' then '07hs as 15hs'
+      when extract(TIME from ${TABLE}.data_hora) between '15:00:00' and '23:00:00' then '15hs as 23hs' else '23:00hs as 07:00hs' end;;
   }
   dimension: name {
     type: string

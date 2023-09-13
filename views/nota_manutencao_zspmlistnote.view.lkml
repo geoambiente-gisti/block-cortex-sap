@@ -33,7 +33,7 @@ view: nota_manutencao_zspmlistnote {
   }
   dimension: name {
     type: string
-    label: "Nome completo da pessoa"
+    label: "Responsável"
     sql: ${TABLE}.NAME ;;
   }
   dimension: occur_type {
@@ -84,7 +84,7 @@ view: nota_manutencao_zspmlistnote {
     }
     type: string
     primary_key: yes
-    label: "Nº da nota"
+    label: "Nº da nota de Manutenção"
     sql: ${TABLE}.QMNUM ;;
   }
   dimension: qmtxt {

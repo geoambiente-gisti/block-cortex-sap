@@ -33,7 +33,7 @@ view: nota_operacao_zspmlistnote {
   }
   dimension: name {
     type: string
-    label: "Nome completo da pessoa"
+    label: "Responsável"
     sql: ${TABLE}.NAME ;;
   }
   dimension: occur_type {
@@ -84,7 +84,7 @@ view: nota_operacao_zspmlistnote {
     }
     type: string
     primary_key: yes
-    label: "Nº da nota"
+    label: "Nº Nota Operação"
     sql: ${TABLE}.QMNUM ;;
   }
   dimension: qmtxt {
@@ -107,6 +107,11 @@ view: nota_operacao_zspmlistnote {
     label: "Local de instalação"
     sql: ${TABLE}.TPLNR ;;
   }
+  dimension: local_descricao {
+    type: string
+    label: "Local de instalação descrição"
+    sql: concat(${TABLE}.TPLNR, "-", ${TABLE}.PLTXT) ;;
+  }
   dimension: txtstat {
     type: string
     label: "Status individual de um objeto"
@@ -117,6 +122,13 @@ view: nota_operacao_zspmlistnote {
     type: string
     label: "Possui Manutenção"
     sql: if(${zpmtb_no_nm.num_log_nm}=${nota_manutencao_zspmlistnote.qmnum}, "SIM", "NÃO") ;;
+  }
+
+  dimension: turno {
+    type: string
+    label: "Turno"
+    sql:  case when ${TABLE}.MZEIT between '07:00:00' and '15:00:00' then '07hs as 15hs'
+    when ${TABLE}.MZEIT between '15:00:00' and '23:00:00' then '15hs as 23hs' else '23:00hs as 07:00hs' end;;
   }
   measure: count {
     type: count

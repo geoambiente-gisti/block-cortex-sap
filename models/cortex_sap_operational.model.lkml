@@ -129,17 +129,23 @@ explore: nota_operacao_zspmlistnote {
 
 explore: nota_pig_zspmlistnote {
   label: "Notas PIG"
+  join: nota_by_motivo_n_tipo {
+    type: left_outer
+    sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_by_motivo_n_tipo.nota} ;;
+    relationship: one_to_one
+  }
+  join: pontos_notaveis {
+    type:  left_outer
+    sql_on:  ${nota_by_motivo_n_tipo.local_lancamento}=${pontos_notaveis.grupo_codigo}  ;;
+    relationship: many_to_one
+  }
   join: nota_pig_zpmtb_np {
     type: left_outer
     sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_zpmtb_np.nota} ;;
     relationship: many_to_one
   }
 
-  join: nota_by_motivo_n_tipo {
-    type: left_outer
-    sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_by_motivo_n_tipo.nota} ;;
-    relationship: one_to_one
-  }
+
 
   join: nota_pig_desc {
     type: left_outer
