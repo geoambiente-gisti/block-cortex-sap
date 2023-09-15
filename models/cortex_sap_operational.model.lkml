@@ -145,7 +145,11 @@ explore: nota_pig_zspmlistnote {
     relationship: many_to_one
   }
 
-
+  join: local_instalacao {
+    type: left_outer
+    sql_on: ${local_instalacao.nome_local}=${nota_pig_zspmlistnote.tplnr} ;;
+    relationship: many_to_one
+  }
 
   join: nota_pig_desc {
     type: left_outer

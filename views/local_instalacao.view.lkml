@@ -45,6 +45,12 @@ view: local_instalacao {
     sql: ${TABLE}.instalacao ;;
   }
 
+  dimension: nome_pig {
+    label: "Denominação Pontos Notaveis"
+    type: string
+    sql: ${TABLE}.nome_pig ;;
+  }
+
   measure: count {
     type: count
   }

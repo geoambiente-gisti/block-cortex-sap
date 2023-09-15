@@ -1,5 +1,5 @@
 view: nota_pig_zspmtext {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_pig_zspmtext` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.textos_nota_pig_looker` ;;
 
   dimension: qmnum {
     type: string

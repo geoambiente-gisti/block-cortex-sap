@@ -1,12 +1,12 @@
 view: nota_pig_zspmlistnote {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_passagem_pig_hist` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_passagem_pig_looker` ;;
 
 
-  dimension: contactname {
-    type: string
-    description: "Texto breve/denominação do objeto"
-    sql: ${TABLE}.CONTACTNAME ;;
-  }
+  # dimension: contactname {
+  #   type: string
+  #   description: "Texto breve/denominação do objeto"
+  #   sql: ${TABLE}.CONTACTNAME ;;
+  # }
   # dimension: empac_atual {
   #   type: string
   #   description: "Empacotamento Atual"
@@ -102,7 +102,7 @@ view: nota_pig_zspmlistnote {
   dimension: tipo {
     type: string
     description: "Tipo"
-    sql: ${TABLE}.tipo ;;
+    sql: ${TABLE}.tipo_pig ;;
   }
   dimension: motivo {
     type: string
@@ -116,7 +116,7 @@ view: nota_pig_zspmlistnote {
   # }
   dimension: tplnr {
     type: string
-    description: "Local de instalação"
+    label: "Local de Lançamento"
     sql: ${TABLE}.local_instalacao ;;
   }
   dimension: txtstat {
