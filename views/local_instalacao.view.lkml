@@ -46,7 +46,7 @@ view: local_instalacao {
   }
 
   dimension: nome_pig {
-    label: "Denominação Pontos Notaveis"
+    label: "Local de Lançamento (Denominação)"
     type: string
     sql: ${TABLE}.nome_pig ;;
   }

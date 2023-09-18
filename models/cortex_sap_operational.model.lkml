@@ -55,12 +55,23 @@ explore: notification_mn {
     relationship: one_to_many
     sql_on: ${notification_mn.normalize_tplnr}=${local_instalacao.nome_local_novo};;
   }
+  join: posicao_no_duto {
+    type: left_outer
+    relationship: many_to_one
+    sql_on:  ${posicao_no_duto.codigo_sap}=${local_instalacao.instalacao};;
+  }
+  join: estacao_nome {
+    type: left_outer
+    relationship: many_to_one
+    sql_on:  ${estacao_nome.codigo_sap}=${local_instalacao.instalacao};;
+  }
   join: language_map {
     fields: []
     type: left_outer
     sql_on: ${language_map.looker_locale}='{{ _user_attributes['locale'] }}' ;;
     relationship: many_to_one
   }
+
 }
 explore: nota_linha_gas_zspmlistnote {
   label: "Nota de Linha de Gás"
