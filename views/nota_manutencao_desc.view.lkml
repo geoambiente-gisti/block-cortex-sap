@@ -1,5 +1,5 @@
 view: nota_manutencao_desc {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_manutencao_desc_table` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.textos_nota_manutencao_looker` ;;
 
   dimension: descricao {
     html: <div style="white-space:pre">{{ value }}</div> ;;

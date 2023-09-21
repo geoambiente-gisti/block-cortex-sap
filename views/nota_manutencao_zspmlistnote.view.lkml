@@ -1,66 +1,66 @@
 view: nota_manutencao_zspmlistnote {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_manutencao_zspmlistnote` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_manutencao_looker` ;;
 
-  dimension: contactname {
-    type: string
-    label: "Contato"
-    sql: ${TABLE}.CONTACTNAME ;;
-  }
-  dimension: empac_atual {
-    type: string
-    label: "Empacotamento Atual"
-    sql: ${TABLE}.EMPAC_ATUAL ;;
-  }
-  dimension: empac_previsto {
-    type: string
-    label: "Empacotamento Previsto"
-    sql: ${TABLE}.EMPAC_PREVISTO ;;
-  }
-  dimension: ltrmn {
-    type: string
-    label: "Data de conclusão desejada"
-    sql: ${TABLE}.LTRMN ;;
-  }
-  dimension: modif {
-    type: string
-    label: "PM - Nota pode ser modificada?"
-    sql: ${TABLE}.MODIF ;;
-  }
+  # dimension: contactname {
+  #   type: string
+  #   label: "Contato"
+  #   sql: ${TABLE}.CONTACTNAME ;;
+  # }
+  # dimension: empac_atual {
+  #   type: string
+  #   label: "Empacotamento Atual"
+  #   sql: ${TABLE}.EMPAC_ATUAL ;;
+  # }
+  # dimension: empac_previsto {
+  #   type: string
+  #   label: "Empacotamento Previsto"
+  #   sql: ${TABLE}.EMPAC_PREVISTO ;;
+  # }
+  # dimension: ltrmn {
+  #   type: string
+  #   label: "Data de conclusão desejada"
+  #   sql: ${TABLE}.LTRMN ;;
+  # }
+  # dimension: modif {
+  #   type: string
+  #   label: "PM - Nota pode ser modificada?"
+  #   sql: ${TABLE}.MODIF ;;
+  # }
   dimension: mzeit {
     type: string
     label: "Hora da nota"
-    sql: ${TABLE}.MZEIT ;;
+    sql: extract(time from ${TABLE}.data_hora) ;;
   }
   dimension: name {
     type: string
     label: "Responsável"
-    sql: ${TABLE}.NAME ;;
+    sql: ${TABLE}.responsavel ;;
   }
-  dimension: occur_type {
-    type: string
-    label: "Tipo Ocorrência"
-    sql: ${TABLE}.OCCUR_TYPE ;;
-  }
-  dimension: orgname {
-    type: string
-    label: "Orgão"
-    sql: ${TABLE}.ORGNAME ;;
-  }
-  dimension: pltxt {
-    type: string
-    label: "Denominação do loc.instalação"
-    sql: ${TABLE}.PLTXT ;;
-  }
-  dimension: prog_entrega {
-    type: string
-    label: "Programação Entrega"
-    sql: ${TABLE}.PROG_ENTREGA ;;
-  }
-  dimension: prog_receb {
-    type: string
-    label: "Programação Recebimento"
-    sql: ${TABLE}.PROG_RECEB ;;
-  }
+  # dimension: occur_type {
+  #   type: string
+  #   label: "Tipo Ocorrência"
+  #   sql: ${TABLE}.OCCUR_TYPE ;;
+  # }
+  # dimension: orgname {
+  #   type: string
+  #   label: "Orgão"
+  #   sql: ${TABLE}.ORGNAME ;;
+  # }
+  # dimension: pltxt {
+  #   type: string
+  #   label: "Denominação do loc.instalação"
+  #   sql: ${TABLE}.PLTXT ;;
+  # }
+  # dimension: prog_entrega {
+  #   type: string
+  #   label: "Programação Entrega"
+  #   sql: ${TABLE}.PROG_ENTREGA ;;
+  # }
+  # dimension: prog_receb {
+  #   type: string
+  #   label: "Programação Recebimento"
+  #   sql: ${TABLE}.PROG_RECEB ;;
+  # }
   dimension_group: qmdat {
     label: "Data da nota"
     description: "Data da nota"
@@ -75,7 +75,7 @@ view: nota_manutencao_zspmlistnote {
     ]
     convert_tz: no
     datatype: date
-    sql:  CAST(${TABLE}.QMDAT as DATE) ;;
+    sql:  extract(date from ${TABLE}.data_hora) ;;
   }
   dimension: qmnum {
     link: {
@@ -85,32 +85,47 @@ view: nota_manutencao_zspmlistnote {
     type: string
     primary_key: yes
     label: "Nº da nota de Manutenção"
-    sql: ${TABLE}.QMNUM ;;
+    sql: ${TABLE}.n_nota ;;
   }
   dimension: qmtxt {
     type: string
     label: "Descrição"
-    sql: ${TABLE}.QMTXT ;;
+    sql: ${TABLE}.descricao_falha ;;
   }
-  dimension: tipo {
+  dimension: condicao_operacional {
     type: string
-    label: "Tipo"
-    sql: ${TABLE}.TIPO ;;
+    label: "Condição Operacional"
+    sql: ${TABLE}.condicao_operacional ;;
   }
-  dimension: titulo {
+  dimension: metodo_deteccao {
     type: string
-    label: "Título"
-    sql: ${TABLE}.TITULO ;;
+    label: "Método Detecção"
+    sql: ${TABLE}.metodo_deteccao ;;
   }
+  dimension: modo_falha {
+    type: string
+    label: "Modo Falha"
+    sql: ${TABLE}.modo_falha ;;
+  }
+  # dimension: tipo {
+  #   type: string
+  #   label: "Tipo"
+  #   sql: ${TABLE}.TIPO ;;
+  # }
+  # dimension: titulo {
+  #   type: string
+  #   label: "Título"
+  #   sql: ${TABLE}.TITULO ;;
+  # }
   dimension: tplnr {
     type: string
     label: "Local de instalação"
-    sql: ${TABLE}.TPLNR ;;
+    sql: ${TABLE}.local_instalacao ;;
   }
   dimension: txtstat {
     type: string
     label: "Status individual de um objeto"
-    sql: ${TABLE}.TXTSTAT ;;
+    sql: ${TABLE}.status ;;
   }
 
   dimension: is_manutencao {
@@ -121,7 +136,7 @@ view: nota_manutencao_zspmlistnote {
 
   measure: count {
     type: count
-    drill_fields: [qmnum, tplnr, contactname]
+    drill_fields: [qmnum, tplnr, name]
   }
 
   dimension: no_orderby {    type: number    sql: null ;;  }
@@ -129,7 +144,7 @@ view: nota_manutencao_zspmlistnote {
   measure: count_open {
     type: sum
     label: "Total Em Aberto"
-    drill_fields: [qmnum, tplnr, contactname]
+    drill_fields: [qmnum, tplnr, name]
     sql: case when ${txtstat} = "Em Aberto" then 1 else 0 end;;
   }
 }
