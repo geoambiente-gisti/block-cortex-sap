@@ -45,6 +45,12 @@ view: local_instalacao {
     sql: ${TABLE}.instalacao ;;
   }
 
+  dimension: pe_ecomp {
+    type: string
+    sql: case when ${TABLE}.instalacao like "%Ponto de Entrega%" then "Ponto de Entrega"
+    when ${TABLE}.instalacao like "%Estação de Compressão%" then "Estação de Compressão" else ${TABLE}.instalacao end;;
+  }
+
   dimension: nome_pig {
     label: "Local de Lançamento (Denominação)"
     type: string

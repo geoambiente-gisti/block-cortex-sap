@@ -18,6 +18,12 @@ view: estacao_nome {
     type: string
     sql: concat(${TABLE}.codigo_sap, ' ',${TABLE}.nome_ponto) ;;
   }
+
+  dimension: pe_ecomp {
+    type: string
+    sql: case when ${TABLE}.nome_ponto like "%Ponto de Entrega%" then "Ponto de Entrega"
+      when ${TABLE}.nome_ponto like "%Estação de Compressão%" then "Estação de Compressão" else ${TABLE}.nome_ponto end;;
+  }
   measure: count {
     type: count
   }
