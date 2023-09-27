@@ -1,5 +1,16 @@
 view: alarmes {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.alarmes` ;;
+  derived_table: {
+    sql:
+      with supreesed as(select
+        FORMAT_DATETIME("%Y-%m-%d %H:%M", eventstamp) as event_time,
+        count(1) as qtd
+        from `tbg-cloud-dev.SAP_LOG.alarmes`
+        where alarmstate = 'UNACK_ALM'
+        group by 1
+        having count(1) < cast('{{ _user_attributes['threshold'] }}' as integer)
+        order by 1 desc)
+      select * from `tbg-cloud-dev.SAP_LOG.alarmes` a join supreesed s on FORMAT_DATETIME("%Y-%m-%d %H:%M", a.eventstamp) = s.event_time ;;
+  }
 
   dimension: alarmid {
     type: number
@@ -36,9 +47,9 @@ view: alarmes {
   }
   dimension_group: eventstamp {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year, hour]
     datatype: datetime
-    sql: ${TABLE}.eventstamp ;;
+    sql: cast(${TABLE}.eventstamp as datetime) ;;
   }
   dimension_group: eventstamputc {
     type: time
@@ -102,6 +113,19 @@ view: alarmes {
     type: string
     sql: ${TABLE}.value ;;
   }
+  dimension: event_hour {
+    type: string
+    sql: TIMESTAMP_SECONDS(CAST(FLOOR(UNIX_SECONDS(timestamp(eventstamp)) / 600) * 600 AS INT64)) ;;
+  }
+
+  measure: diff_min {
+    type: number
+    sql: TIMESTAMP_DIFF(
+      cast(concat(extract(date from max(${TABLE}.eventstamp)), ' ', '00:00:00') as timestamp),
+      cast(concat(extract(date from min(${TABLE}.eventstamp)), ' ', '23:59:00') as timestamp), minute
+    );;
+  }
+
   measure: count {
     type: count
     drill_fields: [alarmid, tagname, alarmstate, area]
