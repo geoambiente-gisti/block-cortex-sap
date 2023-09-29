@@ -32,9 +32,11 @@ include: "/notas_log_dashboard/*.dashboard.lookml"
 named_value_format: Greek_Number_Format {
   value_format: "[>=1000000000]0.0,,,\"B\";[>=1000000]0.0,,\"M\";[>=1000]0.0,\"K\";0.0"
 }
-
+explore: bad_actors {}
+explore: instabilidade_mes {}
 explore: alarmes_por_minuto {}
-
+explore: alarmes_por_hora {}
+explore: alarmes_suprimidos {}
 explore: alarmes {
   join: instalacoes_alarmes {
     type: left_outer
