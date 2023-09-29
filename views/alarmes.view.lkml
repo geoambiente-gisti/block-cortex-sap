@@ -128,6 +128,6 @@ view: alarmes {
 
   measure: count {
     type: count
-    drill_fields: [alarmid, tagname, alarmstate, area]
+    drill_fields: [alarmid, tagname,  eventstamp_time, tagname, type, area, description]
   }
 }
