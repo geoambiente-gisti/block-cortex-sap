@@ -131,12 +131,17 @@ view: nota_manutencao_zspmlistnote {
   dimension: is_manutencao {
     type: string
     label: "Possui Operação"
-    sql: if(${zpmtb_no_nm.num_log_nm}=${nota_manutencao_zspmlistnote.qmnum} and ${zpmtb_no_nm.num_log_nm} is not null , "SIM", "NÃO") ;;
+    sql: if(${nota_operacao_zspmlistnote.qmnum}=${nota_manutencao_zspmlistnote.n_nota_operacao} , "SIM", "NÃO") ;;
   }
 
   measure: count {
     type: count
     drill_fields: [qmnum, tplnr, name]
+  }
+
+  dimension: n_nota_operacao {
+    label: "Nº Nota Operacao"
+    sql: ${TABLE}.n_nota_operacao ;;
   }
 
   dimension: no_orderby {    type: number    sql: null ;;  }

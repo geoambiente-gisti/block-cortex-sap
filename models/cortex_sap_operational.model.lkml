@@ -110,9 +110,10 @@ explore: nota_manutencao_zspmlistnote {
     sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
   }
   join: nota_operacao_zspmlistnote {
+    view_label: "Nota_manutencao"
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_no} ;;
+    sql_on: ${nota_manutencao_zspmlistnote.n_nota_operacao} = ${nota_operacao_zspmlistnote.qmnum} ;;
   }
 
   join: local_instalacao {
@@ -130,15 +131,11 @@ explore: nota_manutencao_zspmlistnote {
 
 explore: nota_operacao_zspmlistnote {
   label: "Nota Operação"
-  join: zpmtb_no_nm {
-    type: left_outer
-    relationship: one_to_many
-    sql_on: ${nota_operacao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_no} ;;
-  }
+
   join: nota_manutencao_zspmlistnote {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
+    sql_on: ${nota_manutencao_zspmlistnote.n_nota_operacao}=${nota_operacao_zspmlistnote.qmnum} ;;
   }
 
   join: nota_operacao_desc {
