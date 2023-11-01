@@ -1,5 +1,5 @@
 view: maintenance_orders {
-  sql_table_name: `tbg-cloud-dev.REPORTING.MaintenanceOrders` ;;
+  sql_table_name: `@{GCP_PROJECT}.REPORTING.MaintenanceOrders` ;;
 
   dimension_group: actual_finish_date_getri {
     type: time

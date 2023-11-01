@@ -1,5 +1,5 @@
 view: zpm_classe_local {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPM_CLASSE_LOCAL` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPM_CLASSE_LOCAL` ;;
 
   dimension: cls_local {
     type: string

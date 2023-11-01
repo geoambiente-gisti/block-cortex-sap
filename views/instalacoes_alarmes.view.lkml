@@ -1,5 +1,5 @@
 view: instalacoes_alarmes {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.instalacoes_alarmes` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.instalacoes_alarmes` ;;
 
   dimension: alarm_tag {
     type: string

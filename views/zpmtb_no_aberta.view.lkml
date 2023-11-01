@@ -1,5 +1,5 @@
 view: zpmtb_no_aberta {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMTB_NO_ABERTA` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMTB_NO_ABERTA` ;;
 
   dimension: ausvn {
     type: string

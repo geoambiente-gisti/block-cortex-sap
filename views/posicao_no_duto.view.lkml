@@ -1,5 +1,5 @@
 view: posicao_no_duto {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.posicao_no_duto` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.posicao_no_duto` ;;
 
   dimension: codigo_sap {
     type: string

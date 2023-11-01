@@ -1,5 +1,5 @@
 view: maintenance_orders_status {
-  sql_table_name: `tbg-cloud-dev.REPORTING.MaintenanceOrdersStatus` ;;
+  sql_table_name: `@{GCP_PROJECT}.REPORTING.MaintenanceOrdersStatus` ;;
 
   dimension: client_mandt {
     type: string

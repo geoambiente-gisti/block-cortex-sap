@@ -1,5 +1,5 @@
 view: ztpm_nota_mn {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZTPM_NOTA_MN` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZTPM_NOTA_MN` ;;
 
   dimension: apos_manutencao {
     type: string

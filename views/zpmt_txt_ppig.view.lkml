@@ -1,5 +1,5 @@
 view: zpmt_txt_ppig {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMT_TXT_PPIG` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMT_TXT_PPIG` ;;
 
   dimension: mandt {
     type: string

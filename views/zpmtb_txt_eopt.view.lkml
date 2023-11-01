@@ -1,5 +1,5 @@
 view: zpmtb_txt_eopt {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMTB_TXT_EOPT` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMTB_TXT_EOPT` ;;
 
   dimension: mandt {
     type: string

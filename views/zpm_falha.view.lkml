@@ -1,5 +1,5 @@
 view: zpm_falha {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPM_FALHA` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPM_FALHA` ;;
 
   dimension: descricao {
     type: string

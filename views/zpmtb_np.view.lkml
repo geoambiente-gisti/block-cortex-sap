@@ -1,5 +1,5 @@
 view: zpmtb_np {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.nota_pig_np` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_pig_np` ;;
 
   # dimension: bay_pass {
   #   type: number

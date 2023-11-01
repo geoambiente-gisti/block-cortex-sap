@@ -1,5 +1,5 @@
 view: ztnotaioleitura {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZTNOTAIOLEITURA` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZTNOTAIOLEITURA` ;;
 
   dimension: dt_leit {
     type: string

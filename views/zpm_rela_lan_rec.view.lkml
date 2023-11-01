@@ -1,5 +1,5 @@
 view: zpm_rela_lan_rec {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPM_RELA_LAN_REC` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPM_RELA_LAN_REC` ;;
 
   dimension: loc_lancamento {
     type: string

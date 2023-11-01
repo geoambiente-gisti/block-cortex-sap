@@ -1,5 +1,5 @@
 view: zpmtb_nota_pt {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMTB_NOTA_PT` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMTB_NOTA_PT` ;;
 
   dimension: data {
     type: string

@@ -1,5 +1,5 @@
 view: notification_phase_md {
-  sql_table_name: `tbg-cloud-dev.REPORTING.NotificationPhaseMD` ;;
+  sql_table_name: `@{GCP_PROJECT}.REPORTING.NotificationPhaseMD` ;;
 
   dimension: language {
     type: string

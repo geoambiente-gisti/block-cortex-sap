@@ -1,5 +1,5 @@
 view: zpmtb_alr_local {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMTB_ALR_LOCAL` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMTB_ALR_LOCAL` ;;
 
   dimension: alarm {
     type: string

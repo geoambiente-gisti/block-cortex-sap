@@ -1,5 +1,5 @@
 view: bad_actors {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.bad_actors` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.bad_actors` ;;
 
 
 

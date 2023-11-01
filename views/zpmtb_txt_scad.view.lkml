@@ -1,5 +1,5 @@
 view: zpmtb_txt_scad {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMTB_TXT_SCAD` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMTB_TXT_SCAD` ;;
 
   dimension: mandt {
     type: string

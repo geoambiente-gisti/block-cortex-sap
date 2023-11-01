@@ -1,5 +1,5 @@
 view: zpmtb_txt_orient {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMTB_TXT_ORIENT` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMTB_TXT_ORIENT` ;;
 
   dimension: mandt {
     type: string

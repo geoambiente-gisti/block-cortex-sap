@@ -1,5 +1,5 @@
 view: instabilidade_mes {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.instabilidade_mes` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.instabilidade_mes` ;;
 
   dimension: horas_instaveis {
     type: number

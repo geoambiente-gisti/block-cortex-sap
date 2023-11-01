@@ -1,5 +1,5 @@
 view: zpmtb_no_nm {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.ZPMTB_NO_NM` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.ZPMTB_NO_NM` ;;
 
   dimension: mandt {
     type: string
