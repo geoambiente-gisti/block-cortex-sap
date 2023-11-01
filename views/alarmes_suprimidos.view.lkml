@@ -2,14 +2,14 @@ view: alarmes_suprimidos {
   derived_table: {
     sql:
       with supreesed as(select
-        FORMAT_DATETIME("%Y-%m-%d %H:%M", eventstamp) as event_time,
+        FORMAT_DATETIME("%Y-%m-%d %H:%M:%S", eventstamp) as event_time,
         count(1) as qtd
         from `tbg-cloud-dev.SAP_LOG.alarmes`
         where alarmstate = 'UNACK_ALM'
         group by 1
         having count(1) >= cast('{{ _user_attributes['threshold'] }}' as integer) and count(distinct tagname) >= 3
         order by 1 desc)
-      select * from `tbg-cloud-dev.SAP_LOG.alarmes` a join supreesed s on FORMAT_DATETIME("%Y-%m-%d %H:%M", a.eventstamp) = s.event_time ;;
+      select * from `tbg-cloud-dev.SAP_LOG.alarmes` a join supreesed s on FORMAT_DATETIME("%Y-%m-%d %H:%M:%S", a.eventstamp) = s.event_time ;;
   }
 
   dimension: alarmid {
@@ -27,7 +27,7 @@ view: alarmes_suprimidos {
   }
   dimension: minute_alarm {
     type: string
-    sql: FORMAT_DATETIME("%Y-%m-%d %H:%M", ${TABLE}.eventstamp) ;;
+    sql: FORMAT_DATETIME("%Y-%m-%d %H:%M:%S", ${TABLE}.eventstamp) ;;
   }
   dimension: tipo_area {
     type: string

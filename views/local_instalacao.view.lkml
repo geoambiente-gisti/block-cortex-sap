@@ -39,6 +39,10 @@ view: local_instalacao {
     type: string
     sql: ${TABLE}.tipo_instalacao ;;
   }
+  dimension: classe_local_texto {
+    type: string
+    sql: ${TABLE}.classe_local_texto ;;
+  }
 
   dimension: instalacao {
     type: string
