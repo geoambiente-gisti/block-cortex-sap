@@ -92,11 +92,11 @@ view: nota_manutencao_zspmlistnote {
     label: "Descrição"
     sql: ${TABLE}.descricao_falha ;;
   }
-  dimension: condicao_operacional {
-    type: string
-    label: "Condição Operacional"
-    sql: ${TABLE}.condicao_operacional ;;
-  }
+  # dimension: condicao_operacional {
+  #   type: string
+  #   label: "Condição Operacional"
+  #   sql: ${TABLE}.condicao_operacional ;;
+  # }
   dimension: metodo_deteccao {
     type: string
     label: "Método Detecção"

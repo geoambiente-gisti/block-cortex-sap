@@ -3,50 +3,120 @@ view: situacao_operacional_locals {
 
   dimension: area_sistema {
     type: string
-    sql:concat(${TABLE}.area_sistema, ' - ', ${TABLE}.descricao) ;;
+    sql:${TABLE}.area_sistema ;;
+  }
+
+  dimension: area_sistema_concat {
+    label: "Descrição"
+    type: string
+    sql:concat(${TABLE}.area_sistema, '  ', ${TABLE}.descricao) ;;
+  }
+
+  dimension: estacao {
+    type: string
+    sql: ${TABLE}.estacao ;;
+  }
+
+  dimension: nivel {
+    type: string
+    sql: ${TABLE}.nivel ;;
   }
 
   dimension: instalacao {
     type: string
     sql: ${TABLE}.instalacao ;;
   }
+
+  dimension: instalacao_concat {
+    label: "Área/Sistema"
+    type: string
+    sql: CONCAT(${TABLE}.instalacao, '  ', ${TABLE}.estacao) ;;
+  }
+
   dimension: instalacao_descricao {
     type: string
     sql: ${TABLE}.instalacao_descricao ;;
   }
+
+  dimension: nome_estacao {
+    type: string
+    sql: ${TABLE}.nome_estacao ;;
+  }
+
   dimension: tipo_estacao {
     type: string
     sql: ${TABLE}.tipo_estacao ;;
   }
 
-  measure: em_operacao {
+  dimension: estado_operacional {
     type: string
+    sql: ${TABLE}.estado_operacional ;;
+  }
 
-    sql: 'true' ;;
-    html: {% if value == 'true' %}
-         <p><img src="https://findicons.com/files/icons/573/must_have/48/check.png" alt="" height="20" width="20"></p>
+  dimension: em_operacao_g {
+    type: string
+    sql: ${TABLE}.em_operacao ;;
+  }
+
+
+  dimension: em_parada_nao_programada_g {
+    type: string
+    sql: ${TABLE}.parada_nao_programada ;;
+  }
+
+
+  dimension: em_parada_programada_g {
+    type: string
+    sql: ${TABLE}.parada_programada ;;
+  }
+
+
+  measure: em_operacao_num {
+    type: sum
+    sql: if(${TABLE}.em_operacao = 'Em Operação', 1, 0);;
+
+  }
+  measure: em_parada_nao_programada_num {
+    type: sum
+    sql: if(${TABLE}.parada_nao_programada = 'Parada não Programada' , 1, 0);;
+
+  }
+  measure: em_parada_programada_num {
+    type: sum
+    sql: if(${TABLE}.parada_programada = 'Parada programada', 1, 0);;
+  }
+
+
+  measure: em_operacao {
+    type: sum
+    sql: if(${TABLE}.em_operacao = 'Em Operação', 1, 0);;
+    html: {% if value > 0 %}
+        <p style="color: black; background-color: #7CB342; font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
+
       {% else %}
-        <p><img src="https://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" alt="" height="20" width="20"></p>
+         <p style="font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
       {% endif %}
       ;;
   }
-  measure: em_reserva {
-    type: string
-    sql: 'false' ;;
-    html: {% if value == 'true' %}
-         <p><img src="https://findicons.com/files/icons/573/must_have/48/check.png" alt="" height="20" width="20"></p>
+  measure: em_parada_nao_programada {
+    type: sum
+    sql: if(${TABLE}.parada_nao_programada = 'Parada não Programada' , 1, 0);;
+    html: {% if value > 0 %}
+        <p style="color: black; background-color: #EA4335; font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
       {% else %}
-        <p><img src="https://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" alt="" height="20" width="20"></p>
-      {% endif %} ;;
+        <p style="font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
+      {% endif %}
+      ;;
   }
   measure: em_parada_programada {
-    type: string
-    sql: 'false' ;;
-    html: {% if value == 'true' %}
-         <p><img src="https://findicons.com/files/icons/573/must_have/48/check.png" alt="" height="20" width="20"></p>
+    type: sum
+    sql: if(${TABLE}.parada_programada = 'Parada programada', 1, 0);;
+    html: {% if value > 0 %}
+        <p style="color: black; background-color: #F9AB00; font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
       {% else %}
-        <p><img src="https://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" alt="" height="20" width="20"></p>
-      {% endif %} ;;
+        <p style="font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
+      {% endif %}
+      ;;
   }
 
   dimension: descricao {
