@@ -13,6 +13,11 @@ view: indices_acumulados {
     type: string
     sql: format_date( '%Y-%m', ${data__date}) ;;
   }
+  dimension: mes_ano_escrito {
+    label: "Mês Ano"
+    type: string
+    sql: format_date('%b %Y',${data__date}) ;;
+  }
   dimension: instalacao {
     type: string
     sql: ${TABLE}.instalacao ;;

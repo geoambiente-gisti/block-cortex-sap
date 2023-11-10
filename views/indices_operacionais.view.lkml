@@ -14,6 +14,11 @@ view: indices_operacionais {
     datatype: date
     sql: last_day(cast(concat(${TABLE}.ano_mes, '-', '01') as date)) ;;
   }
+  dimension: mes_ano_escrito {
+    label: "Mês Ano"
+    type: string
+    sql: format_date('%b %Y',${data_formada_date}) ;;
+  }
   dimension: qtd_areas {
     type: number
     sql: ${TABLE}.qtd_area ;;

@@ -8,6 +8,11 @@ view: indices_gerais {
     datatype: date
     sql: ${TABLE}.data_ ;;
   }
+  dimension: mes_ano_escrito {
+    label: "Mês Ano"
+    type: string
+    sql: format_date('%b %Y',${data__date}) ;;
+  }
   dimension: horas_mes_acumuladas {
     type: number
     sql: ${TABLE}.horas_mes_acumuladas ;;
