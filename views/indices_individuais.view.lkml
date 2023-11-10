@@ -50,6 +50,7 @@ view: indices_individuais {
   }
   dimension: instalacao {
     type: string
+    primary_key: yes
     sql: ${TABLE}.instalacao ;;
   }
   dimension: parada_nao_programada {
@@ -73,29 +74,17 @@ view: indices_individuais {
   }
 
   measure: sum_horas_parada_nao_programada {
-    type: sum_distinct
+    type: sum
     sql_distinct_key: ${instalacao} ;;
     sql: ${parada_nao_programada} ;;
   }
 
   measure: sum_horas_parada_programada {
-    type: sum_distinct
+    type: sum
     sql_distinct_key: ${instalacao} ;;
     sql: ${parada_programada} ;;
   }
 
-
-  measure: sum_horas_parada_nao_programada_2 {
-    type: sum
-    sql_distinct_key: ${area_sistema} ;;
-    sql: ${parada_nao_programada} ;;
-  }
-
-  measure: sum_horas_parada_programada_2 {
-    type: sum_distinct
-    sql_distinct_key: ${area_sistema} ;;
-    sql: ${parada_programada} ;;
-  }
 
   dimension: disponibilidade_dim {
     value_format: "0.00"
