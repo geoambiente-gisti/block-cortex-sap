@@ -38,7 +38,15 @@ view: indices_acumulados {
     type: number
     sql: ${TABLE}.paradas_programada_acumulado_ano ;;
   }
+  dimension: qtd_area {
+    type: number
+    sql: ${TABLE}.qtd_area ;;
+  }
 
+  dimension: qtd_horas {
+    type: number
+    sql: ${TABLE}.qtd_horas ;;
+  }
   dimension: horas_mes_acumuladas {
     type: number
     sql: ${TABLE}.horas_mes_acumuladas ;;
@@ -49,9 +57,11 @@ view: indices_acumulados {
   }
 
   dimension: sum_areas {
-    type: string
+    type: number
     sql: ${TABLE}.sum_areas ;;
   }
+
+
   measure: count {
     type: count
   }
@@ -60,11 +70,37 @@ view: indices_acumulados {
 
   measure: sum_parada_programada {
     type:  sum
-    sql:  ${parada_nao_programada};;
+    sql:  ${parada_programada};;
   }
 
   measure: sum_parada_nao_programada {
     type:  sum
     sql:  ${parada_nao_programada};;
-}
+  }
+
+  measure: sum_parada_programada_acumulada {
+    type:  sum
+    sql:  ${paradas_programada_acumulado_ano};;
+  }
+
+  measure: sum_parada_nao_programada_acumulada {
+    type:  sum
+    sql:  ${paradas_nao_programada_acumulado_ano};;
+  }
+
+
+  measure: confiabilidade_sistema_compressor {
+    type: sum
+    sql: if (${sistema} = 'Compressor',
+    (1 - (${parada_programada} + ${parada_nao_programada}) / (${qtd_area} * ${qtd_horas}))/${qtd_area}, 0
+    ) ;;
+
+  }
+  measure: confiabilidade_sistema_motorgerador {
+    type: sum
+    sql: if (${sistema} = 'Motorgerador',
+          1 - (${parada_programada} + ${parada_nao_programada}) / (${qtd_area} * ${qtd_horas}), 0
+          ) ;;
+
+    }
 }

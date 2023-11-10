@@ -72,22 +72,46 @@ view: indices_individuais {
     type: count
   }
 
+  measure: sum_horas_parada_nao_programada {
+    type: sum_distinct
+    sql_distinct_key: ${instalacao} ;;
+    sql: ${parada_nao_programada} ;;
+  }
+
+  measure: sum_horas_parada_programada {
+    type: sum_distinct
+    sql_distinct_key: ${instalacao} ;;
+    sql: ${parada_programada} ;;
+  }
+
+
+  measure: sum_horas_parada_nao_programada_2 {
+    type: sum
+    sql_distinct_key: ${area_sistema} ;;
+    sql: ${parada_nao_programada} ;;
+  }
+
+  measure: sum_horas_parada_programada_2 {
+    type: sum_distinct
+    sql_distinct_key: ${area_sistema} ;;
+    sql: ${parada_programada} ;;
+  }
+
   dimension: disponibilidade_dim {
     value_format: "0.00"
     sql: (1 - (${parada_nao_programada} + ${parada_nao_programada}) / (${qtd_horas} * 1)) * 100 ;;
   }
 
   measure: disponibilidade {
-    type: sum
-    value_format: "0.00"
-    # sql_distinct_key: ${data_formada_date} ;;
-    sql: ${disponibilidade_dim} ;;
-    html: {% if value <= 100 %}
-    <p style="">{{value}}</p>
-    {% else %}
-    <p style="font-size:100%; text-align:center"></p>
-    {% endif %}
-    ;;
+    type: sum_distinct
+    sql_distinct_key: ${area_sistema} ;;
+    sql: 1 - (${parada_nao_programada} + ${parada_programada}) / (1 * ${qtd_horas}) ;;
+    # html: {% if value <= 100 %}
+    # <p style="">{{value}}</p>
+    # {% else %}
+    # <p style="font-size:100%; text-align:center"></p>
+    # {% endif %}
+    # ;;
   }
 
   dimension: confiabilidade_dim {
@@ -96,15 +120,14 @@ view: indices_individuais {
   }
 
   measure: confiabilidade {
-    type: sum
-    value_format: "0.00"
-    # sql_distinct_key: ${data_formada_date} ;;
-    sql: ${confiabilidade_dim} ;;
-    html: {% if value <= 100 %}
-          <p style="">{{value}}</p>
-          {% else %}
-          <p style="font-size:100%; text-align:center"></p>
-          {% endif %}
-          ;;
+    type: sum_distinct
+    sql_distinct_key: ${area_sistema} ;;
+    sql: 1 - (${parada_nao_programada}) / (1 * ${qtd_horas}) ;;
+    # html: {% if value <= 100 %}
+    # <p style="">{{value}}</p>
+    # {% else %}
+    # <p style="font-size:100%; text-align:center"></p>
+    # {% endif %}
+    # ;;
   }
 }
