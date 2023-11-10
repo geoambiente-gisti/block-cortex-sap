@@ -39,6 +39,29 @@ explore: situacao_operacional_locals {
     sql_on: ${sistemas.cod_local} = ${situacao_operacional_locals.area_sistema} ;;
   }
 }
+
+explore: indices_operacionais {
+  join: indices_acumulados {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${indices_acumulados.instalacao}=${indices_operacionais.instalacao}
+    and ${indices_acumulados.ano_mes} = ${indices_operacionais.ano_mes} and ${indices_acumulados.sistema} = ${indices_operacionais.sistema};;
+  }
+  join: indices_gerais {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${indices_gerais.instalacao}=${indices_operacionais.instalacao}
+      and ${indices_gerais.data__date} = ${indices_operacionais.data_formada_date};;
+  }
+  join: indices {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${indices_gerais.instalacao}=${indices.instalacao}
+      and ${indices_gerais.data__date} = ${indices.data__date};;
+  }
+}
+explore: indices {}
+explore: indices_operacionais_bruto {}
 explore: bad_actors {}
 explore: instabilidade_mes {}
 explore: alarmes_por_minuto {}
