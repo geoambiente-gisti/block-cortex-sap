@@ -40,9 +40,29 @@ explore: situacao_operacional_locals {
     relationship: many_to_one
     sql_on: ${sistemas.cod_local} = ${situacao_operacional_locals.area_sistema} ;;
   }
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${situacao_operacional_locals.instalacao} ;;
+  }
 }
-explore: indices_individuais {}
-explore: indices_acumulados {}
+explore: nota_estados_operacionais {
+
+}
+explore: indices_individuais {
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${indices_individuais.instalacao} ;;
+  }
+}
+explore: indices_acumulados {
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${indices_acumulados.instalacao} ;;
+  }
+}
 explore: indices_operacionais {
   join: indices_acumulados {
     type: left_outer
@@ -62,9 +82,26 @@ explore: indices_operacionais {
     sql_on: ${indices_gerais.instalacao}=${indices.instalacao}
       and ${indices_gerais.data__date} = ${indices.data__date};;
   }
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${indices_operacionais.instalacao} ;;
+  }
 }
-explore: indices {}
-explore: indices_operacionais_bruto {}
+explore: indices {
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${indices.instalacao} ;;
+  }
+}
+explore: indices_operacionais_bruto {
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${indices_operacionais_bruto.local_instalacao} ;;
+  }
+}
 explore: bad_actors {}
 explore: instabilidade_mes {}
 explore: alarmes_por_minuto {}
@@ -107,6 +144,11 @@ explore: notification_mn {
     type: left_outer
     sql_on: ${language_map.looker_locale}='{{ _user_attributes['locale'] }}' ;;
     relationship: many_to_one
+  }
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${local_instalacao.instalacao} ;;
   }
 
 }

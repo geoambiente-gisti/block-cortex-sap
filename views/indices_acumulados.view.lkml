@@ -1,5 +1,5 @@
 view: indices_acumulados {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.indices_acumulados` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.indices_acumulados` ;;
 
   dimension_group: data_ {
     type: time
@@ -65,8 +65,6 @@ view: indices_acumulados {
   measure: count {
     type: count
   }
-
-
 
   measure: sum_parada_programada {
     type:  sum

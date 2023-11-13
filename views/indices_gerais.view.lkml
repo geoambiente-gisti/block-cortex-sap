@@ -1,5 +1,5 @@
 view: indices_gerais {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.indices_gerais` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.indices_gerais` ;;
 
   dimension_group: data_ {
     type: time
