@@ -387,7 +387,7 @@
     trellis_rows: 5
     trellis_cols: 2
     angle: 90
-    cutout: 30
+    cutout: 50
     range_x: 1
     range_y: 1
     target_label_padding: 1.36
@@ -501,7 +501,7 @@
     trellis_rows: 2
     trellis_cols: 2
     angle: 90
-    cutout: 53
+    cutout: 50
     range_x: 1
     range_y: 1
     target_label_padding: 1.06
