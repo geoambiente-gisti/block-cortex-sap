@@ -30,12 +30,19 @@ view: indices_individuais {
     sql: ${TABLE}.formatted_month ;;
   }
 
+  dimension: primary_key {
+    primary_key: yes
+    label: "Identificador"
+    sql: concat(${instalacao}, ' ', ${estacao}, '', ${sistema}) ;;
+  }
+
   dimension: local_completo {
     label: "Local Instalacao"
     sql: concat(${instalacao}, ' ', ${estacao}) ;;
   }
 
   dimension: area_sistema_completo {
+
     label: "Área/Sistema"
     sql: concat(${area_sistema}, ' ', ${descricao}) ;;
   }
@@ -45,12 +52,13 @@ view: indices_individuais {
     sql: ${TABLE}.estacao ;;
   }
   dimension: area_sistema {
+
     type: string
     sql: ${TABLE}.area_sistema ;;
   }
   dimension: instalacao {
     type: string
-    primary_key: yes
+
     sql: ${TABLE}.instalacao ;;
   }
   dimension: parada_nao_programada {

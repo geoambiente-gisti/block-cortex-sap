@@ -6,26 +6,7 @@ view: nota_operacao_zspmlistnote {
     label: "Contato"
     sql: ${TABLE}.contato ;;
   }
-  # dimension: empac_atual {
-  #   type: string
-  #   label: "Empacotamento Atual"
-  #   sql: ${TABLE}.EMPAC_ATUAL ;;
-  # }
-  # dimension: empac_previsto {
-  #   type: string
-  #   label: "Empacotamento Previsto"
-  #   sql: ${TABLE}.EMPAC_PREVISTO ;;
-  # }
-  # dimension: ltrmn {
-  #   type: string
-  #   label: "Data de conclusão desejada"
-  #   sql: ${TABLE}.LTRMN ;;
-  # }
-  # dimension: modif {
-  #   type: string
-  #   label: "PM - Nota pode ser modificada?"
-  #   sql: ${TABLE}.MODIF ;;
-  # }
+
   dimension: mzeit {
     type: string
     label: "Hora da nota"
@@ -41,26 +22,13 @@ view: nota_operacao_zspmlistnote {
     label: "Tipo Ocorrência"
     sql: ${TABLE}.tipo_ocorrencia ;;
   }
-  # dimension: orgname {
-  #   type: string
-  #   label: "Orgão"
-  #   sql: ${TABLE}.ORGNAME ;;
-  # }
+
   dimension: pltxt {
     type: string
     label: "Denominação do loc.instalação"
     sql: ${TABLE}.denominacao_local_instalacao ;;
   }
-  # dimension: prog_entrega {
-  #   type: string
-  #   label: "Programação Entrega"
-  #   sql: ${TABLE}.PROG_ENTREGA ;;
-  # }
-  # dimension: prog_receb {
-  #   type: string
-  #   label: "Programação Recebimento"
-  #   sql: ${TABLE}.PROG_RECEB ;;
-  # }
+
   dimension_group: qmdat {
     label: "Data da nota"
     description: "Data da nota"
@@ -77,6 +45,21 @@ view: nota_operacao_zspmlistnote {
     datatype: date
     sql: extract(date from ${TABLE}.data_hora) ;;
   }
+
+
+  dimension: mes_nota {
+    order_by_field: qmdat_date
+    label: "Mês"
+    type: string
+    sql:  cast(extract(month from ${TABLE}.data_hora) as string);;
+  }
+
+  dimension: ano_nota {
+    label: "Ano"
+    type: string
+    sql:  cast(extract(year from ${TABLE}.data_hora) as string);;
+  }
+
   dimension: qmnum {
     link: {
       label: "Detalhe da Nota de Operação"
@@ -87,21 +70,7 @@ view: nota_operacao_zspmlistnote {
     label: "Nº Nota Operação"
     sql: ${TABLE}.n_nota ;;
   }
-  # dimension: qmtxt {
-  #   type: string
-  #   label: "Descrição"
-  #   sql: ${TABLE}.QMTXT ;;
-  # }
-  # dimension: tipo {
-  #   type: string
-  #   label: "Tipo"
-  #   sql: ${TABLE}.TIPO ;;
-  # }
-  # dimension: titulo {
-  #   type: string
-  #   label: "Título"
-  #   sql: ${TABLE}.TITULO ;;
-  # }
+
   dimension: tplnr {
     type: string
     label: "Local de instalação"

@@ -21,6 +21,7 @@ view: instalacoes_abrv {
   }
 
   dimension: concat_name {
+    label: "Local Instalação"
     type: string
     sql: concat(${l_instalacao}, ' ', ${abreviacao}) ;;
   }

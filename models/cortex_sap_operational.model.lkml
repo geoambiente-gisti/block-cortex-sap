@@ -33,6 +33,8 @@ named_value_format: Greek_Number_Format {
   value_format: "[>=1000000000]0.0,,,\"B\";[>=1000000]0.0,,\"M\";[>=1000]0.0,\"K\";0.0"
 }
 
+###################################################### LOG ##############################################################################
+
 
 explore: situacao_operacional_locals {
   join: sistemas{
@@ -56,6 +58,18 @@ explore: indices_individuais {
     sql_on: ${instalacoes_abrv.l_instalacao} = ${indices_individuais.instalacao} ;;
   }
 }
+
+
+
+
+explore: indices_por_sistema {
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${indices_por_sistema.instalacao} ;;
+  }
+}
+
 explore: indices_acumulados {
   join: instalacoes_abrv {
     type: left_outer
@@ -204,6 +218,61 @@ explore: nota_manutencao_zspmlistnote {
   }
 }
 
+####### Análise de Eventos ##########
+
+explore: analise_eventos {
+  view_name: nota_manutencao_zspmlistnote
+  label: "Análise de Eventos"
+
+  join: nota_operacao_zspmlistnote {
+    view_label: "Nota_manutencao"
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_manutencao_zspmlistnote.n_nota_operacao} = ${nota_operacao_zspmlistnote.qmnum} ;;
+  }
+
+  join: nota_operacao_desc {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${nota_operacao_desc.qmnum} ;;
+  }
+
+  join: local_instalacao {
+    type: left_outer
+    sql_on: ${local_instalacao.nome_local}=${nota_manutencao_zspmlistnote.tplnr} ;;
+    relationship: many_to_one
+  }
+
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${local_instalacao.instalacao} ;;
+  }
+
+  join: estacao_nome {
+    type: left_outer
+    relationship: many_to_one
+    sql_on:  ${estacao_nome.codigo_sap}=${local_instalacao.instalacao};;
+  }
+
+}
+
+
+explore: contagem_manutencao {
+  join: estacao_nome {
+    type: left_outer
+    relationship: many_to_one
+    sql_on:  ${estacao_nome.codigo_sap}=${contagem_manutencao.instalacao};;
+  }
+
+  join: instalacoes_abrv {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${instalacoes_abrv.l_instalacao} = ${contagem_manutencao.instalacao} ;;
+  }
+
+}
+
 explore: nota_operacao_zspmlistnote {
   label: "Nota Operação"
 
@@ -219,6 +288,8 @@ explore: nota_operacao_zspmlistnote {
     sql_on: ${nota_operacao_zspmlistnote.qmnum}=${nota_operacao_desc.qmnum} ;;
   }
 }
+
+
 
 explore: nota_pig_zspmlistnote {
   label: "Notas PIG"
@@ -303,6 +374,9 @@ explore: notification {
   }
 
 }
+
+
+##################################################### END LOG ############################################################################
 
 explore:  maintenance_orders {
   join: language_map {

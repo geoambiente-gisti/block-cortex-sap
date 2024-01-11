@@ -1,31 +1,6 @@
 view: nota_manutencao_zspmlistnote {
   sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_manutencao_looker` ;;
 
-  # dimension: contactname {
-  #   type: string
-  #   label: "Contato"
-  #   sql: ${TABLE}.CONTACTNAME ;;
-  # }
-  # dimension: empac_atual {
-  #   type: string
-  #   label: "Empacotamento Atual"
-  #   sql: ${TABLE}.EMPAC_ATUAL ;;
-  # }
-  # dimension: empac_previsto {
-  #   type: string
-  #   label: "Empacotamento Previsto"
-  #   sql: ${TABLE}.EMPAC_PREVISTO ;;
-  # }
-  # dimension: ltrmn {
-  #   type: string
-  #   label: "Data de conclusão desejada"
-  #   sql: ${TABLE}.LTRMN ;;
-  # }
-  # dimension: modif {
-  #   type: string
-  #   label: "PM - Nota pode ser modificada?"
-  #   sql: ${TABLE}.MODIF ;;
-  # }
   dimension: mzeit {
     type: string
     label: "Hora da nota"
@@ -36,31 +11,7 @@ view: nota_manutencao_zspmlistnote {
     label: "Responsável"
     sql: ${TABLE}.responsavel ;;
   }
-  # dimension: occur_type {
-  #   type: string
-  #   label: "Tipo Ocorrência"
-  #   sql: ${TABLE}.OCCUR_TYPE ;;
-  # }
-  # dimension: orgname {
-  #   type: string
-  #   label: "Orgão"
-  #   sql: ${TABLE}.ORGNAME ;;
-  # }
-  # dimension: pltxt {
-  #   type: string
-  #   label: "Denominação do loc.instalação"
-  #   sql: ${TABLE}.PLTXT ;;
-  # }
-  # dimension: prog_entrega {
-  #   type: string
-  #   label: "Programação Entrega"
-  #   sql: ${TABLE}.PROG_ENTREGA ;;
-  # }
-  # dimension: prog_receb {
-  #   type: string
-  #   label: "Programação Recebimento"
-  #   sql: ${TABLE}.PROG_RECEB ;;
-  # }
+
   dimension_group: qmdat {
     label: "Data da nota"
     description: "Data da nota"
@@ -77,6 +28,20 @@ view: nota_manutencao_zspmlistnote {
     datatype: date
     sql:  extract(date from ${TABLE}.data_hora) ;;
   }
+
+  dimension: mes_nota {
+    order_by_field: qmdat_date
+    label: "Mês"
+    type: string
+    sql:  cast(extract(month from ${TABLE}.data_hora) as string);;
+  }
+
+  dimension: ano_nota {
+    label: "Ano"
+    type: string
+    sql:  cast(extract(year from ${TABLE}.data_hora) as string);;
+  }
+
   dimension: qmnum {
     link: {
       label: "Detalhe da Nota de Manutenção"
@@ -92,11 +57,7 @@ view: nota_manutencao_zspmlistnote {
     label: "Descrição"
     sql: ${TABLE}.descricao_falha ;;
   }
-  # dimension: condicao_operacional {
-  #   type: string
-  #   label: "Condição Operacional"
-  #   sql: ${TABLE}.condicao_operacional ;;
-  # }
+
   dimension: metodo_deteccao {
     type: string
     label: "Método Detecção"
@@ -107,16 +68,7 @@ view: nota_manutencao_zspmlistnote {
     label: "Modo Falha"
     sql: ${TABLE}.modo_falha ;;
   }
-  # dimension: tipo {
-  #   type: string
-  #   label: "Tipo"
-  #   sql: ${TABLE}.TIPO ;;
-  # }
-  # dimension: titulo {
-  #   type: string
-  #   label: "Título"
-  #   sql: ${TABLE}.TITULO ;;
-  # }
+
   dimension: tplnr {
     type: string
     label: "Local de instalação"
@@ -145,6 +97,16 @@ view: nota_manutencao_zspmlistnote {
   }
 
   dimension: no_orderby {    type: number    sql: null ;;  }
+
+  measure: count_distinct_mes {
+    type: count_distinct
+    sql: ${qmdat_month} ;;
+  }
+
+  measure: count_distinct_ano {
+    type: count_distinct
+    sql:  ${ano_nota};;
+  }
 
   measure: count_open {
     type: sum

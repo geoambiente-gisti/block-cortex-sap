@@ -67,21 +67,25 @@ view: indices_acumulados {
   }
 
   measure: sum_parada_programada {
+    value_format: "0.00"
     type:  sum
     sql:  ${parada_programada};;
   }
 
   measure: sum_parada_nao_programada {
+    value_format: "0.00"
     type:  sum
     sql:  ${parada_nao_programada};;
   }
 
   measure: sum_parada_programada_acumulada {
+    value_format: "0.00"
     type:  sum
     sql:  ${paradas_programada_acumulado_ano};;
   }
 
   measure: sum_parada_nao_programada_acumulada {
+    value_format: "0.00"
     type:  sum
     sql:  ${paradas_nao_programada_acumulado_ano};;
   }

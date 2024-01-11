@@ -6,26 +6,7 @@ view: nota_linha_gas_zspmlistnote {
     label: "Notificante"
     sql: ${TABLE}.notificante ;;
   }
-  # dimension: empac_atual {
-  #   type: string
-  #   label: "Empacotamento Atual"
-  #   sql: ${TABLE}.EMPAC_ATUAL ;;
-  # }
-  # dimension: empac_previsto {
-  #   type: string
-  #   label: "Empacotamento Previsto"
-  #   sql: ${TABLE}.EMPAC_PREVISTO ;;
-  # }
-  # dimension: ltrmn {
-  #   type: string
-  #   label: "Data de conclusão desejada"
-  #   sql: ${TABLE}.LTRMN ;;
-  # }
-  # dimension: modif {
-  #   type: string
-  #   label: "PM - Nota pode ser modificada?"
-  #   sql: ${TABLE}.MODIF ;;
-  # }
+
   dimension: mzeit {
     type: string
     label: "Hora da nota"
@@ -42,31 +23,17 @@ view: nota_linha_gas_zspmlistnote {
     label: "Contato"
     sql: ${TABLE}.contato ;;
   }
-  # dimension: occur_type {
-  #   type: string
-  #   label: "Caractere 1024"
-  #   sql: ${TABLE}.OCCUR_TYPE ;;
-  # }
-  # dimension: orgname {
-  #   type: string
-  #   label: "Valor da característica"
-  #   sql: ${TABLE}.ORGNAME ;;
-  # }
+
   dimension: pltxt {
     type: string
     label: "Descrição"
     sql: ${TABLE}.descricao ;;
   }
-  # dimension: prog_entrega {
-  #   type: string
-  #   label: "Programação Entrega"
-  #   sql: ${TABLE}.PROG_ENTREGA ;;
-  # }
-  # dimension: prog_receb {
-  #   type: string
-  #   label: "Programação Recebimento"
-  #   sql: ${TABLE}.PROG_RECEB ;;
-  # }
+  dimension: responsavel {
+    type: string
+    label: "Responsável"
+    sql: ${TABLE}.responsavel ;;
+  }
 
   dimension_group: qmdat {
     label: "Data Abertura"
