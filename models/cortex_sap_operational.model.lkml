@@ -3,6 +3,7 @@ connection: "sap_reporting_bigquery"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/log_dashboards/**/*.dashboard"
 
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.

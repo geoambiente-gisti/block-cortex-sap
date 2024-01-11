@@ -1,16 +1,6 @@
 view: nota_instrucao_operacional_zspmlistnote {
   sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_instrucao_operacional_looker` ;;
 
-  # dimension: contactname {
-  #   type: string
-  #   description: "Texto breve/denominação do objeto"
-  #   sql: ${TABLE}.CONTACTNAME ;;
-  # }
-  # dimension: empac_atual {
-  #   type: string
-  #   description: "Empacotamento Atual"
-  #   sql: ${TABLE}.EMPAC_ATUAL ;;
-  # }
   dimension: empac_previsto {
     type: string
     description: "Empacotamento Previsto"
@@ -34,11 +24,6 @@ view: nota_instrucao_operacional_zspmlistnote {
     sql:  ${TABLE}.data_validade ;;
   }
 
-  # dimension: modif {
-  #   type: string
-  #   description: "PM - Nota pode ser modificada?"
-  #   sql: ${TABLE}.MODIF ;;
-  # }
   dimension: mzeit {
     label: "Hora"
     type: string
@@ -51,31 +36,6 @@ view: nota_instrucao_operacional_zspmlistnote {
     description: "Nome completo da pessoa"
     sql: ${TABLE}.responsavel ;;
   }
-  # dimension: occur_type {
-  #   type: string
-  #   description: "Caractere 1024"
-  #   sql: ${TABLE}.OCCUR_TYPE ;;
-  # }
-  # dimension: orgname {
-  #   type: string
-  #   description: "Valor da característica"
-  #   sql: ${TABLE}.ORGNAME ;;
-  # }
-  # dimension: pltxt {
-  #   type: string
-  #   description: "Denominação do loc.instalação"
-  #   sql: ${TABLE}.PLTXT ;;
-  # }
-  # dimension: prog_entrega {
-  #   type: string
-  #   description: "Programação Entrega"
-  #   sql: ${TABLE}.PROG_ENTREGA ;;
-  # }
-  # dimension: prog_receb {
-  #   type: string
-  #   description: "Programação Recebimento"
-  #   sql: ${TABLE}.PROG_RECEB ;;
-  # }
   dimension_group: qmdat {
     label: "Data Abertura"
     description: "Data da nota"
@@ -103,11 +63,6 @@ view: nota_instrucao_operacional_zspmlistnote {
     label: "Nº da nota"
     sql: ${TABLE}.n_nota ;;
   }
-  # dimension: qmtxt {
-  #   type: string
-  #   description: "Texto breve"
-  #   sql: ${TABLE}.QMTXT ;;
-  # }
   dimension: tipo {
     type: string
     label: "Tipo"
@@ -120,12 +75,6 @@ view: nota_instrucao_operacional_zspmlistnote {
     description: "Título"
     sql: ${TABLE}.TITULO ;;
   }
-  # dimension: tplnr {
-  #   label: "Local de Instalação"
-  #   type: string
-  #   description: "Local de instalação"
-  #   sql: ${TABLE}.TPLNR ;;
-  # }
   dimension: txtstat {
     label: "Status"
     type: string
