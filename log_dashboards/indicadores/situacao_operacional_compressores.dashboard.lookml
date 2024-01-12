@@ -1,10 +1,10 @@
 ---
-- dashboard: situao_operacional__motores_geradores
-  title: SITUAÇÃO OPERACIONAL - MOTORES GERADORES
+- dashboard: situao_operacional__compressores
+  title: SITUAÇÃO OPERACIONAL - COMPRESSORES
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: drbWi8ydBYGccOXkepZk93
+  preferred_slug: zJQWhHGNiu4OwrLdKFtI3g
   elements:
   - title: Situação Operacional
     name: Situação Operacional
@@ -434,14 +434,14 @@
   - name: Sistema
     title: Sistema
     type: field_filter
-    default_value: Motorgerador
+    default_value: Compressor
     allow_multiple_values: true
     required: false
     ui_config:
       type: button_toggles
-      display: popover
+      display: inline
       options:
-      - Motorgerador
+      - Compressor
     model: cortex_sap_operational
     explore: situacao_operacional_locals
     listens_to_filters: []

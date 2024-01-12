@@ -6,70 +6,6 @@
   description: ''
   preferred_slug: VbBFajgHdq5EgoxKGEvfz7
   elements:
-  - title: Possui Operação
-    name: Possui Operação
-    model: cortex_sap_operational
-    explore: nota_manutencao_zspmlistnote
-    type: looker_bar
-    fields: [nota_manutencao_zspmlistnote.is_manutencao, nota_manutencao_zspmlistnote.count]
-    sorts: [nota_manutencao_zspmlistnote.is_manutencao]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    color_application:
-      collection_id: 5591d8d1-6b49-4f8e-bafa-b874d82f8eb7
-      palette_id: 18d0c733-1d87-42a9-934f-4ba8ef81d736
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: bottom, series: [{axisId: nota_manutencao_zspmlistnote.count,
-            id: nota_manutencao_zspmlistnote.count, name: Nota Manutencao Zspmlistnote}],
-        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    limit_displayed_rows_values:
-      show_hide: hide
-      first_last: first
-      num_rows: 0
-    hide_legend: false
-    defaults_version: 1
-    hidden_pivots: {}
-    listen:
-      Nº da nota: nota_manutencao_zspmlistnote.qmnum
-      Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
-      Local de instalação: nota_manutencao_zspmlistnote.tplnr
-      Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
-      Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
-    row: 0
-    col: 3
-    width: 7
-    height: 6
   - title: Notas de Manutenção
     name: Notas de Manutenção
     model: cortex_sap_operational
@@ -137,7 +73,7 @@
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
     row: 0
     col: 0
-    width: 3
+    width: 4
     height: 6
   - title: Número de Notas por Dia
     name: Número de Notas por Dia
@@ -259,14 +195,14 @@
     col: 12
     width: 12
     height: 6
-  - title: Numero de Notas por Responsável
-    name: Numero de Notas por Responsável
+  - title: Número de Notas por Responsável
+    name: Número de Notas por Responsável
     model: cortex_sap_operational
     explore: nota_manutencao_zspmlistnote
     type: looker_column
     fields: [nota_manutencao_zspmlistnote.name, nota_manutencao_zspmlistnote.count]
     sorts: [nota_manutencao_zspmlistnote.count desc 0]
-    limit: 10
+    limit: 15
     column_limit: 50
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -310,8 +246,8 @@
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
     row: 0
-    col: 17
-    width: 7
+    col: 12
+    width: 12
     height: 6
   - title: Número de Notas por Turno
     name: Número de Notas por Turno
@@ -363,8 +299,8 @@
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
     row: 0
-    col: 10
-    width: 7
+    col: 4
+    width: 8
     height: 6
   filters:
   - name: Nº da nota

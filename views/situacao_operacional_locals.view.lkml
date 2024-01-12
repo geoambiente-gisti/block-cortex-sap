@@ -64,6 +64,11 @@ view: situacao_operacional_locals {
     sql: ${TABLE}.parada_nao_programada ;;
   }
 
+  dimension: sistema {
+    type: string
+    sql: ${TABLE}.sistema ;;
+  }
+
 
   dimension: em_parada_programada_g {
     type: string
