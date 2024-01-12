@@ -195,8 +195,6 @@
       nota_manutencao_zspmlistnote.qmdat_month]
     pivots: [local_instalacao.tipo_instalacao]
     fill_fields: [nota_manutencao_zspmlistnote.qmdat_month]
-    filters:
-      nota_manutencao_zspmlistnote.qmdat_month: 12 months
     sorts: [local_instalacao.tipo_instalacao, nota_manutencao_zspmlistnote.count desc
         0]
     limit: 500
