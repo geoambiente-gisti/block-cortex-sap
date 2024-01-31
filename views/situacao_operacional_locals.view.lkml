@@ -96,10 +96,10 @@ view: situacao_operacional_locals {
     type: sum
     sql: if(${TABLE}.em_operacao = 'Em Operação', 1, 0);;
     html: {% if value > 0 %}
-        <p style="color: black; background-color: #7CB342; font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
+        <p style="color: black; background-color: #7CB342; font-size:100%; text-align:center"><img src="https://storage.googleapis.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
 
       {% else %}
-         <p style="font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
+         <p style="font-size:100%; text-align:center"><img src="https://storage.googleapis.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
       {% endif %}
       ;;
   }
@@ -107,9 +107,9 @@ view: situacao_operacional_locals {
     type: sum
     sql: if(${TABLE}.parada_nao_programada = 'Parada não Programada' , 1, 0);;
     html: {% if value > 0 %}
-        <p style="color: black; background-color: #EA4335; font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
+        <p style="color: black; background-color: #EA4335; font-size:100%; text-align:center"><img src="https://storage.googleapis.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
       {% else %}
-        <p style="font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
+        <p style="font-size:100%; text-align:center"><img src="https://storage.googleapis.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
       {% endif %}
       ;;
   }
@@ -117,9 +117,9 @@ view: situacao_operacional_locals {
     type: sum
     sql: if(${TABLE}.parada_programada = 'Parada programada', 1, 0);;
     html: {% if value > 0 %}
-        <p style="color: black; background-color: #F9AB00; font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
+        <p style="color: black; background-color: #F9AB00; font-size:100%; text-align:center"><img src="https://storage.googleapis.com/looker_icons_tbg/checked.png" alt="" height="20" width="20"></p>
       {% else %}
-        <p style="font-size:100%; text-align:center"><img src="https://storage.cloud.google.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
+        <p style="font-size:100%; text-align:center"><img src="https://storage.googleapis.com/looker_icons_tbg/uncheck_box.png" alt="" height="20" width="20"></p>
       {% endif %}
       ;;
   }
