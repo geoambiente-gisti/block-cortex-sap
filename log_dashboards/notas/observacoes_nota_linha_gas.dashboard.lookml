@@ -11,8 +11,8 @@
     model: cortex_sap_operational
     explore: nota_linha_gas_zspmlistnote
     type: table
-    fields: [nota_linha_gas_zspmlistnote.qmnum, nota_linha_gas_desc.descricao]
-    sorts: [nota_linha_gas_zspmlistnote.qmnum]
+    fields: [nota_linha_gas_zspmlistnote.n_nota_serial, nota_linha_gas_desc.descricao]
+    sorts: [nota_linha_gas_zspmlistnote.n_nota_serial]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -52,7 +52,7 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Nº da nota: nota_linha_gas_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_linha_gas_zspmlistnote.n_nota_serial
     row: 0
     col: 9
     width: 15
@@ -62,7 +62,7 @@
     model: cortex_sap_operational
     explore: nota_linha_gas_zspmlistnote
     type: looker_single_record
-    fields: [nota_linha_gas_zspmlistnote.qmnum, nota_linha_gas_zspmlistnote.qmdat_date,
+    fields: [nota_linha_gas_zspmlistnote.n_nota_serial, nota_linha_gas_zspmlistnote.qmdat_date,
       nota_linha_gas_zspmlistnote.mzeit, nota_linha_gas_zspmlistnote.contactname,
       nota_linha_gas_zspmlistnote.name, nota_linha_gas_zspmlistnote.tplnr, nota_linha_gas_zspmlistnote.pltxt]
     sorts: [nota_linha_gas_zspmlistnote.qmdat_date desc]
@@ -105,14 +105,14 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     listen:
-      Nº da nota: nota_linha_gas_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_linha_gas_zspmlistnote.n_nota_serial
     row: 0
     col: 0
     width: 9
     height: 14
   filters:
-  - name: Nº da nota
-    title: Nº da nota
+  - name: Nº da Nota Serial
+    title: Nº da Nota Serial
     type: field_filter
     default_value: ''
     allow_multiple_values: true
@@ -123,4 +123,4 @@
     model: cortex_sap_operational
     explore: nota_linha_gas_zspmlistnote
     listens_to_filters: []
-    field: nota_linha_gas_zspmlistnote.qmnum
+    field: nota_linha_gas_zspmlistnote.n_nota_serial

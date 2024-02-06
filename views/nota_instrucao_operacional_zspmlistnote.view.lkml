@@ -60,9 +60,20 @@ view: nota_instrucao_operacional_zspmlistnote {
     }
     type: string
     primary_key: yes
-    label: "Nº da nota"
+    label: "Nº da nota relacionamento"
     sql: ${TABLE}.n_nota ;;
   }
+
+  dimension: n_nota_serial {
+    link: {
+      label: "Detalhe da Nota de Operação"
+      url: "https://tbgbr.cloud.looker.com/dashboards/cortex_sap_operational::descrio_e_observaes_das_nota_de_instruo_operacional?N%C2%BA+da+Nota+Serial={{ value }}&hide_filter=N%C2%BA+da+Nota+Serial"
+    }
+    type: string
+    label: "Nº da Nota"
+    sql: ${TABLE}.n_nota_serial ;;
+  }
+
   dimension: tipo {
     type: string
     label: "Tipo"

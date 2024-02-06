@@ -173,6 +173,12 @@ explore: nota_linha_gas_zspmlistnote {
     relationship: one_to_many
     sql_on: ${nota_linha_gas_zspmlistnote.qmnum}=${nota_linha_gas_desc.qmnum} ;;
   }
+
+  join: responsavel {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_linha_gas_zspmlistnote.responsavel}=${responsavel.email} ;;
+  }
 }
 
 explore: nota_instrucao_operacional_zspmlistnote {
@@ -216,6 +222,13 @@ explore: nota_manutencao_zspmlistnote {
     relationship: one_to_many
     sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${nota_manutencao_desc.qmnum} ;;
   }
+
+  join: responsavel {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_manutencao_zspmlistnote.name}=${responsavel.email} ;;
+  }
+
 }
 
 ####### Análise de Eventos ##########
@@ -287,6 +300,12 @@ explore: nota_operacao_zspmlistnote {
     relationship: one_to_many
     sql_on: ${nota_operacao_zspmlistnote.qmnum}=${nota_operacao_desc.qmnum} ;;
   }
+
+  join: responsavel {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_operacao_zspmlistnote.name}=${responsavel.email} ;;
+  }
 }
 
 
@@ -319,6 +338,12 @@ explore: nota_pig_zspmlistnote {
     type: left_outer
     sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_desc.qmnum} ;;
     relationship: many_to_one
+  }
+
+  join: responsavel {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_pig_zspmlistnote.name}=${responsavel.email} ;;
   }
 }
 

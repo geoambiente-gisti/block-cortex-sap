@@ -49,9 +49,21 @@ view: nota_manutencao_zspmlistnote {
     }
     type: string
     primary_key: yes
-    label: "Nº da nota de Manutenção"
+    label: "Nº da nota de Manutenção Relacionamento"
     sql: ${TABLE}.n_nota ;;
   }
+
+
+  dimension: n_nota_serial {
+    link: {
+      label: "Detalhe da Nota de Operação"
+      url: "https://tbgbr.cloud.looker.com/dashboards/cortex_sap_operational::observao_e_nota_de_operao_associada_manutencao?N%C2%BA+Nota+Manuten%C3%A7%C3%A3o={{ value }}&hide_filter=N%C2%BA+Nota+Manuten%C3%A7%C3%A3o"
+    }
+    type: string
+    label: "Nº Nota Manutenção"
+    sql: ${TABLE}.n_nota_serial ;;
+  }
+
   dimension: qmtxt {
     type: string
     label: "Descrição"
@@ -92,7 +104,7 @@ view: nota_manutencao_zspmlistnote {
   }
 
   dimension: n_nota_operacao {
-    label: "Nº Nota Operacao"
+    label: "Nº Nota Operacao Relacionamento"
     sql: ${TABLE}.n_nota_operacao ;;
   }
 

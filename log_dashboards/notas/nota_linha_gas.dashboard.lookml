@@ -11,7 +11,7 @@
     model: cortex_sap_operational
     explore: nota_linha_gas_zspmlistnote
     type: looker_grid
-    fields: [nota_linha_gas_zspmlistnote.qmnum, nota_linha_gas_zspmlistnote.qmdat_date,
+    fields: [nota_linha_gas_zspmlistnote.n_nota_serial, nota_linha_gas_zspmlistnote.qmdat_date,
       nota_linha_gas_zspmlistnote.mzeit, nota_linha_gas_zspmlistnote.contactname,
       nota_linha_gas_zspmlistnote.name, nota_linha_gas_zspmlistnote.tplnr, nota_linha_gas_zspmlistnote.pltxt,
       nota_linha_gas_zspmlistnote.txtstat]
@@ -60,7 +60,7 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Nº da nota: nota_linha_gas_zspmlistnote.qmnum
+      Nº da nota: nota_linha_gas_zspmlistnote.n_nota_serial
       Contato: nota_linha_gas_zspmlistnote.contactname
       Data Abertura Date: nota_linha_gas_zspmlistnote.qmdat_date
       Notificante: nota_linha_gas_zspmlistnote.name
@@ -119,7 +119,7 @@
     defaults_version: 1
     listen:
       Data Abertura Date: nota_linha_gas_zspmlistnote.qmdat_date
-      Nº da nota: nota_linha_gas_zspmlistnote.qmnum
+      Nº da nota: nota_linha_gas_zspmlistnote.n_nota_serial
       Contato: nota_linha_gas_zspmlistnote.contactname
       Local da Ocorrência: nota_linha_gas_zspmlistnote.tplnr
       Notificante: nota_linha_gas_zspmlistnote.name
@@ -175,7 +175,7 @@
     defaults_version: 1
     listen:
       Data Abertura Date: nota_linha_gas_zspmlistnote.qmdat_date
-      Nº da nota: nota_linha_gas_zspmlistnote.qmnum
+      Nº da nota: nota_linha_gas_zspmlistnote.n_nota_serial
       Contato: nota_linha_gas_zspmlistnote.contactname
       Local da Ocorrência: nota_linha_gas_zspmlistnote.tplnr
       Notificante: nota_linha_gas_zspmlistnote.name
@@ -229,7 +229,7 @@
     defaults_version: 1
     listen:
       Data Abertura Date: nota_linha_gas_zspmlistnote.qmdat_date
-      Nº da nota: nota_linha_gas_zspmlistnote.qmnum
+      Nº da nota: nota_linha_gas_zspmlistnote.n_nota_serial
       Contato: nota_linha_gas_zspmlistnote.contactname
       Local da Ocorrência: nota_linha_gas_zspmlistnote.tplnr
       Notificante: nota_linha_gas_zspmlistnote.name
@@ -243,7 +243,7 @@
     model: cortex_sap_operational
     explore: nota_linha_gas_zspmlistnote
     type: looker_column
-    fields: [nota_linha_gas_zspmlistnote.count, nota_linha_gas_zspmlistnote.responsavel]
+    fields: [nota_linha_gas_zspmlistnote.count, responsavel.nome]
     sorts: [nota_linha_gas_zspmlistnote.count desc 0]
     limit: 10
     column_limit: 50
@@ -283,7 +283,7 @@
     defaults_version: 1
     listen:
       Data Abertura Date: nota_linha_gas_zspmlistnote.qmdat_date
-      Nº da nota: nota_linha_gas_zspmlistnote.qmnum
+      Nº da nota: nota_linha_gas_zspmlistnote.n_nota_serial
       Contato: nota_linha_gas_zspmlistnote.contactname
       Local da Ocorrência: nota_linha_gas_zspmlistnote.tplnr
       Notificante: nota_linha_gas_zspmlistnote.name
@@ -305,7 +305,7 @@
     model: cortex_sap_operational
     explore: nota_linha_gas_zspmlistnote
     listens_to_filters: [Data Abertura Date]
-    field: nota_linha_gas_zspmlistnote.qmnum
+    field: nota_linha_gas_zspmlistnote.n_nota_serial
   - name: Data Abertura Date
     title: Data Abertura Date
     type: field_filter

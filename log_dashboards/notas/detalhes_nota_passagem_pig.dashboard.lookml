@@ -60,7 +60,7 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Nº da nota: nota_pig_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_pig_zspmlistnote.n_nota_serial
     row: 0
     col: 6
     width: 18
@@ -70,8 +70,8 @@
     model: cortex_sap_operational
     explore: nota_pig_zspmlistnote
     type: table
-    fields: [nota_pig_zspmlistnote.qmnum, nota_pig_desc.descricao]
-    sorts: [nota_pig_zspmlistnote.qmnum]
+    fields: [nota_pig_zspmlistnote.n_nota_serial, nota_pig_desc.descricao]
+    sorts: [nota_pig_zspmlistnote.n_nota_serial]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -86,7 +86,7 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      Nº da nota: nota_pig_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_pig_zspmlistnote.n_nota_serial
     row: 8
     col: 0
     width: 24
@@ -96,10 +96,10 @@
     model: cortex_sap_operational
     explore: nota_pig_zspmlistnote
     type: looker_single_record
-    fields: [nota_pig_zspmlistnote.qmnum, nota_pig_zspmlistnote.qmdat_date, nota_pig_zspmlistnote.mzeit,
+    fields: [nota_pig_zspmlistnote.n_nota_serial, nota_pig_zspmlistnote.qmdat_date, nota_pig_zspmlistnote.mzeit,
       nota_pig_zspmlistnote.tplnr, local_instalacao.nome_pig, nota_pig_zspmlistnote.motivo,
       nota_pig_zspmlistnote.tipo]
-    sorts: [nota_pig_zspmlistnote.qmnum]
+    sorts: [nota_pig_zspmlistnote.n_nota_serial]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -116,7 +116,7 @@
       collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
       palette_id: fb7bb53e-b77b-4ab6-8274-9d420d3d73f3
     series_labels:
-      nota_pig_zspmtext.qmnum: Nº da Nota de Passagem PIG
+      nota_pig_zspmtext.n_nota_serial: Nº da Nota de Passagem PIG
       lista_de_tdline: Observações
     limit_displayed_rows_values:
       show_hide: hide
@@ -142,22 +142,22 @@
     hidden_fields: []
     hidden_points_if_no: []
     listen:
-      Nº da nota: nota_pig_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_pig_zspmlistnote.n_nota_serial
     row: 0
     col: 0
     width: 6
     height: 8
   filters:
-  - name: Nº da nota
-    title: Nº da nota
+  - name: Nº da Nota Serial
+    title: Nº da Nota Serial
     type: field_filter
     default_value: ''
     allow_multiple_values: true
-    required: true
+    required: false
     ui_config:
       type: tag_list
       display: popover
     model: cortex_sap_operational
     explore: nota_pig_zspmlistnote
     listens_to_filters: []
-    field: nota_pig_zspmlistnote.qmnum
+    field: nota_pig_zspmlistnote.n_nota_serial

@@ -11,7 +11,7 @@
     model: cortex_sap_operational
     explore: nota_instrucao_operacional_zspmlistnote
     type: looker_grid
-    fields: [nota_instrucao_operacional_zspmlistnote.qmnum, nota_instrucao_operacional_zspmlistnote.titulo,
+    fields: [nota_instrucao_operacional_zspmlistnote.n_nota_serial, nota_instrucao_operacional_zspmlistnote.titulo,
       nota_instrucao_operacional_zspmlistnote.tipo, nota_instrucao_operacional_zspmlistnote.qmdat_date,
       nota_instrucao_operacional_zspmlistnote.mzeit, nota_instrucao_operacional_zspmlistnote.ltrmn_date,
       nota_instrucao_operacional_zspmlistnote.txtstat]
@@ -35,7 +35,7 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.qmnum
+      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.n_nota_serial
       Tipo: nota_instrucao_operacional_zspmlistnote.tipo
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
@@ -85,7 +85,7 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.qmnum
+      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.n_nota_serial
       Tipo: nota_instrucao_operacional_zspmlistnote.tipo
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
@@ -136,7 +136,7 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.qmnum
+      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.n_nota_serial
       Tipo: nota_instrucao_operacional_zspmlistnote.tipo
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
@@ -158,7 +158,7 @@
     model: cortex_sap_operational
     explore: nota_instrucao_operacional_zspmlistnote
     listens_to_filters: [Data Validade Date, Data Abertura Date]
-    field: nota_instrucao_operacional_zspmlistnote.qmnum
+    field: nota_instrucao_operacional_zspmlistnote.n_nota_serial
   - name: Tipo
     title: Tipo
     type: field_filter

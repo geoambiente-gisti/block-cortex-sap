@@ -11,9 +11,9 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     type: looker_grid
-    fields: [nota_operacao_zspmlistnote.qmnum, nota_manutencao_zspmlistnote.qmnum,
+    fields: [nota_operacao_zspmlistnote.n_nota_serial, nota_manutencao_zspmlistnote.n_nota_serial,
       nota_operacao_zspmlistnote.qmdat_date, nota_operacao_zspmlistnote.mzeit, nota_operacao_zspmlistnote.contactname,
-      nota_operacao_zspmlistnote.name, nota_operacao_zspmlistnote.occur_type, nota_operacao_zspmlistnote.tplnr,
+      responsavel.nome, nota_operacao_zspmlistnote.occur_type, nota_operacao_zspmlistnote.tplnr,
       nota_operacao_zspmlistnote.pltxt, nota_operacao_zspmlistnote.is_manutencao]
     sorts: [nota_operacao_zspmlistnote.qmdat_date desc]
     limit: 500
@@ -37,7 +37,7 @@
     listen:
       Tipo Ocorrência: nota_operacao_zspmlistnote.occur_type
       Contato: nota_operacao_zspmlistnote.contactname
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
       Possui Manutenção: nota_operacao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
@@ -96,7 +96,7 @@
     listen:
       Tipo Ocorrência: nota_operacao_zspmlistnote.occur_type
       Contato: nota_operacao_zspmlistnote.contactname
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
       Possui Manutenção: nota_operacao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
@@ -116,7 +116,7 @@
     column_limit: 50
     dynamic_fields:
     - category: table_calculation
-      expression: if(${zpmtb_no_nm.num_log_nm}=${nota_manutencao_zspmlistnote.qmnum},
+      expression: if(${zpmtb_no_nm.num_log_nm}=${nota_manutencao_zspmlistnote.n_nota_serial},
         "SIM", "NÃO")
       label: Possui Nota de Manutenção
       value_format:
@@ -172,7 +172,7 @@
     label_type: labPer
     hidden_pivots: {}
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
       Tipo Ocorrência: nota_operacao_zspmlistnote.occur_type
       Contato: nota_operacao_zspmlistnote.contactname
       Possui Manutenção: nota_operacao_zspmlistnote.is_manutencao
@@ -231,7 +231,7 @@
     interpolation: linear
     defaults_version: 1
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
       Tipo Ocorrência: nota_operacao_zspmlistnote.occur_type
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
       Contato: nota_operacao_zspmlistnote.contactname
@@ -290,7 +290,7 @@
     interpolation: linear
     defaults_version: 1
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
       Tipo Ocorrência: nota_operacao_zspmlistnote.occur_type
       Data da Nota: nota_operacao_zspmlistnote.qmdat_date
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
@@ -346,7 +346,7 @@
     y_axis_zoom: true
     defaults_version: 1
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
       Tipo Ocorrência: nota_operacao_zspmlistnote.occur_type
       Data da Nota: nota_operacao_zspmlistnote.qmdat_date
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
@@ -362,7 +362,7 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     type: looker_column
-    fields: [nota_operacao_zspmlistnote.name, nota_operacao_zspmlistnote.count]
+    fields: [responsavel.nome, nota_operacao_zspmlistnote.count]
     sorts: [nota_operacao_zspmlistnote.count desc 0]
     limit: 500
     column_limit: 50
@@ -402,7 +402,7 @@
     x_axis_label_rotation:
     defaults_version: 1
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
       Tipo Ocorrência: nota_operacao_zspmlistnote.occur_type
       Data da Nota: nota_operacao_zspmlistnote.qmdat_date
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
@@ -426,7 +426,7 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     listens_to_filters: [Data da Nota]
-    field: nota_operacao_zspmlistnote.qmnum
+    field: nota_operacao_zspmlistnote.n_nota_serial
   - name: Tipo Ocorrência
     title: Tipo Ocorrência
     type: field_filter

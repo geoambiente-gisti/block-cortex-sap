@@ -12,7 +12,7 @@
     model: cortex_sap_operational
     explore: nota_instrucao_operacional_zspmlistnote
     type: table
-    fields: [nota_instrucao_operacional_zspmlistnote.qmnum, nota_instrucao_operacional_zspmlistnote.descricao]
+    fields: [nota_instrucao_operacional_zspmlistnote.n_nota_serial, nota_instrucao_operacional_zspmlistnote.descricao]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -33,7 +33,7 @@
     rows_font_size: 12
     defaults_version: 1
     listen:
-      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_instrucao_operacional_zspmlistnote.n_nota_serial
     row: 0
     col: 12
     width: 12
@@ -43,7 +43,7 @@
     model: cortex_sap_operational
     explore: nota_instrucao_operacional_zspmlistnote
     type: table
-    fields: [nota_instrucao_operacional_zspmlistnote.qmnum, nota_instrucao_operacional_obs.descricao]
+    fields: [nota_instrucao_operacional_zspmlistnote.n_nota_serial, nota_instrucao_operacional_obs.descricao]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -64,7 +64,7 @@
     rows_font_size: 12
     defaults_version: 1
     listen:
-      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_instrucao_operacional_zspmlistnote.n_nota_serial
     row: 9
     col: 0
     width: 24
@@ -74,9 +74,10 @@
     model: cortex_sap_operational
     explore: nota_instrucao_operacional_zspmlistnote
     type: looker_single_record
-    fields: [nota_instrucao_operacional_zspmlistnote.qmnum, nota_instrucao_operacional_zspmlistnote.tipo,
+    fields: [nota_instrucao_operacional_zspmlistnote.n_nota_serial, nota_instrucao_operacional_zspmlistnote.tipo,
       nota_instrucao_operacional_zspmlistnote.qmdat_date, nota_instrucao_operacional_zspmlistnote.mzeit,
-      nota_instrucao_operacional_zspmlistnote.ltrmn_date, nota_instrucao_operacional_zspmlistnote.txtstat]
+      nota_instrucao_operacional_zspmlistnote.ltrmn_date, nota_instrucao_operacional_zspmlistnote.txtstat,
+      nota_instrucao_operacional_zspmlistnote.titulo]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -96,22 +97,22 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      Nº da Instrução Operacional: nota_instrucao_operacional_zspmlistnote.qmnum
+      Nº da Nota Serial: nota_instrucao_operacional_zspmlistnote.n_nota_serial
     row: 0
     col: 0
     width: 12
     height: 9
   filters:
-  - name: Nº da Instrução Operacional
-    title: Nº da Instrução Operacional
+  - name: Nº da Nota Serial
+    title: Nº da Nota Serial
     type: field_filter
     default_value: ''
     allow_multiple_values: true
     required: false
     ui_config:
-      type: tag_list
+      type: checkboxes
       display: popover
     model: cortex_sap_operational
     explore: nota_instrucao_operacional_zspmlistnote
     listens_to_filters: []
-    field: nota_instrucao_operacional_zspmlistnote.qmnum
+    field: nota_instrucao_operacional_zspmlistnote.n_nota_serial

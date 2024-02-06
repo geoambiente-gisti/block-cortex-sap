@@ -12,10 +12,10 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     type: looker_single_record
-    fields: [nota_operacao_zspmlistnote.qmnum, nota_operacao_zspmlistnote.qmdat_date,
+    fields: [nota_operacao_zspmlistnote.n_nota_serial, nota_operacao_zspmlistnote.qmdat_date,
       nota_operacao_zspmlistnote.mzeit, nota_operacao_zspmlistnote.contactname,
-      nota_operacao_zspmlistnote.occur_type, nota_operacao_zspmlistnote.tplnr, nota_operacao_zspmlistnote.pltxt]
-    sorts: [nota_operacao_zspmlistnote.qmnum]
+      nota_operacao_zspmlistnote.occur_type, nota_operacao_zspmlistnote.tplnr]
+    sorts: [nota_operacao_zspmlistnote.n_nota_serial]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -35,7 +35,8 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
+      Nº Nota Operação: nota_operacao_zspmlistnote.n_nota_serial
     row: 0
     col: 0
     width: 12
@@ -45,7 +46,7 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     type: looker_single_record
-    fields: [nota_manutencao_zspmlistnote.qmnum, nota_manutencao_zspmlistnote.qmdat_date,
+    fields: [nota_manutencao_zspmlistnote.n_nota_serial, nota_manutencao_zspmlistnote.qmdat_date,
       nota_manutencao_zspmlistnote.mzeit, nota_manutencao_zspmlistnote.tplnr]
     sorts: [nota_manutencao_zspmlistnote.qmdat_date desc]
     limit: 500
@@ -53,7 +54,8 @@
     show_view_names: false
     defaults_version: 1
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
+      Nº Nota Operação: nota_operacao_zspmlistnote.n_nota_serial
     row: 0
     col: 12
     width: 12
@@ -63,7 +65,7 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     type: table
-    fields: [nota_operacao_zspmlistnote.qmnum, nota_operacao_desc.descricao]
+    fields: [nota_operacao_zspmlistnote.n_nota_serial, nota_operacao_desc.descricao]
     filters: {}
     limit: 500
     column_limit: 50
@@ -105,7 +107,8 @@
     plot_size_by_field: false
     hidden_pivots: {}
     listen:
-      Nº da nota: nota_operacao_zspmlistnote.qmnum
+      Nº da nota: nota_operacao_zspmlistnote.n_nota_serial
+      Nº Nota Operação: nota_operacao_zspmlistnote.n_nota_serial
     row: 7
     col: 0
     width: 24
@@ -123,4 +126,17 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     listens_to_filters: []
-    field: nota_operacao_zspmlistnote.qmnum
+    field: nota_operacao_zspmlistnote.n_nota_serial
+  - name: Nº Nota Operação
+    title: Nº Nota Operação
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: cortex_sap_operational
+    explore: nota_operacao_zspmlistnote
+    listens_to_filters: []
+    field: nota_operacao_zspmlistnote.n_nota_serial

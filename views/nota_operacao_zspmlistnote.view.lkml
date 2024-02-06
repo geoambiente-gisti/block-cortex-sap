@@ -67,8 +67,18 @@ view: nota_operacao_zspmlistnote {
     }
     type: string
     primary_key: yes
-    label: "Nº Nota Operação"
+    label: "Nº Nota Operação Relacionamento"
     sql: ${TABLE}.n_nota ;;
+  }
+
+  dimension: n_nota_serial {
+    link: {
+      label: "Detalhe da Nota de Operação"
+      url: "https://tbgbr.cloud.looker.com/dashboards/cortex_sap_operational::detalhes_da_nota_de_operao?N%C2%BA+Nota+Opera%C3%A7%C3%A3o={{ value }}&hide_filter=N%C2%BA+Nota+Opera%C3%A7%C3%A3o"
+    }
+    type: string
+    label: "Nº Nota Operação"
+    sql: ${TABLE}.n_nota_serial ;;
   }
 
   dimension: tplnr {

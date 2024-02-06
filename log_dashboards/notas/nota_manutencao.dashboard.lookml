@@ -11,8 +11,8 @@
     model: cortex_sap_operational
     explore: nota_manutencao_zspmlistnote
     type: looker_grid
-    fields: [nota_manutencao_zspmlistnote.qmnum, nota_operacao_zspmlistnote.qmnum,
-      nota_manutencao_zspmlistnote.qmdat_date, nota_manutencao_zspmlistnote.name,
+    fields: [nota_manutencao_zspmlistnote.n_nota_serial, nota_operacao_zspmlistnote.n_nota_serial,
+      nota_manutencao_zspmlistnote.qmdat_date, responsavel.nome,
       nota_manutencao_zspmlistnote.mzeit, nota_manutencao_zspmlistnote.tplnr, local_instalacao.descricao,
       nota_manutencao_zspmlistnote.txtstat]
     limit: 500
@@ -36,7 +36,7 @@
     hidden_fields:
     hidden_pivots: {}
     listen:
-      Nº da nota: nota_manutencao_zspmlistnote.qmnum
+      Nº da nota: nota_manutencao_zspmlistnote.n_nota_serial
       Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
@@ -66,7 +66,7 @@
     single_value_title: Notas em Aberto
     defaults_version: 1
     listen:
-      Nº da nota: nota_manutencao_zspmlistnote.qmnum
+      Nº da nota: nota_manutencao_zspmlistnote.n_nota_serial
       Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
@@ -129,7 +129,7 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      Nº da nota: nota_manutencao_zspmlistnote.qmnum
+      Nº da nota: nota_manutencao_zspmlistnote.n_nota_serial
       Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
@@ -186,7 +186,7 @@
     interpolation: linear
     defaults_version: 1
     listen:
-      Nº da nota: nota_manutencao_zspmlistnote.qmnum
+      Nº da nota: nota_manutencao_zspmlistnote.n_nota_serial
       Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
@@ -200,7 +200,7 @@
     model: cortex_sap_operational
     explore: nota_manutencao_zspmlistnote
     type: looker_column
-    fields: [nota_manutencao_zspmlistnote.name, nota_manutencao_zspmlistnote.count]
+    fields: [responsavel.nome, nota_manutencao_zspmlistnote.count]
     sorts: [nota_manutencao_zspmlistnote.count desc 0]
     limit: 15
     column_limit: 50
@@ -240,7 +240,7 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
-      Nº da nota: nota_manutencao_zspmlistnote.qmnum
+      Nº da nota: nota_manutencao_zspmlistnote.n_nota_serial
       Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
@@ -293,7 +293,7 @@
     y_axis_zoom: true
     defaults_version: 1
     listen:
-      Nº da nota: nota_manutencao_zspmlistnote.qmnum
+      Nº da nota: nota_manutencao_zspmlistnote.n_nota_serial
       Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
@@ -315,7 +315,7 @@
     model: cortex_sap_operational
     explore: nota_manutencao_zspmlistnote
     listens_to_filters: [Data da nota Date]
-    field: nota_manutencao_zspmlistnote.qmnum
+    field: nota_manutencao_zspmlistnote.n_nota_serial
   - name: Data da nota Date
     title: Data da nota Date
     type: field_filter

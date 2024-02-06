@@ -60,25 +60,20 @@ view: nota_linha_gas_zspmlistnote {
     }
     type: string
     primary_key: yes
-    label: "Nº da nota"
+    label: "Nº da nota relacionamento"
     sql: ${TABLE}.n_nota ;;
   }
 
-  # dimension: qmtxt {
-  #   type: string
-  #   label: "Texto breve"
-  #   sql: ${TABLE}.QMTXT ;;
-  # }
-  # dimension: tipo {
-  #   type: string
-  #   label: "Tipo"
-  #   sql: ${TABLE}.TIPO ;;
-  # }
-  # dimension: titulo {
-  #   type: string
-  #   label: "Título"
-  #   sql: ${TABLE}.TITULO ;;
-  # }
+  dimension: n_nota_serial {
+    link: {
+      label: "Detalhe da Nota de Operação"
+      url: "https://tbgbr.cloud.looker.com/dashboards/cortex_sap_operational::observaes_da_nota_de_linha_de_gs?N%C2%BA+da+Nota+Serial={{ value }}&hide_filter=N%C2%BA+da+Nota+Serial"
+    }
+    type: string
+    label: "Nº da Nota"
+    sql: ${TABLE}.n_nota_serial ;;
+  }
+
   dimension: tplnr {
     type: string
     label: "Local da Ocorrência"

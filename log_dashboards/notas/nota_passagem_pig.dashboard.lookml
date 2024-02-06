@@ -11,8 +11,8 @@
     model: cortex_sap_operational
     explore: nota_pig_zspmlistnote
     type: looker_grid
-    fields: [nota_pig_zspmlistnote.qmnum, nota_pig_zspmlistnote.qmdat_date, nota_pig_zspmlistnote.mzeit,
-      nota_pig_zspmlistnote.name, nota_pig_zspmlistnote.tplnr, local_instalacao.nome_pig,
+    fields: [nota_pig_zspmlistnote.n_nota_serial, nota_pig_zspmlistnote.qmdat_date, nota_pig_zspmlistnote.mzeit,
+      responsavel.nome, nota_pig_zspmlistnote.tplnr, local_instalacao.nome_pig,
       nota_pig_zspmlistnote.motivo, nota_pig_zspmlistnote.tipo]
     sorts: [nota_pig_zspmlistnote.qmdat_date desc]
     limit: 500
@@ -59,7 +59,7 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Nº da nota: nota_pig_zspmlistnote.qmnum
+      Nº da nota: nota_pig_zspmlistnote.n_nota_serial
       Responsavel: nota_pig_zpmtb_np.responsavel
       Tipo de PIG: nota_by_motivo_n_tipo.tipo
       Motivo da Operação: nota_by_motivo_n_tipo.motivo
@@ -111,7 +111,7 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Nº da nota: nota_pig_zspmlistnote.qmnum
+      Nº da nota: nota_pig_zspmlistnote.n_nota_serial
       Data da nota Date: nota_pig_zspmlistnote.qmdat_date
     row: 0
     col: 0
@@ -131,7 +131,7 @@
     start_angle: 90
     defaults_version: 1
     listen:
-      Nº da nota: nota_pig_zspmlistnote.qmnum
+      Nº da nota: nota_pig_zspmlistnote.n_nota_serial
       Data da nota Date: nota_pig_zspmlistnote.qmdat_date
     row: 0
     col: 8
@@ -185,7 +185,7 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
-      Nº da nota: nota_pig_zspmlistnote.qmnum
+      Nº da nota: nota_pig_zspmlistnote.n_nota_serial
       Data da nota Date: nota_pig_zspmlistnote.qmdat_date
     row: 0
     col: 16
@@ -204,7 +204,7 @@
     model: cortex_sap_operational
     explore: nota_pig_zspmlistnote
     listens_to_filters: [Data da nota Date]
-    field: nota_pig_zspmlistnote.qmnum
+    field: nota_pig_zspmlistnote.n_nota_serial
   - name: Data da nota Date
     title: Data da nota Date
     type: field_filter
