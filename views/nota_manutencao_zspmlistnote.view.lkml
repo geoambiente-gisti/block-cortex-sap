@@ -91,7 +91,11 @@ view: nota_manutencao_zspmlistnote {
     label: "Status individual de um objeto"
     sql: ${TABLE}.status ;;
   }
-
+  dimension: situacao_sap {
+    type: string
+    label: "Situação SAP"
+    sql: ${TABLE}.situacao_sap ;;
+  }
   dimension: is_manutencao {
     type: string
     label: "Possui Operação"

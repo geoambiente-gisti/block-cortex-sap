@@ -72,7 +72,7 @@
     model: cortex_sap_operational
     explore: nota_manutencao_zspmlistnote
     type: table
-    fields: [nota_manutencao_desc.qmnum, nota_manutencao_desc.descricao]
+    fields: [nota_manutencao_desc.qmnum, nota_manutencao_zspmlistnote.situacao_sap]
     sorts: [nota_manutencao_desc.qmnum]
     limit: 500
     column_limit: 50
