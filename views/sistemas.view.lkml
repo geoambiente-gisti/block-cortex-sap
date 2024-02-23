@@ -1,5 +1,5 @@
 view: sistemas {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.sistemas` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.sistemas` ;;
 
   dimension: categoria_local {
     type: string
