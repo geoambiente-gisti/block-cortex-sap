@@ -1,10 +1,10 @@
 constant: CONNECTION_NAME {
-  value: "sap_reporting_bigquery"
+  value: "looker_tbg_prod_connection"
   export: override_required
 }
 
 constant: GCP_PROJECT {
-  value: "tbg-cloud-dev"
+  value: "tbg-app-prod"
   export: override_required
 }
 
@@ -20,5 +20,10 @@ constant: LOG_DATASET {
 
 constant: CLIENT {
   value: "800"
+  export: override_required
+}
+
+constant: CONNECTION {
+  value: "sap_reporting_bigquery_prod"
   export: override_required
 }

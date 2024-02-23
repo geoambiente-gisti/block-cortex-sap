@@ -1,5 +1,5 @@
 view: responsavel {
-  sql_table_name: `tbg-cloud-dev.SAP_LOG.responsavel` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.responsavel` ;;
   drill_fields: [id]
 
   dimension: id {

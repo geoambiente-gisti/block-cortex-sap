@@ -1,5 +1,5 @@
 # Define the database connection to be used for this model.
-connection: "sap_reporting_bigquery"
+connection: "@{CONNECTION}"
 
 # include all the views
 include: "/views/**/*.view"
