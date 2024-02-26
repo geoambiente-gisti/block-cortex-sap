@@ -195,15 +195,31 @@
     col: 12
     width: 12
     height: 6
-  - title: Número de Notas por Responsável
-    name: Número de Notas por Responsável
+  - name: Número de Notas por Responsável
+    title: Número de Notas por Responsável
     model: cortex_sap_operational
     explore: nota_manutencao_zspmlistnote
     type: looker_column
-    fields: [responsavel.nome, nota_manutencao_zspmlistnote.count]
+    fields: [responsavel.nome, nota_manutencao_zspmlistnote.count, nota_manutencao_zspmlistnote.name]
+    filters:
+      nota_manutencao_zspmlistnote.n_nota_serial: ''
+      nota_manutencao_zspmlistnote.qmdat_date: 90 days
+      nota_manutencao_zspmlistnote.tplnr: ''
+      nota_manutencao_zspmlistnote.is_manutencao: ''
+      nota_manutencao_zspmlistnote.txtstat: ''
     sorts: [nota_manutencao_zspmlistnote.count desc 0]
     limit: 15
     column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: if(is_null(${responsavel.nome}), ${nota_manutencao_zspmlistnote.name},
+        ${responsavel.nome})
+      label: Responsavel
+      value_format:
+      value_format_name:
+      _kind_hint: dimension
+      table_calculation: responsavel
+      _type_hint: string
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -232,19 +248,16 @@
     show_silhouette: false
     totals_color: "#808080"
     y_axes: [{label: '', orientation: left, series: [{axisId: nota_manutencao_zspmlistnote.count,
-            id: nota_manutencao_zspmlistnote.count, name: Nota Manutencao Zspmlistnote}],
-        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
+            id: nota_manutencao_zspmlistnote.count, name: Nota Manutencao Zspmlistnote,
+            __FILE: cortex-sap/log_dashboards/notas/nota_manutencao.dashboard.lookml,
+            __LINE_NUM: 234}], showLabels: false, showValues: true, unpinAxis: false,
+        tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: cortex-sap/log_dashboards/notas/nota_manutencao.dashboard.lookml,
+        __LINE_NUM: 234}]
     x_axis_zoom: true
     y_axis_zoom: true
     defaults_version: 1
     hidden_pivots: {}
-    listen:
-      Nº da nota: nota_manutencao_zspmlistnote.n_nota_serial
-      Data da nota Date: nota_manutencao_zspmlistnote.qmdat_date
-      Local de instalação: nota_manutencao_zspmlistnote.tplnr
-      Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
-      Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
+    hidden_fields: [responsavel.nome, nota_manutencao_zspmlistnote.name]
     row: 0
     col: 12
     width: 12

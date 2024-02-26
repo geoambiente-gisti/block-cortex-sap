@@ -238,15 +238,32 @@
     col: 0
     width: 12
     height: 6
-  - title: Notas Por Responsável
-    name: Notas Por Responsável
+  - name: Notas por Responsável
+    title: Notas por Responsável
     model: cortex_sap_operational
     explore: nota_linha_gas_zspmlistnote
     type: looker_column
-    fields: [nota_linha_gas_zspmlistnote.count, responsavel.nome]
+    fields: [nota_linha_gas_zspmlistnote.count, responsavel.nome, nota_linha_gas_zspmlistnote.responsavel]
+    filters:
+      nota_linha_gas_zspmlistnote.qmdat_date: 90 days
+      nota_linha_gas_zspmlistnote.n_nota_serial: ''
+      nota_linha_gas_zspmlistnote.contactname: ''
+      nota_linha_gas_zspmlistnote.tplnr: ''
+      nota_linha_gas_zspmlistnote.name: ''
+      nota_linha_gas_zspmlistnote.txtstat: ''
     sorts: [nota_linha_gas_zspmlistnote.count desc 0]
     limit: 10
     column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: if(is_null(${responsavel.nome}), ${nota_linha_gas_zspmlistnote.responsavel},
+        ${responsavel.nome})
+      label: Responsavel
+      value_format:
+      value_format_name:
+      _kind_hint: dimension
+      table_calculation: responsavel
+      _type_hint: string
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -275,19 +292,15 @@
     show_silhouette: false
     totals_color: "#808080"
     y_axes: [{label: '', orientation: left, series: [{axisId: nota_linha_gas_zspmlistnote.count,
-            id: nota_linha_gas_zspmlistnote.count, name: Nota Linha Gas Zspmlistnote}],
-        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
+            id: nota_linha_gas_zspmlistnote.count, name: Nota Linha Gas Zspmlistnote,
+            __FILE: cortex-sap/log_dashboards/notas/nota_linha_gas.dashboard.lookml,
+            __LINE_NUM: 277}], showLabels: false, showValues: true, unpinAxis: false,
+        tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: cortex-sap/log_dashboards/notas/nota_linha_gas.dashboard.lookml,
+        __LINE_NUM: 277}]
     x_axis_zoom: true
     y_axis_zoom: true
     defaults_version: 1
-    listen:
-      Data Abertura Date: nota_linha_gas_zspmlistnote.qmdat_date
-      Nº da nota: nota_linha_gas_zspmlistnote.n_nota_serial
-      Contato: nota_linha_gas_zspmlistnote.contactname
-      Local da Ocorrência: nota_linha_gas_zspmlistnote.tplnr
-      Notificante: nota_linha_gas_zspmlistnote.name
-      Status individual de um objeto: nota_linha_gas_zspmlistnote.txtstat
+    hidden_fields: [responsavel.nome, nota_linha_gas_zspmlistnote.responsavel]
     row: 0
     col: 12
     width: 12
