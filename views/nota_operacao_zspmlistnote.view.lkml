@@ -86,6 +86,11 @@ view: nota_operacao_zspmlistnote {
     label: "Local de instalação"
     sql: ${TABLE}.local_instalacao ;;
   }
+  dimension: nome {
+    type: string
+    label: "Responsavel"
+    sql: if(${responsavel.nome} is null , ${TABLE}.responsavel, ${responsavel.nome}) ;;
+  }
   dimension: local_descricao {
     type: string
     label: "Local de instalação descrição"

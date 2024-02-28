@@ -13,7 +13,7 @@
     type: looker_grid
     fields: [nota_operacao_zspmlistnote.n_nota_serial, nota_manutencao_zspmlistnote.n_nota_serial,
       nota_operacao_zspmlistnote.qmdat_date, nota_operacao_zspmlistnote.mzeit, nota_operacao_zspmlistnote.contactname,
-      responsavel.nome, nota_operacao_zspmlistnote.occur_type, nota_operacao_zspmlistnote.tplnr,
+      nota_operacao_zspmlistnote.nome, nota_operacao_zspmlistnote.occur_type, nota_operacao_zspmlistnote.tplnr,
       nota_operacao_zspmlistnote.pltxt, nota_operacao_zspmlistnote.is_manutencao]
     sorts: [nota_operacao_zspmlistnote.qmdat_date desc]
     limit: 500
@@ -362,7 +362,7 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     type: looker_column
-    fields: [responsavel.nome, nota_operacao_zspmlistnote.count, nota_operacao_zspmlistnote.name]
+    fields: [nota_operacao_zspmlistnote.nome, nota_operacao_zspmlistnote.count, nota_operacao_zspmlistnote.name]
     filters:
       nota_operacao_zspmlistnote.n_nota_serial: ''
       nota_operacao_zspmlistnote.occur_type: ''
@@ -376,8 +376,8 @@
     column_limit: 50
     dynamic_fields:
     - category: table_calculation
-      expression: if(is_null(${responsavel.nome}), ${nota_operacao_zspmlistnote.name},
-        ${responsavel.nome})
+      expression: if(is_null(${nota_operacao_zspmlistnote.nome}), ${nota_operacao_zspmlistnote.name},
+        ${nota_operacao_zspmlistnote.nome})
       label: responsavel
       value_format:
       value_format_name:
@@ -421,7 +421,7 @@
     y_axis_zoom: true
     x_axis_label_rotation:
     defaults_version: 1
-    hidden_fields: [responsavel.nome, nota_operacao_zspmlistnote.name]
+    hidden_fields: [nota_operacao_zspmlistnote.nome, nota_operacao_zspmlistnote.name]
     row: 0
     col: 18
     width: 6

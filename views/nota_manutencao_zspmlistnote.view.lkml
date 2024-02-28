@@ -102,6 +102,12 @@ view: nota_manutencao_zspmlistnote {
     sql: if(${nota_operacao_zspmlistnote.qmnum}=${nota_manutencao_zspmlistnote.n_nota_operacao} , "SIM", "NÃO") ;;
   }
 
+  dimension: nome {
+    type: string
+    label: "Responsavel"
+    sql: if(${responsavel.nome} is null , ${TABLE}.responsavel, ${responsavel.nome}) ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [qmnum, tplnr, name]

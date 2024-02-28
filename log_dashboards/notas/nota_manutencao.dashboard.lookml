@@ -12,7 +12,7 @@
     explore: nota_manutencao_zspmlistnote
     type: looker_grid
     fields: [nota_manutencao_zspmlistnote.n_nota_serial, nota_operacao_zspmlistnote.n_nota_serial,
-      nota_manutencao_zspmlistnote.qmdat_date, responsavel.nome,
+      nota_manutencao_zspmlistnote.qmdat_date, nota_manutencao_zspmlistnote.nome,
       nota_manutencao_zspmlistnote.mzeit, nota_manutencao_zspmlistnote.tplnr, local_instalacao.descricao,
       nota_manutencao_zspmlistnote.txtstat]
     limit: 500
@@ -200,7 +200,7 @@
     model: cortex_sap_operational
     explore: nota_manutencao_zspmlistnote
     type: looker_column
-    fields: [responsavel.nome, nota_manutencao_zspmlistnote.count, nota_manutencao_zspmlistnote.name]
+    fields: [nota_manutencao_zspmlistnote.nome, nota_manutencao_zspmlistnote.count, nota_manutencao_zspmlistnote.name]
     filters:
       nota_manutencao_zspmlistnote.n_nota_serial: ''
       nota_manutencao_zspmlistnote.qmdat_date: 90 days
@@ -212,8 +212,8 @@
     column_limit: 50
     dynamic_fields:
     - category: table_calculation
-      expression: if(is_null(${responsavel.nome}), ${nota_manutencao_zspmlistnote.name},
-        ${responsavel.nome})
+      expression: if(is_null(${nota_manutencao_zspmlistnote.nome}), ${nota_manutencao_zspmlistnote.name},
+        ${nota_manutencao_zspmlistnote.nome})
       label: Responsavel
       value_format:
       value_format_name:
@@ -257,7 +257,7 @@
     y_axis_zoom: true
     defaults_version: 1
     hidden_pivots: {}
-    hidden_fields: [responsavel.nome, nota_manutencao_zspmlistnote.name]
+    hidden_fields: [nota_manutencao_zspmlistnote.nome, nota_manutencao_zspmlistnote.name]
     row: 0
     col: 12
     width: 12

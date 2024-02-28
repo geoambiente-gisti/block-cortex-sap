@@ -268,6 +268,12 @@ explore: analise_eventos {
     sql_on:  ${estacao_nome.codigo_sap}=${local_instalacao.instalacao};;
   }
 
+  join: responsavel {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_operacao_zspmlistnote.name}=${responsavel.email} ;;
+  }
+
 }
 
 

@@ -78,6 +78,11 @@ view: nota_pig_zspmlistnote {
     description: "Status individual de um objeto"
     sql: ${TABLE}.status ;;
   }
+  dimension: nome {
+    type: string
+    label: "Responsavel"
+    sql: if(${responsavel.nome} is null , ${TABLE}.responsavel, ${responsavel.nome}) ;;
+  }
   measure: count {
     type: count
     drill_fields: [qmnum,  name, qmdat.date]
