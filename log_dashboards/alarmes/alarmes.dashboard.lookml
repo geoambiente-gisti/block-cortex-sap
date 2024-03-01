@@ -96,7 +96,7 @@
     explore: alarmes
     type: looker_grid
     fields: [alarmes.alarmid, instalacoes_alarmes.instalacao, instalacoes_alarmes.sap_local_instalacao,
-      alarmes.eventstamp_time, alarmes.tagname, alarmes.type, alarmes.eventstamputc_date,
+      alarmes.eventstamp_time, alarmes.tagname, alarmes.full_tagname, alarmes.type, alarmes.eventstamputc_date,
       alarmes.alarmstate, alarmes.area, alarmes.category, alarmes.description, alarmes.operator,
       alarmes.priority, alarmes.provider]
     limit: 5000
