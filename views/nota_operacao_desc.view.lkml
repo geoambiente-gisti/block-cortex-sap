@@ -6,6 +6,18 @@ view: nota_operacao_desc {
     type: string
     sql: ${TABLE}.descricao ;;
   }
+
+
+  dimension: test {
+    html:<ul>
+      <li> nota: {{ qmnum }} </li>
+      <li> desc: {{ rendered_value }} </li>
+    </ul> ;;
+    type: string
+    sql: ${TABLE}.descricao ;;
+  }
+
+
   dimension: qmnum {
     type: string
     sql: ${TABLE}.qmnum ;;

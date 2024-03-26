@@ -640,15 +640,15 @@
     col: 14
     width: 7
     height: 5
-  - title: Instabilidade % Horas (>60 alarmes/hora)
-    name: Instabilidade % Horas (>60 alarmes/hora)
+  - name: Instabilidade % Horas (>60 alarmes/hora)
+    title: Instabilidade % Horas (>60 alarmes/hora)
     model: cortex_sap_operational
     explore: instabilidade_mes
     type: looker_line
-    fields: [instabilidade_mes.mes, instabilidade_mes.qtd_horas, instabilidade_mes.horas_instaveis,
-      instabilidade_mes.count, instabilidade_mes.eventstamp_month]
+    fields: [instabilidade_mes.eventstamp_month, instabilidade_mes.count, instabilidade_mes.mes,
+      instabilidade_mes.horas_instaveis, instabilidade_mes.qtd_horas]
     filters:
-      instabilidade_mes.eventstamp_date: 1 years
+      instabilidade_mes.eventstamp_month: 1 years
     sorts: [instabilidade_mes.eventstamp_month]
     limit: 500
     column_limit: 50
@@ -670,21 +670,12 @@
       table_calculation: mes
       _type_hint: string
     - category: table_calculation
-      expression: '6.5'
-      label: Meta
-      value_format:
-      value_format_name:
-      _kind_hint: dimension
-      table_calculation: meta
-      _type_hint: number
-      is_disabled: true
-    - category: table_calculation
       expression: if(${instabilidade_mes.count} > -1, 0.065, 0) * 100
       label: Meta
       value_format: 0.##
       value_format_name: __custom
       _kind_hint: measure
-      table_calculation: meta_1
+      table_calculation: meta
       _type_hint: number
     - category: table_calculation
       expression: if(${instabilidade_mes.count} > -1, ${instabilidade_horas}, 0) *100
@@ -704,7 +695,7 @@
     show_x_axis_label: false
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
-    x_axis_reversed: true
+    x_axis_reversed: false
     y_axis_reversed: false
     plot_size_by_field: false
     trellis: ''
@@ -718,30 +709,13 @@
     y_axis_combined: true
     show_null_points: true
     interpolation: linear
-    y_axes: [{label: '', orientation: left, series: [{axisId: meta_1, id: meta_1,
-            name: Meta}, {axisId: instabilidade, id: instabilidade, name: Instabilidade
-              %}], showLabels: true, showValues: true, maxValue: 10, unpinAxis: true,
-        tickDensity: default, tickDensityCustom: 5, type: linear}]
-    size_by_field: instabilidade_horas
     x_axis_zoom: true
     y_axis_zoom: true
-    hidden_series: []
-    series_colors:
-      instabilidade: "#1A73E8"
-      meta_1: "#12B5CB"
-    series_labels:
-      meta_1: Meta <=
-    reference_lines: []
-    trend_lines: []
-    ordering: none
-    show_null_labels: false
-    show_dropoff: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
+    hidden_pivots: {}
     defaults_version: 1
-    hidden_fields: [instabilidade_mes.qtd_horas, instabilidade_mes.horas_instaveis,
-      instabilidade_mes.mes, instabilidade_mes.count, instabilidade_horas, mes]
+    hidden_fields: [instabilidade_mes.mes, instabilidade_mes.horas_instaveis, instabilidade_mes.qtd_horas,
+      instabilidade_horas, mes, instabilidade_mes.count]
+    defaults_version: 1
     hidden_pivots: {}
     listen: {}
     row: 5
