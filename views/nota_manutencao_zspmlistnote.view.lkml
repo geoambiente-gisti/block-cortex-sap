@@ -61,6 +61,7 @@ view: nota_manutencao_zspmlistnote {
     }
     type: string
     label: "Nº Nota Manutenção"
+    view_label: "Nº Nota Manutenção"
     sql: ${TABLE}.n_nota_serial ;;
   }
 
