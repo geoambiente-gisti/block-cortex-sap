@@ -29,6 +29,25 @@ view: nota_operacao_zspmlistnote {
     sql: ${TABLE}.denominacao_local_instalacao ;;
   }
 
+  dimension: local_instalacao_descricao {
+    type: string
+    label: "Local de instalação"
+    sql: concat(${TABLE}.local_instalacao, ' ', ${local_instalacao.descricao}) ;;
+  }
+
+  dimension: estado_operacional {
+    type: string
+    label: "Estado Operacional"
+    sql: ${TABLE}.estado_operacional;;
+  }
+
+  dimension: sistema {
+    order_by_field: qmdat_date
+    label: "Sistema"
+    type: string
+    sql:  ${TABLE}.area_sistema;;
+  }
+
   dimension_group: qmdat {
     label: "Data da nota"
     description: "Data da nota"
@@ -46,6 +65,23 @@ view: nota_operacao_zspmlistnote {
     sql: extract(date from ${TABLE}.data_hora) ;;
   }
 
+  dimension_group: data_retorno_operacao {
+    label: "Data Retorno Operação"
+    description: "Data da nota"
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.data_retorno_operacao ;;
+  }
+
 
   dimension: mes_nota {
     order_by_field: qmdat_date
@@ -58,6 +94,18 @@ view: nota_operacao_zspmlistnote {
     label: "Ano"
     type: string
     sql:  cast(extract(year from ${TABLE}.data_hora) as string);;
+  }
+
+  dimension: acionamento_sobreaviso {
+    label: "Acionamento Sobreaviso"
+    type: string
+    sql:  if(${TABLE}.acionamento_sobreaviso = true, 'Sim', 'Não');;
+  }
+
+  dimension: passagem_turno {
+    label: "Passagem Turno"
+     type: string
+    sql:  if(${TABLE}.passagem_turno = true, 'Sim', 'Não');;
   }
 
   dimension: qmnum {
@@ -93,12 +141,12 @@ view: nota_operacao_zspmlistnote {
   }
   dimension: local_descricao {
     type: string
-    label: "Local de instalação descrição"
+    label: "Local de instalação"
     sql: concat(${TABLE}.local_instalacao, "-", ${TABLE}.denominacao_local_instalacao) ;;
   }
   dimension: txtstat {
     type: string
-    label: "Status individual de um objeto"
+    label: "Status"
     sql: ${TABLE}.status ;;
   }
 

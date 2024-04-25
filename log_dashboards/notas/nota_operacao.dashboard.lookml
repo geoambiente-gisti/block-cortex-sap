@@ -11,12 +11,16 @@
     model: cortex_sap_operational
     explore: nota_operacao_zspmlistnote
     type: looker_grid
-    fields: [nota_operacao_zspmlistnote.n_nota_serial, nota_manutencao_zspmlistnote.n_nota_serial,
-      nota_operacao_zspmlistnote.qmdat_date, nota_operacao_zspmlistnote.mzeit, nota_operacao_zspmlistnote.contactname,
-      nota_operacao_zspmlistnote.nome, nota_operacao_zspmlistnote.occur_type, nota_operacao_zspmlistnote.tplnr,
-      nota_operacao_zspmlistnote.pltxt, nota_operacao_zspmlistnote.is_manutencao]
-    sorts: [nota_operacao_zspmlistnote.qmdat_date desc]
+    fields: [nota_operacao_zspmlistnote.n_nota_serial, nota_operacao_zspmlistnote.occur_type,nota_operacao_zspmlistnote.local_descricao,
+      nota_operacao_zspmlistnote.sistema, nota_operacao_zspmlistnote.estado_operacional,
+      nota_operacao_zspmlistnote.qmdat_date, nota_operacao_zspmlistnote.mzeit,nota_operacao_zspmlistnote.data_retorno_operacao_date,
+      nota_operacao_zspmlistnote.contactname, nota_operacao_zspmlistnote.acionamento_sobreaviso,
+      nota_operacao_zspmlistnote.passagem_turno, nota_operacao_zspmlistnote.txtstat,
+      nota_operacao_zspmlistnote.nome]
     limit: 500
+    series_labels:
+      nota_operacao_zspmlistnote.qmdat_date: Data da Nota
+      nota_operacao_zspmlistnote.data_retorno_operacao_date: Data de Retorno Operação
     column_limit: 50
     show_view_names: false
     show_row_numbers: true

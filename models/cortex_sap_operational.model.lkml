@@ -302,6 +302,13 @@ explore: nota_operacao_zspmlistnote {
     sql_on: ${nota_manutencao_zspmlistnote.n_nota_operacao}=${nota_operacao_zspmlistnote.qmnum} ;;
   }
 
+  join: local_instalacao {
+    view_label: "Local instalacao"
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${nota_manutencao_zspmlistnote.tplnr}=${local_instalacao.nome_local} ;;
+  }
+
   join: nota_operacao_desc {
     type: left_outer
     relationship: one_to_many
