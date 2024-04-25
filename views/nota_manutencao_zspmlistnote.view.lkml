@@ -36,6 +36,27 @@ view: nota_manutencao_zspmlistnote {
     sql:  cast(extract(month from ${TABLE}.data_hora) as string);;
   }
 
+  dimension: prioridade {
+    order_by_field: qmdat_date
+    label: "Prioridade"
+    type: string
+    sql:  ${TABLE}.prioridade;;
+  }
+
+  dimension: equipamento {
+    order_by_field: qmdat_date
+    label: "Equipamento"
+    type: string
+    sql:  ${TABLE}.equipamento;;
+  }
+
+  dimension: sistema {
+    order_by_field: qmdat_date
+    label: "Sistema"
+    type: string
+    sql:  ${TABLE}.area_sistema;;
+  }
+
   dimension: ano_nota {
     label: "Ano"
     type: string
@@ -67,7 +88,7 @@ view: nota_manutencao_zspmlistnote {
 
   dimension: qmtxt {
     type: string
-    label: "Descrição"
+    label: "Descrição Falha"
     sql: ${TABLE}.descricao_falha ;;
   }
 
@@ -84,12 +105,20 @@ view: nota_manutencao_zspmlistnote {
 
   dimension: tplnr {
     type: string
-    label: "Local de instalação"
+
     sql: ${TABLE}.local_instalacao ;;
   }
+
+
+  dimension: local_instalacao_descricao {
+    type: string
+    label: "Local de instalação"
+    sql: concat(${TABLE}.local_instalacao, ' ', ${local_instalacao.descricao}) ;;
+  }
+
   dimension: txtstat {
     type: string
-    label: "Status individual de um objeto"
+    label: "Status"
     sql: ${TABLE}.status ;;
   }
   dimension: situacao_sap {

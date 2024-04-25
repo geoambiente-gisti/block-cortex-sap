@@ -59,7 +59,7 @@ explore: indices_individuais {
   }
 }
 
-
+explore: local_instalacao {}
 
 
 explore: indices_por_sistema {
@@ -212,6 +212,7 @@ explore: nota_manutencao_zspmlistnote {
   }
 
   join: local_instalacao {
+    view_label: "Local instalacao"
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_manutencao_zspmlistnote.tplnr}=${local_instalacao.nome_local} ;;
