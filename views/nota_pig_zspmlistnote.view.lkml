@@ -31,6 +31,12 @@ view: nota_pig_zspmlistnote {
     sql:  extract(date from ${TABLE}.data_hora) ;;
   }
 
+  dimension: local_instalacao_descricao {
+    type: string
+    label: "Local de Lançamento"
+    sql: concat(${TABLE}.local_instalacao, ' ', ${local_instalacao.descricao}) ;;
+  }
+
   dimension: qmnum {
     label: "Nº da nota"
     type: string

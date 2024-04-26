@@ -1,5 +1,5 @@
 view: nota_pig_zpmtb_np {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_pig_np` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.nota_pig_np_looker` ;;
 
   dimension: data_prevista {
     type: string
