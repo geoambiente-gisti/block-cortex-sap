@@ -15,7 +15,7 @@
     fields: [nota_pig_zpmtb_np.nota, nota_pig_zpmtb_np.pontos_notaveis, nota_pig_zpmtb_np.km_duto,
       nota_pig_zpmtb_np.data_real, nota_pig_zpmtb_np.hora_real, nota_pig_zpmtb_np.data_prevista,
       nota_pig_zpmtb_np.hora_prevista]
-    sorts: [nota_pig_zpmtb_np.data_real]
+    sorts: [nota_pig_zpmtb_np.km_duto]
     limit: 500
     column_limit: 50
     show_view_names: false
