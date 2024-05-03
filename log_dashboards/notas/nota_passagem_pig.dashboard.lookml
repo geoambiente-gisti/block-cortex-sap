@@ -284,6 +284,6 @@
       type: checkboxes
       display: popover
     model: cortex_sap_operational
-    explore: nota_operacao_zspmlistnote
+    explore: nota_pig_zspmlistnote
     Responsavel: responsavel.email
     field: responsavel.email
