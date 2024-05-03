@@ -43,6 +43,7 @@
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
+      Responsavel: responsavel.email
     row: 12
     col: 0
     width: 24
@@ -73,6 +74,7 @@
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
+      Responsavel: responsavel.email
     row: 0
     col: 0
     width: 4
@@ -136,6 +138,7 @@
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
+      Responsavel: responsavel.email
     row: 6
     col: 0
     width: 12
@@ -193,6 +196,7 @@
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
+      Responsavel: responsavel.email
     row: 6
     col: 12
     width: 12
@@ -313,6 +317,7 @@
       Local de instalação: nota_manutencao_zspmlistnote.tplnr
       Possui Operação: nota_manutencao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_manutencao_zspmlistnote.txtstat
+      Responsavel: responsavel.email
     row: 0
     col: 4
     width: 8
@@ -384,3 +389,16 @@
     explore: nota_manutencao_zspmlistnote
     listens_to_filters: [Data da nota Date]
     field: nota_manutencao_zspmlistnote.txtstat
+  - name: Responsavel
+    title: Responsavel
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: cortex_sap_operational
+    explore: nota_operacao_zspmlistnote
+    Responsavel: responsavel.email
+    field: responsavel.email

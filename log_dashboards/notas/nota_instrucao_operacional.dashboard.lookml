@@ -188,7 +188,7 @@
   - name: Data Validade Date
     title: Data Validade Date
     type: field_filter
-    default_value: 2012/01/01 to 2024/05/01
+
     allow_multiple_values: true
     required: false
     ui_config:
@@ -202,7 +202,7 @@
   - name: Data Abertura Date
     title: Data Abertura Date
     type: field_filter
-    default_value: 2012/01/01 to 2024/05/01
+
     allow_multiple_values: true
     required: false
     ui_config:

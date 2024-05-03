@@ -46,6 +46,7 @@
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
       Data da Nota: nota_operacao_zspmlistnote.qmdat_date
+      Responsavel: responsavel.email
     row: 12
     col: 0
     width: 24
@@ -105,6 +106,7 @@
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
       Data da Nota: nota_operacao_zspmlistnote.qmdat_date
+      Responsavel: responsavel.email
     row: 6
     col: 0
     width: 12
@@ -183,6 +185,7 @@
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
       Local de instalação: nota_operacao_zspmlistnote.local_descricao
       Data da Nota: nota_operacao_zspmlistnote.qmdat_date
+      Responsavel: responsavel.email
     row: 6
     col: 12
     width: 12
@@ -242,6 +245,7 @@
       Possui Manutenção: nota_operacao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
       Data da Nota: nota_operacao_zspmlistnote.qmdat_date
+      Responsavel: responsavel.email
     row: 0
     col: 6
     width: 6
@@ -301,6 +305,7 @@
       Contato: nota_operacao_zspmlistnote.contactname
       Possui Manutenção: nota_operacao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
+      Responsavel: responsavel.email
     row: 0
     col: 0
     width: 6
@@ -357,6 +362,7 @@
       Contato: nota_operacao_zspmlistnote.contactname
       Possui Manutenção: nota_operacao_zspmlistnote.is_manutencao
       Status individual de um objeto: nota_operacao_zspmlistnote.txtstat
+      Responsavel: responsavel.email
     row: 0
     col: 12
     width: 6
@@ -523,3 +529,17 @@
     explore: nota_operacao_zspmlistnote
     listens_to_filters: [Data da Nota]
     field: nota_operacao_zspmlistnote.txtstat
+
+  - name: Responsavel
+    title: Responsavel
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: cortex_sap_operational
+    explore: nota_operacao_zspmlistnote
+    Responsavel: responsavel.email
+    field: responsavel.email

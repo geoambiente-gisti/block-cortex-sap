@@ -62,11 +62,11 @@
     defaults_version: 1
     listen:
       Nº da nota: nota_pig_zspmlistnote.n_nota_serial
-      Responsavel: nota_pig_zpmtb_np.responsavel
       Tipo de PIG: nota_by_motivo_n_tipo.tipo
       Motivo da Operação: nota_by_motivo_n_tipo.motivo
       Data da nota Date: nota_pig_zspmlistnote.qmdat_date
       Local Lançamento: local_instalacao.nome_pig
+      Responsavel: responsavel.email
     row: 8
     col: 0
     width: 24
@@ -273,3 +273,17 @@
     explore: nota_pig_zspmlistnote
     listens_to_filters: [Data da nota Date]
     field: nota_by_motivo_n_tipo.motivo
+
+  - name: Responsavel
+    title: Responsavel
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: cortex_sap_operational
+    explore: nota_operacao_zspmlistnote
+    Responsavel: responsavel.email
+    field: responsavel.email

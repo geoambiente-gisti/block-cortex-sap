@@ -177,7 +177,7 @@ explore: nota_linha_gas_zspmlistnote {
   join: responsavel {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_linha_gas_zspmlistnote.responsavel}=${responsavel.email} ;;
+    sql_on: lower(${nota_linha_gas_zspmlistnote.responsavel})=lower(${responsavel.nome}) ;;
   }
 }
 
@@ -227,7 +227,7 @@ explore: nota_manutencao_zspmlistnote {
   join: responsavel {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_manutencao_zspmlistnote.name}=${responsavel.email} ;;
+    sql_on: lower(${nota_manutencao_zspmlistnote.name})=lower(${responsavel.nome}) ;;
   }
 
 }
@@ -272,11 +272,12 @@ explore: analise_eventos {
   join: responsavel {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_operacao_zspmlistnote.name}=${responsavel.email} ;;
+    sql_on: lower(${nota_operacao_zspmlistnote.name})=lower(${responsavel.email}) ;;
   }
 
 }
 
+explore: responsavel {}
 
 explore: contagem_manutencao {
   join: estacao_nome {
@@ -318,7 +319,7 @@ explore: nota_operacao_zspmlistnote {
   join: responsavel {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_operacao_zspmlistnote.name}=${responsavel.email} ;;
+    sql_on: lower(${nota_operacao_zspmlistnote.name})=lower(${responsavel.nome}) ;;
   }
 }
 
@@ -357,7 +358,7 @@ explore: nota_pig_zspmlistnote {
   join: responsavel {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${nota_pig_zspmlistnote.name}=${responsavel.email} ;;
+    sql_on: ${nota_pig_zspmlistnote.name}=${responsavel.nome} ;;
   }
 }
 
