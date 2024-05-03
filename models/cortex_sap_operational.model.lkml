@@ -175,6 +175,7 @@ explore: nota_linha_gas_zspmlistnote {
   }
 
   join: responsavel {
+    view_label: "Responsável"
     type: left_outer
     relationship: one_to_many
     sql_on: lower(${nota_linha_gas_zspmlistnote.responsavel})=lower(${responsavel.nome}) ;;
@@ -190,6 +191,7 @@ explore: nota_instrucao_operacional_zspmlistnote {
   }
 
   join: nota_instrucao_operacional_desc {
+    view_label: "Descrição da Nota de Instrução Operacional"
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_instrucao_operacional_zspmlistnote.qmnum}=${nota_instrucao_operacional_desc.qmnum} ;;
@@ -205,7 +207,7 @@ explore: nota_manutencao_zspmlistnote {
     sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${zpmtb_no_nm.num_log_nm} ;;
   }
   join: nota_operacao_zspmlistnote {
-    view_label: "Nota_manutencao"
+    view_label: "Nota Operação"
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_manutencao_zspmlistnote.n_nota_operacao} = ${nota_operacao_zspmlistnote.qmnum} ;;
@@ -219,12 +221,14 @@ explore: nota_manutencao_zspmlistnote {
   }
 
   join: nota_manutencao_desc {
+    view_label: "Descrição Nota Manutenção"
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_manutencao_zspmlistnote.qmnum}=${nota_manutencao_desc.qmnum} ;;
   }
 
   join: responsavel {
+    view_label: "Responsável"
     type: left_outer
     relationship: one_to_many
     sql_on: lower(${nota_manutencao_zspmlistnote.name})=lower(${responsavel.nome}) ;;
@@ -298,6 +302,7 @@ explore: nota_operacao_zspmlistnote {
   label: "Nota Operação"
 
   join: nota_manutencao_zspmlistnote {
+    view_label: "Nota Manutenção"
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_manutencao_zspmlistnote.n_nota_operacao}=${nota_operacao_zspmlistnote.qmnum} ;;
@@ -311,12 +316,14 @@ explore: nota_operacao_zspmlistnote {
   }
 
   join: nota_operacao_desc {
+    view_label: "Descrição da Nota de Operação"
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_operacao_zspmlistnote.qmnum}=${nota_operacao_desc.qmnum} ;;
   }
 
   join: responsavel {
+    view_label: "Responsável"
     type: left_outer
     relationship: one_to_many
     sql_on: lower(${nota_operacao_zspmlistnote.name})=lower(${responsavel.nome}) ;;
@@ -333,29 +340,34 @@ explore: nota_pig_zspmlistnote {
     relationship: one_to_one
   }
   join: pontos_notaveis {
+    view_label: "Pontos Notaveis"
     type:  left_outer
     sql_on:  ${nota_by_motivo_n_tipo.local_lancamento}=${pontos_notaveis.grupo_codigo}  ;;
     relationship: many_to_one
   }
   join: nota_pig_zpmtb_np {
+    view_label: "Detalhe Nota PIG"
     type: left_outer
     sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_zpmtb_np.nota} ;;
     relationship: many_to_one
   }
 
   join: local_instalacao {
+    view_label: "Local Instalação"
     type: left_outer
     sql_on: ${local_instalacao.nome_local}=${nota_pig_zspmlistnote.tplnr} ;;
     relationship: many_to_one
   }
 
   join: nota_pig_desc {
+    view_label: "Descrição Nota PIG"
     type: left_outer
     sql_on: ${nota_pig_zspmlistnote.qmnum}=${nota_pig_desc.qmnum} ;;
     relationship: many_to_one
   }
 
   join: responsavel {
+    view_label: "Responsável"
     type: left_outer
     relationship: one_to_many
     sql_on: ${nota_pig_zspmlistnote.name}=${responsavel.nome} ;;
