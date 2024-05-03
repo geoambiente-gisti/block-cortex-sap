@@ -13,7 +13,7 @@
     type: looker_grid
     fields: [nota_instrucao_operacional_zspmlistnote.n_nota_serial, nota_instrucao_operacional_zspmlistnote.titulo,
       nota_instrucao_operacional_zspmlistnote.tipo, nota_instrucao_operacional_zspmlistnote.qmdat_date,
-      nota_instrucao_operacional_zspmlistnote.mzeit, nota_instrucao_operacional_zspmlistnote.ltrmn_date,
+      nota_instrucao_operacional_zspmlistnote.mzeit, nota_instrucao_operacional_zspmlistnote.ltrmn_date,responsavel.email
       nota_instrucao_operacional_zspmlistnote.txtstat]
     sorts: [nota_instrucao_operacional_zspmlistnote.qmdat_date desc]
     limit: 500

@@ -16,7 +16,7 @@
       nota_operacao_zspmlistnote.qmdat_date, nota_operacao_zspmlistnote.mzeit,nota_operacao_zspmlistnote.data_retorno_operacao_date,
       nota_operacao_zspmlistnote.contactname, nota_operacao_zspmlistnote.acionamento_sobreaviso,
       nota_operacao_zspmlistnote.passagem_turno, nota_operacao_zspmlistnote.txtstat,
-      nota_operacao_zspmlistnote.nome]
+      nota_operacao_zspmlistnote.nome, responsavel.email]
     limit: 500
     series_labels:
       nota_operacao_zspmlistnote.qmdat_date: Data da Nota

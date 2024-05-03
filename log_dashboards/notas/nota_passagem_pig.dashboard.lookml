@@ -13,7 +13,7 @@
     type: looker_grid
     fields: [nota_pig_zspmlistnote.n_nota_serial, nota_pig_zspmlistnote.qmdat_date, nota_pig_zspmlistnote.mzeit,
        nota_pig_zspmlistnote.local_instalacao_descricao,
-      nota_pig_zspmlistnote.motivo, nota_pig_zspmlistnote.tipo, nota_pig_zspmlistnote.nome]
+      nota_pig_zspmlistnote.motivo, nota_pig_zspmlistnote.tipo, nota_pig_zspmlistnote.nome,responsavel.email]
     sorts: [nota_pig_zspmlistnote.qmdat_date desc]
     limit: 500
     series_labels:

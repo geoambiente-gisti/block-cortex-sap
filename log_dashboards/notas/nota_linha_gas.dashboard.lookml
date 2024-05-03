@@ -13,7 +13,7 @@
     type: looker_grid
     fields: [nota_linha_gas_zspmlistnote.n_nota_serial, nota_linha_gas_zspmlistnote.qmdat_date,
       nota_linha_gas_zspmlistnote.mzeit, nota_linha_gas_zspmlistnote.contactname,
-      nota_linha_gas_zspmlistnote.name, nota_linha_gas_zspmlistnote.tplnr, nota_linha_gas_zspmlistnote.pltxt,
+      nota_linha_gas_zspmlistnote.name, nota_linha_gas_zspmlistnote.tplnr, nota_linha_gas_zspmlistnote.pltxt, responsavel.email,
       nota_linha_gas_zspmlistnote.txtstat]
     sorts: [nota_linha_gas_zspmlistnote.qmdat_date desc]
     limit: 500

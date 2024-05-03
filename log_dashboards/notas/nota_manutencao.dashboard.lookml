@@ -13,7 +13,7 @@
     type: looker_grid
     fields: [nota_manutencao_zspmlistnote.n_nota_serial, nota_operacao_zspmlistnote.n_nota_serial,
       nota_manutencao_zspmlistnote.qmdat_date, nota_manutencao_zspmlistnote.mzeit,nota_manutencao_zspmlistnote.local_instalacao_descricao, nota_manutencao_zspmlistnote.sistema,
-      nota_manutencao_zspmlistnote.equipamento,nota_manutencao_zspmlistnote.prioridade,nota_manutencao_zspmlistnote.qmtxt ,nota_manutencao_zspmlistnote.nome,
+      nota_manutencao_zspmlistnote.equipamento,nota_manutencao_zspmlistnote.prioridade,nota_manutencao_zspmlistnote.qmtxt ,nota_manutencao_zspmlistnote.nome, responsavel.email
       nota_manutencao_zspmlistnote.txtstat]
     limit: 500
     column_limit: 50
