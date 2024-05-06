@@ -18,6 +18,9 @@
     sorts: [nota_instrucao_operacional_zspmlistnote.qmdat_date desc]
     limit: 500
     column_limit: 50
+    series_labels:
+    nota_instrucao_operacional_zspmlistnote.qmdat_date: Data da Nota
+    nota_instrucao_operacional_zspmlistnote.ltrmn_date: Data de Validade
     show_view_names: false
     show_row_numbers: true
     transpose: false
