@@ -36,6 +36,7 @@ named_value_format: Greek_Number_Format {
 ###################################################### LOG ##############################################################################
 
 
+explore: nota_operacao_formatada {}
 explore: situacao_operacional_locals {
   join: sistemas{
     type: left_outer

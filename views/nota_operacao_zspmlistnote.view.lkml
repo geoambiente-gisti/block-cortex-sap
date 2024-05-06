@@ -14,7 +14,7 @@ view: nota_operacao_zspmlistnote {
     label: "Hora da nota"
     sql:extract(time from ${TABLE}.data_hora) ;;
   }
-  dimension:  {
+  dimension:  name {
     type: string
     label: "Responsável"
     sql: ${TABLE}.responsavel ;;
@@ -182,21 +182,21 @@ view: nota_operacao_zspmlistnote {
     type: string
     sql: ${TABLE}.n_nota ;;
     html:
-    <ul>
-      <li> Data: {{ nota_operacao_zspmlistnote.data_nota._value }}  </li>
-      <li> Nota: {{ value }}  </li>
-      <li> Responsável: {{ nota_operacao_zspmlistnote.name._value }}  </li>
-      <li> Contato: {{ nota_operacao_zspmlistnote.contactname._value }}  </li>
-      <li> Local de Instalação:  {{ nota_operacao_zspmlistnote.local_descricao._value }}  </li>
-      <li> Tipo de Ocorrência: {{ nota_operacao_zspmlistnote.occur_type._value }}  </li>
-      <li> Status: {{ nota_operacao_zspmlistnote.txtstat._value }}  </li>
-      <li> Descrição: {{ nota_operacao_zspmlistnote.descricao._value }}  </li>
-    </ul> ;;
+    <div>
+      Data: {{ nota_operacao_zspmlistnote.data_nota._value }} <br>
+      Nota: {{ value }} <br>
+      Responsável: {{ nota_operacao_zspmlistnote.nome._value }}  <br>
+      Contato: {{ nota_operacao_zspmlistnote.contactname._value }}  <br>
+      Local de Instalação:  {{ nota_operacao_zspmlistnote.local_descricao._value }}  <br>
+      Tipo de Ocorrência: {{ nota_operacao_zspmlistnote.occur_type._value }}  <br>
+      Status: {{ nota_operacao_zspmlistnote.txtstat._value }}  <br>
+      Descrição: {{ nota_operacao_zspmlistnote.descricao._value }}  <br>
+    </div> ;;
   }
 
 
   measure: count {
     type: count
-    drill_fields: [contactname, name]
+    drill_fields: [qmnum, data_nota, nome, local_descricao, occur_type, txtstat]
   }
 }
