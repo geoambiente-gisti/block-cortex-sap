@@ -7,12 +7,14 @@ view: nota_operacao_zspmlistnote {
     sql: ${TABLE}.contato ;;
   }
 
+
+
   dimension: mzeit {
     type: string
     label: "Hora da nota"
     sql:extract(time from ${TABLE}.data_hora) ;;
   }
-  dimension: name {
+  dimension:  {
     type: string
     label: "Responsável"
     sql: ${TABLE}.responsavel ;;
@@ -162,6 +164,37 @@ view: nota_operacao_zspmlistnote {
     sql:  case when extract(time from ${TABLE}.data_hora) between '07:00:00' and '15:00:00' then '07hs as 15hs'
     when extract(time from ${TABLE}.data_hora) between '15:00:00' and '23:00:00' then '15hs as 23hs' else '23:00hs as 07:00hs' end;;
   }
+
+  dimension: data_nota {
+    label: "Data da nota HTML"
+    description: "Data da nota"
+    type: string
+    sql: cast(${TABLE}.data_hora as string) ;;
+  }
+
+  dimension: descricao {
+    label: "Descrição Html"
+    type: string
+    sql: ${nota_operacao_desc.descricao} ;;
+  }
+
+  dimension: html_info {
+    type: string
+    sql: ${TABLE}.n_nota ;;
+    html:
+    <ul>
+      <li> Data: {{ nota_operacao_zspmlistnote.data_nota._value }}  </li>
+      <li> Nota: {{ value }}  </li>
+      <li> Responsável: {{ nota_operacao_zspmlistnote.name._value }}  </li>
+      <li> Contato: {{ nota_operacao_zspmlistnote.contactname._value }}  </li>
+      <li> Local de Instalação:  {{ nota_operacao_zspmlistnote.local_descricao._value }}  </li>
+      <li> Tipo de Ocorrência: {{ nota_operacao_zspmlistnote.occur_type._value }}  </li>
+      <li> Status: {{ nota_operacao_zspmlistnote.txtstat._value }}  </li>
+      <li> Descrição: {{ nota_operacao_zspmlistnote.descricao._value }}  </li>
+    </ul> ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [contactname, name]
