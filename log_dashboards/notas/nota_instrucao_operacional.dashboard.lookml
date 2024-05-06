@@ -14,7 +14,7 @@
     fields: [nota_instrucao_operacional_zspmlistnote.n_nota_serial, nota_instrucao_operacional_zspmlistnote.titulo,
       nota_instrucao_operacional_zspmlistnote.tipo, nota_instrucao_operacional_zspmlistnote.qmdat_date,
       nota_instrucao_operacional_zspmlistnote.mzeit, nota_instrucao_operacional_zspmlistnote.ltrmn_date,responsavel.email
-      nota_instrucao_operacional_zspmlistnote.txtstat]
+      nota_instrucao_operacional_zspmlistnote.txtstat, nota_instrucao_operacional_zspmlistnote.responsavel, nota_instrucao_operacional_zspmlistnote.email]
     sorts: [nota_instrucao_operacional_zspmlistnote.qmdat_date desc]
     limit: 500
     column_limit: 50
@@ -40,6 +40,7 @@
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
       Data Validade Date: nota_instrucao_operacional_zspmlistnote.ltrmn_date
+      Responsavel: email
     row: 6
     col: 0
     width: 24
@@ -90,6 +91,7 @@
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
       Data Validade Date: nota_instrucao_operacional_zspmlistnote.ltrmn_date
+      Responsavel: email
     row: 0
     col: 0
     width: 12
@@ -141,6 +143,8 @@
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
       Data Validade Date: nota_instrucao_operacional_zspmlistnote.ltrmn_date
+      Responsavel: email
+
     row: 0
     col: 12
     width: 12
@@ -213,3 +217,17 @@
     explore: nota_instrucao_operacional_zspmlistnote
     listens_to_filters: []
     field: nota_instrucao_operacional_zspmlistnote.qmdat_date
+
+  - name: Responsavel
+    title: Responsavel
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: cortex_sap_operational
+    explore: nota_instrucao_operacional_zspmlistnote
+    Responsavel: responsavel.email
+    field: responsavel.email

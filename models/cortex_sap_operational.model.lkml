@@ -197,6 +197,13 @@ explore: nota_instrucao_operacional_zspmlistnote {
     relationship: one_to_many
     sql_on: ${nota_instrucao_operacional_zspmlistnote.qmnum}=${nota_instrucao_operacional_desc.qmnum} ;;
   }
+
+  join: responsavel {
+    view_label: "Responsável"
+    type: left_outer
+    relationship: one_to_many
+    sql_on: lower(${nota_instrucao_operacional_zspmlistnote.name})=lower(${responsavel.nome}) ;;
+  }
 }
 
 
