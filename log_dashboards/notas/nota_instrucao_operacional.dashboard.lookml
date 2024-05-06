@@ -40,7 +40,7 @@
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
       Data Validade Date: nota_instrucao_operacional_zspmlistnote.ltrmn_date
-      Responsavel: email
+      Responsavel: responsavel.email
     row: 6
     col: 0
     width: 24
@@ -91,7 +91,7 @@
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
       Data Validade Date: nota_instrucao_operacional_zspmlistnote.ltrmn_date
-      Responsavel: email
+      Responsavel: responsavel.email
     row: 0
     col: 0
     width: 12
@@ -143,7 +143,7 @@
       Status: nota_instrucao_operacional_zspmlistnote.txtstat
       Data Abertura Date: nota_instrucao_operacional_zspmlistnote.qmdat_date
       Data Validade Date: nota_instrucao_operacional_zspmlistnote.ltrmn_date
-      Responsavel: email
+      Responsavel: responsavel.email
 
     row: 0
     col: 12
