@@ -169,7 +169,7 @@ view: nota_operacao_zspmlistnote {
     label: "Data da nota HTML"
     description: "Data da nota"
     type: string
-    sql: cast(${TABLE}.data_hora as string) ;;
+    sql: cast(format_date('%d/%m/%Y', ${TABLE}.data_hora) as string) ;;
   }
 
   dimension: descricao {
@@ -178,19 +178,27 @@ view: nota_operacao_zspmlistnote {
     sql: ${nota_operacao_desc.descricao} ;;
   }
 
+
+
   dimension: html_info {
+    label: "Notas"
     type: string
     sql: ${TABLE}.n_nota ;;
     html:
     <div>
-      Data: {{ nota_operacao_zspmlistnote.data_nota._value }} <br>
-      Nota: {{ value }} <br>
-      Responsável: {{ nota_operacao_zspmlistnote.nome._value }}  <br>
-      Contato: {{ nota_operacao_zspmlistnote.contactname._value }}  <br>
-      Local de Instalação:  {{ nota_operacao_zspmlistnote.local_descricao._value }}  <br>
-      Tipo de Ocorrência: {{ nota_operacao_zspmlistnote.occur_type._value }}  <br>
-      Status: {{ nota_operacao_zspmlistnote.txtstat._value }}  <br>
-      Descrição: {{ nota_operacao_zspmlistnote.descricao._value }}  <br>
+      <b>Nota</b>: {{ value }} <br>
+      <b>Tipo de Ocorrência</b>: {{ nota_operacao_zspmlistnote.occur_type._value }}  <br>
+      <b>Local de Instalação</b>: {{ nota_operacao_zspmlistnote.local_descricao._value }}  <br>
+      <b>Data</b>: {{ nota_operacao_zspmlistnote.data_nota._value }} <br>
+      <b>Data Retorno da Operação</b>: {{ nota_operacao_zspmlistnote.data_retorno_operacao_date._value }} <br>
+      <b>Contato</b>: {{ nota_operacao_zspmlistnote.contactname._value }}  <br>
+      <b>Responsável</b>: {{ nota_operacao_zspmlistnote.nome._value }}  <br>
+      <b>Acionamento Sobreaviso</b>: {{ nota_operacao_zspmlistnote.nome._value }}  <br>
+      <b>Passagem de Turno</b>:  {{ nota_operacao_zspmlistnote.passagem_turno._value }}  <br>
+      <b>Status</b>: {{ nota_operacao_zspmlistnote.txtstat._value }}  <br>
+      <hr>
+      <p style="white-space:pre">{{ nota_operacao_zspmlistnote.descricao._value }}<p>
+      <hr>
     </div> ;;
   }
 
