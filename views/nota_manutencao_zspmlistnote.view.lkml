@@ -148,6 +148,47 @@ view: nota_manutencao_zspmlistnote {
     sql: ${TABLE}.n_nota_operacao ;;
   }
 
+
+  dimension: data_nota {
+    label: "Data da nota HTML"
+    description: "Data da nota"
+    type: string
+    sql: cast(format_date('%d/%m/%Y', ${TABLE}.data_hora) as string) ;;
+  }
+
+  dimension: descricao {
+    label: "Descrição Html"
+    type: string
+    sql: ${nota_manutencao_desc.descricao} ;;
+  }
+
+  # [nota_manutencao_zspmlistnote.n_nota_serial, nota_operacao_zspmlistnote.n_nota_serial,
+  #     nota_manutencao_zspmlistnote.qmdat_date, nota_manutencao_zspmlistnote.mzeit,nota_manutencao_zspmlistnote.local_instalacao_descricao, nota_manutencao_zspmlistnote.sistema,
+  #     nota_manutencao_zspmlistnote.equipamento,nota_manutencao_zspmlistnote.prioridade,nota_manutencao_zspmlistnote.qmtxt ,nota_manutencao_zspmlistnote.nome, responsavel.email
+  #     # nota_manutencao_zspmlistnote.txtstat]
+
+  dimension: html_info {
+    label: "Notas"
+    type: string
+    sql: ${TABLE}.n_nota ;;
+    html:
+    <div>
+      <b>Nota</b>: {{ value }} <br>
+      <b>Nota Operacao</b>: {{ nota_operacao_zspmlistnote._value }} <br>
+      <b>Data</b>: {{ nota_manutencao_zspmlistnote.data_nota._value }} <br>
+      <b>Local de Instalação</b>: {{ nota_manutencao_zspmlistnote.local_instalacao_descricao._value }}  <br>
+      <b>Sistema</b>: {{ nota_manutencao_zspmlistnote.sistema._value }} <br>
+      <b>Equipamento</b>: {{ nota_manutencao_zspmlistnote.equipamento._value }} <br>
+      <b>Prioridade</b>: {{ nota_manutencao_zspmlistnote.prioridade._value }} <br>
+      <b>Descrição da Falha</b>: {{ nota_manutencao_zspmlistnote.qmtx._value }} <br>
+      <b>Responsável</b>: {{ nota_manutencao_zspmlistnote.nome._value }}  <br>
+      <b>Status</b>: {{ nota_manutencao_zspmlistnote.txtstat._value }}  <br>
+      <hr>
+      <p style="white-space:pre">{{ nota_manutencao_zspmlistnote.descricao._value }}<p>
+      <hr>
+    </div> ;;
+  }
+
   dimension: no_orderby {    type: number    sql: null ;;  }
 
   measure: count_distinct_mes {

@@ -193,7 +193,7 @@ view: nota_operacao_zspmlistnote {
       <b>Data Retorno da Operação</b>: {{ nota_operacao_zspmlistnote.data_retorno_operacao_date._value }} <br>
       <b>Contato</b>: {{ nota_operacao_zspmlistnote.contactname._value }}  <br>
       <b>Responsável</b>: {{ nota_operacao_zspmlistnote.nome._value }}  <br>
-      <b>Acionamento Sobreaviso</b>: {{ nota_operacao_zspmlistnote.nome._value }}  <br>
+      <b>Acionamento Sobreaviso</b>: {{ nota_operacao_zspmlistnote.acionamento_sobreaviso._value }}  <br>
       <b>Passagem de Turno</b>:  {{ nota_operacao_zspmlistnote.passagem_turno._value }}  <br>
       <b>Status</b>: {{ nota_operacao_zspmlistnote.txtstat._value }}  <br>
       <hr>
