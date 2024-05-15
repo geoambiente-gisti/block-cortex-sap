@@ -74,6 +74,32 @@ view: nota_linha_gas_zspmlistnote {
     sql: ${TABLE}.n_nota_serial ;;
   }
 
+
+
+  dimension: endereco_notificante {
+    type: string
+    label: "Endereço Notificante"
+    sql: ${TABLE}.endereco_notificante ;;
+  }
+
+  dimension: locais_referencia {
+    type: string
+    label: "Local de Referência"
+    sql: ${TABLE}.locais_referencia ;;
+  }
+
+  dimension: ponto_referencia {
+    type: string
+    label: "Ponto de Referência"
+    sql: ${TABLE}.ponto_referencia ;;
+  }
+
+  dimension: placa_referencia {
+    type: string
+    label: "Placa de Referência"
+    sql: ${TABLE}.placa_referencia ;;
+  }
+
   dimension: tplnr {
     type: string
     label: "Local da Ocorrência"
@@ -115,6 +141,10 @@ view: nota_linha_gas_zspmlistnote {
       <b>Responsável</b>: {{ nota_linha_gas_zspmlistnote.nome._value }} <br>
       <b>Local da Ocorrência</b>: {{ nota_linha_gas_zspmlistnote.tplnr._value }}  <br>
       <b>Descrição</b>: {{ nota_linha_gas_zspmlistnote.pltxt._value }} <br>
+      <b>Endereço Notificante</b>: {{ nota_linha_gas_zspmlistnote.endereco_notificante._value }} <br>
+      <b>Local de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.locais_referencia._value }} <br>
+      <b>Ponto de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.ponto_referencia._value }} <br>
+      <b>Placa de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.placa_referencia._value }} <br>
 
       <hr>
       <p style="white-space:pre">{{ nota_linha_gas_zspmlistnote.descricao._value }}<p>
