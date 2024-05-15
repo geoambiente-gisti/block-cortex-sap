@@ -84,6 +84,44 @@ view: nota_linha_gas_zspmlistnote {
     label: "Status individual de um objeto"
     sql: ${TABLE}.status ;;
   }
+
+  dimension: data_nota {
+    label: "Data da nota HTML"
+    description: "Data da nota"
+    type: string
+    sql: cast(format_date('%d/%m/%Y', ${TABLE}.data_hora) as string) ;;
+  }
+
+  dimension: descricao {
+    label: "Descrição Html"
+    type: string
+    sql: ${nota_linha_gas_desc.descricao} ;;
+  }
+
+  # nota_linha_gas_zspmlistnote.n_nota_serial, nota_linha_gas_zspmlistnote.qmdat_date,
+  #     nota_linha_gas_zspmlistnote.mzeit, nota_linha_gas_zspmlistnote.contactname,
+  #     nota_linha_gas_zspmlistnote.name, nota_linha_gas_zspmlistnote.tplnr, nota_linha_gas_zspmlistnote.pltxt, responsavel.email,
+  #     nota_linha_gas_zspmlistnote.txtstat
+
+  dimension: html_info {
+    label: "Notas"
+    type: string
+    sql: ${TABLE}.n_nota ;;
+    html:
+    <div>
+      <b>Nota</b>: {{ value }} <br>
+      <b>Data</b>: {{ nota_linha_gas_zspmlistnote.data_nota._value }} <br>
+      <b>Contato</b>: {{ nota_linha_gas_zspmlistnote.contactname._value }} <br>
+      <b>Responsável</b>: {{ nota_linha_gas_zspmlistnote.nome._value }} <br>
+      <b>Local da Ocorrência</b>: {{ nota_linha_gas_zspmlistnote.tplnr._value }}  <br>
+      <b>Descrição</b>: {{ nota_linha_gas_zspmlistnote.pltxt._value }} <br>
+
+      <hr>
+      <p style="white-space:pre">{{ nota_linha_gas_zspmlistnote.descricao._value }}<p>
+      <hr>
+    </div> ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [qmnum, tplnr, contactname]

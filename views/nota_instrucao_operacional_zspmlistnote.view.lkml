@@ -99,6 +99,46 @@ view: nota_instrucao_operacional_zspmlistnote {
     description: "Descricao"
     sql: ${TABLE}.descricao ;;
   }
+
+  dimension: data_nota {
+    label: "Data da nota HTML"
+    description: "Data da nota"
+    type: string
+    sql: cast(format_date('%d/%m/%Y', ${TABLE}.data_hora) as string) ;;
+  }
+
+  dimension: descricao_html {
+    label: "Descrição Html"
+    type: string
+    sql: ${nota_instrucao_operacional_desc.descricao} ;;
+  }
+
+# nota_instrucao_operacional_zspmlistnote.n_nota_serial, nota_instrucao_operacional_zspmlistnote.titulo,
+#       nota_instrucao_operacional_zspmlistnote.tipo, nota_instrucao_operacional_zspmlistnote.qmdat_date,
+#       nota_instrucao_operacional_zspmlistnote.mzeit, nota_instrucao_operacional_zspmlistnote.ltrmn_date,responsavel.email
+#       nota_instrucao_operacional_zspmlistnote.name, responsavel.email, nota_instrucao_operacional_zspmlistnote.txtstat
+
+  dimension: html_info {
+    label: "Notas"
+    type: string
+    sql: ${TABLE}.n_nota ;;
+    html:
+    <div>
+      <b>Nota</b>: {{ value }} <br>
+      <b>Titulo</b>: {{ nota_instrucao_operacional_zspmlistnote.titulo._value }} <br>
+      <b>Tipo</b>: {{ nota_instrucao_operacional_zspmlistnote.tipo._value }} <br>
+      <b>Data</b>: {{ nota_instrucao_operacional_zspmlistnote.data_nota._value }} <br>
+      <b>Responsável</b>: {{ nota_instrucao_operacional_zspmlistnote.name._value }} <br>
+      <b>Data de Validade</b>: {{ nota_instrucao_operacional_zspmlistnote.ltrmn_date._value }} <br>
+      <b>Status</b>: {{ nota_instrucao_operacional_zspmlistnote.txtstat._value }} <br>
+
+
+      <hr>
+      <p style="white-space:pre">{{ nota_instrucao_operacional_zspmlistnote.descricao_html._value }}<p>
+      <hr>
+    </div> ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [qmnum, tipo, name]

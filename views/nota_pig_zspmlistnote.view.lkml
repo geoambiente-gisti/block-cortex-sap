@@ -89,6 +89,39 @@ view: nota_pig_zspmlistnote {
     label: "Responsavel"
     sql: if(${responsavel.nome} is null , ${TABLE}.responsavel, ${responsavel.nome}) ;;
   }
+
+  dimension: data_nota {
+    label: "Data da nota HTML"
+    description: "Data da nota"
+    type: string
+    sql: cast(format_date('%d/%m/%Y', ${TABLE}.data_hora) as string) ;;
+  }
+
+  dimension: descricao {
+    label: "Descrição Html"
+    type: string
+    sql: ${nota_pig_desc.descricao} ;;
+  }
+
+
+  dimension: html_info {
+    label: "Notas"
+    type: string
+    sql: ${TABLE}.n_nota ;;
+    html:
+    <div>
+      <b>Nota</b>: {{ value }} <br>
+      <b>Data</b>: {{ nota_pig_zspmlistnote.data_nota._value }} <br>
+      <b>Local de Instalação</b>: {{ nota_pig_zspmlistnote.local_instalacao_descricao._value }}  <br>
+      <b>Motivo</b>: {{ nota_pig_zspmlistnote.motivo._value }} <br>
+      <b>Tipo</b>: {{ nota_pig_zspmlistnote.tipo._value }} <br>
+      <b>Responsável</b>: {{ nota_pig_zspmlistnote.nome._value }} <br>
+      <hr>
+      <p style="white-space:pre">{{ nota_pig_zspmlistnote.descricao._value }}<p>
+      <hr>
+    </div> ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [qmnum,  name, qmdat.date]
