@@ -172,7 +172,7 @@ view: nota_manutencao_zspmlistnote {
     type: string
     sql: ${TABLE}.n_nota ;;
     html:
-    <div>
+    <div >
       <b>Nota</b>: {{ value }} <br>
       <b>Nota Operacao</b>: {{ nota_operacao_zspmlistnote._value }} <br>
       <b>Data</b>: {{ nota_manutencao_zspmlistnote.data_nota._value }} <br>
