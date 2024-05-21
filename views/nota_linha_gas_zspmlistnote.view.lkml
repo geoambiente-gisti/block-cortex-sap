@@ -143,15 +143,16 @@ view: nota_linha_gas_zspmlistnote {
     <div>
       <b>Nota</b>: {{ value }} <br>
       <b>Data</b>: {{ nota_linha_gas_zspmlistnote.data_nota._value }} <br>
-      <b>Contato</b>: {{ nota_linha_gas_zspmlistnote.contactname._value }} <br>
-      <b>Responsável</b>: {{ nota_linha_gas_zspmlistnote.nome._value }} <br>
+      <b>Notificante</b>: {{ nota_linha_gas_zspmlistnote.contactname._value }} <br>
+      <b>Telefone Notificante</b>: {{ nota_linha_gas_zspmlistnote.telefone_notificante._value }} <br>
+      <b>Endereço Notificante</b>: {{ nota_linha_gas_zspmlistnote.endereco_notificante._value }} <br>
+      <b>Contato</b>: {{ nota_linha_gas_zspmlistnote.name._value }} <br>
       <b>Local da Ocorrência</b>: {{ nota_linha_gas_zspmlistnote.tplnr._value }}  <br>
       <b>Descrição</b>: {{ nota_linha_gas_zspmlistnote.pltxt._value }} <br>
-      <b>Endereço Notificante</b>: {{ nota_linha_gas_zspmlistnote.endereco_notificante._value }} <br>
       <b>Local de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.locais_referencia._value }} <br>
       <b>Ponto de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.ponto_referencia._value }} <br>
       <b>Placa de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.placa_referencia._value }} <br>
-      <b>Telefone Notificante</b>: {{ nota_linha_gas_zspmlistnote.telefone_notificante._value }} <br>
+
       <hr>
       <p style="white-space:pre">{{ nota_linha_gas_zspmlistnote.descricao._value }}<p>
       <hr>
