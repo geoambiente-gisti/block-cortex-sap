@@ -20,6 +20,7 @@
       nota_linha_gas_zspmlistnote.locais_referencia,
       nota_linha_gas_zspmlistnote.ponto_referencia,
       nota_linha_gas_zspmlistnote.placa_referencia,
+      nota_linha_gas_zspmlistnote.telefone_notificante,
       nota_linha_gas_zspmlistnote.pltxt, responsavel.email,
       nota_linha_gas_zspmlistnote.txtstat]
     sorts: [nota_linha_gas_zspmlistnote.qmdat_date desc]

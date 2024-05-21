@@ -124,6 +124,12 @@ view: nota_linha_gas_zspmlistnote {
     sql: ${nota_linha_gas_desc.descricao} ;;
   }
 
+  dimension: telefone_notificante {
+    label: "Telefone Notificante"
+    type: string
+    sql: ${TABLE}.telefone_notificante ;;
+  }
+
   # nota_linha_gas_zspmlistnote.n_nota_serial, nota_linha_gas_zspmlistnote.qmdat_date,
   #     nota_linha_gas_zspmlistnote.mzeit, nota_linha_gas_zspmlistnote.contactname,
   #     nota_linha_gas_zspmlistnote.name, nota_linha_gas_zspmlistnote.tplnr, nota_linha_gas_zspmlistnote.pltxt, responsavel.email,
@@ -145,7 +151,7 @@ view: nota_linha_gas_zspmlistnote {
       <b>Local de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.locais_referencia._value }} <br>
       <b>Ponto de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.ponto_referencia._value }} <br>
       <b>Placa de Refêrencia</b>: {{ nota_linha_gas_zspmlistnote.placa_referencia._value }} <br>
-
+      <b>Telefone Notificante</b>: {{ nota_linha_gas_zspmlistnote.telefone_notificante._value }} <br>
       <hr>
       <p style="white-space:pre">{{ nota_linha_gas_zspmlistnote.descricao._value }}<p>
       <hr>
