@@ -320,7 +320,7 @@
     value_labels: legend
     label_type: labPer
     inner_radius: 45
-    start_angle: 18
+    start_angle: 0
     color_application:
       collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
       palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
