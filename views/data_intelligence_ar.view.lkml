@@ -13,6 +13,10 @@ view: data_intelligence_ar {
   parameter: Currency_Required{
     type: string
     allowed_value: {
+      label: "R$"
+      value: "R$"
+    }
+    allowed_value: {
       label: "USD"
       value: "USD"
     }
@@ -417,7 +421,7 @@ view: data_intelligence_ar {
   dimension: Current_Date{
     type: date
     sql: cast((CURRENT_TIMESTAMP()) as timestamp) ;;
-    html: {{ rendered_value | date: "%m-%d-%Y" }} ;;
+    html: {{ rendered_value | date: "%d/%m/%Y" }} ;;
   }
 
   measure: Current {
