@@ -7,6 +7,12 @@ view: vendor_performance {
     sql: ${amount_in_local_currency_dmbtr} ;;
   }
 
+  dimension: key {
+    type: string
+    primary_key: yes
+    sql: CONCAT(${client_mandt},${item_ebelp},${document_number_ebeln},${target_currency_tcurr},${language_key});;
+  }
+
   dimension: amount_in_target_currency_dmbtr {
     type: number
     sql: ${TABLE}.AmountInTargetCurrency_DMBTR ;;
@@ -14,7 +20,7 @@ view: vendor_performance {
 
   dimension: client_mandt {
     type: string
-    # primary_key: yes
+    #primary_key: yes
     sql: ${TABLE}.Client_MANDT ;;
     hidden: no
   }
@@ -32,7 +38,7 @@ view: vendor_performance {
   dimension: month_year{
     type: string
     hidden: no
-    # primary_key: yes
+    #primary_key: yes
     sql: concat(${fiscal_year},"/",${fiscal_period}) ;;
   }
 
@@ -185,13 +191,13 @@ view: vendor_performance {
     suggest_persist_for: "10 minutes"
     hidden: no
   }
-
+  
   dimension: target_currency_tcurr {
     type: string
     sql: ${TABLE}.TargetCurrency_TCURR ;;
     hidden: no
   }
-
+  
   dimension: currency_key_waers2 {
     type: string
     sql: ${TABLE}.CurrencyKey_WAERS ;;
@@ -216,7 +222,7 @@ view: vendor_performance {
 
   dimension: document_number_ebeln {
     type: string
-    primary_key: yes
+    #primary_key: yes
     sql: ${TABLE}.DocumentNumber_EBELN ;;
     suggest_persist_for: "10 minutes"
     hidden: no
@@ -256,7 +262,7 @@ view: vendor_performance {
 
   dimension: material_number {
     type: string
-    # primary_key: yes
+    #primary_key: yes
     sql: ${TABLE}.MaterialNumber_MATNR ;;
   }
 
@@ -388,7 +394,7 @@ view: vendor_performance {
 
   dimension: item_ebelp {
     type: string
-    # primary_key: yes
+    #primary_key: yes
     sql: ${TABLE}.Item_EBELP ;;
     hidden: no
   }
@@ -426,7 +432,7 @@ view: vendor_performance {
     sql: ${name1} ;;
     hidden: no
   }
-
+  
   dimension: net_order_valuein_pocurrency_netwr {
     type: number
     sql: ${TABLE}.NetOrderValueinPOCurrency_NETWR ;;
@@ -840,7 +846,7 @@ view: vendor_performance {
 
   dimension: plant {
     type: string
-    # primary_key: yes
+    #primary_key: yes
     sql: ${TABLE}.Plant_WERKS ;;
   }
 
