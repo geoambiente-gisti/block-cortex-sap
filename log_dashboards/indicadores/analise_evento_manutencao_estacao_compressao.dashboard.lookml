@@ -389,61 +389,61 @@
     col: 0
     width: 24
     height: 7
-  - title: Análise de eventos por estação
-    name: Análise de eventos por estação
-    model: cortex_sap_operational
-    explore: analise_eventos
-    type: looker_column
-    fields: [instalacoes_abrv.concat_name, nota_manutencao_zspmlistnote.ano_nota,
-      nota_manutencao_zspmlistnote.count, local_instalacao.tipo_instalacao]
-    pivots: [local_instalacao.tipo_instalacao]
-    filters:
-      instalacoes_abrv.concat_name: "-NULL"
-    sorts: [local_instalacao.tipo_instalacao, instalacoes_abrv.concat_name]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: normal
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    y_axes: [{label: '', orientation: left, series: [{axisId: nota_manutencao_zspmlistnote.count,
-            id: nota_manutencao_zspmlistnote.count, name: Nota Manutencao Zspmlistnote}],
-        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    defaults_version: 1
-    hidden_fields: [nota_manutencao_zspmlistnote.ano_nota]
-    listen:
-      Tipo Instalação: estacao_nome.pe_ecomp
-      Ano: nota_manutencao_zspmlistnote.ano_nota
-    row: 27
-    col: 0
-    width: 24
-    height: 7
+  # - title: Análise de eventos por estação
+  #   name: Análise de eventos por estação
+  #   model: cortex_sap_operational
+  #   explore: analise_eventos
+  #   type: looker_column
+  #   fields: [instalacoes_abrv.concat_name, nota_manutencao_zspmlistnote.ano_nota,
+  #     nota_manutencao_zspmlistnote.count, local_instalacao.tipo_instalacao]
+  #   pivots: [local_instalacao.tipo_instalacao]
+  #   filters:
+  #     instalacoes_abrv.concat_name: "-NULL"
+  #   sorts: [local_instalacao.tipo_instalacao, instalacoes_abrv.concat_name]
+  #   limit: 500
+  #   column_limit: 50
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: normal
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   point_style: none
+  #   show_value_labels: false
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   show_totals_labels: false
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   y_axes: [{label: '', orientation: left, series: [{axisId: nota_manutencao_zspmlistnote.count,
+  #           id: nota_manutencao_zspmlistnote.count, name: Nota Manutencao Zspmlistnote}],
+  #       showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
+  #       tickDensityCustom: 5, type: linear}]
+  #   x_axis_zoom: true
+  #   y_axis_zoom: true
+  #   defaults_version: 1
+  #   hidden_fields: [nota_manutencao_zspmlistnote.ano_nota]
+  #   listen:
+  #     Tipo Instalação: estacao_nome.pe_ecomp
+  #     Ano: nota_manutencao_zspmlistnote.ano_nota
+  #   row: 27
+  #   col: 0
+  #   width: 24
+  #   height: 7
   - title: Comparativo Mensal vs Anual de Eventos
     name: Comparativo Mensal vs Anual de Eventos
     model: cortex_sap_operational
