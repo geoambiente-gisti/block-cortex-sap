@@ -186,8 +186,8 @@
     col: 8
     width: 8
     height: 6
-  - name: Histórico por tipo
-    title: Histórico por tipo
+  - name: Total de Eventos Por Tipo no Mês
+    title: Total de Eventos Por Tipo no Mês
     model: cortex_sap_operational
     explore: analise_eventos
     type: looker_column

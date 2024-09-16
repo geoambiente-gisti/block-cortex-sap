@@ -82,7 +82,9 @@ view: nota_manutencao_zspmlistnote {
     when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SR%' then 'Sistema de Redução de Gás'
     when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'MQ%' then 'Sistema de Qualidade do Gás'
 
-    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SA%' then 'Sistema Auxiliares' else 'Outros' end
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SA%' and ${estacao_nome.pe_ecomp} = 'Estação de Compressão' then 'Sistema Auxiliares'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SA%' and ${estacao_nome.pe_ecomp} = 'Ponto de Entrega' then 'Sistema de Aqueciemento de Gás'
+    else 'Outros' end
     ;;
   }
 
