@@ -183,7 +183,7 @@ view: nota_manutencao_zspmlistnote {
 
   measure: count {
     type: count
-    drill_fields: [qmnum, tplnr, area_sistema, name]
+    drill_fields: [n_nota_serial, tplnr, area_sistema, name]
   }
 
   dimension: n_nota_operacao {
