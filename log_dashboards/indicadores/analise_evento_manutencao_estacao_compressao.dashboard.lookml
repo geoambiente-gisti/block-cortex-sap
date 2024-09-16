@@ -580,7 +580,7 @@
   - name: Ano
     title: Ano
     type: field_filter
-    default_value: '2023'
+    default_value: '2024'
     allow_multiple_values: true
     required: false
     ui_config:
