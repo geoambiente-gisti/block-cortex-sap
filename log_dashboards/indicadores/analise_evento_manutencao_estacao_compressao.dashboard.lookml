@@ -186,17 +186,20 @@
     col: 8
     width: 8
     height: 6
-  - title: Histórico por tipo
-    name: Histórico por tipo
+  - name: Histórico por tipo
+    title: Histórico por tipo
     model: cortex_sap_operational
     explore: analise_eventos
     type: looker_column
-    fields: [local_instalacao.tipo_instalacao, nota_manutencao_zspmlistnote.count,
+    fields: [nota_manutencao_zspmlistnote.count, nota_manutencao_zspmlistnote.area_sistema_3,
       nota_manutencao_zspmlistnote.qmdat_month]
-    pivots: [local_instalacao.tipo_instalacao]
+    pivots: [nota_manutencao_zspmlistnote.area_sistema_3]
     fill_fields: [nota_manutencao_zspmlistnote.qmdat_month]
-    sorts: [local_instalacao.tipo_instalacao, nota_manutencao_zspmlistnote.count desc
-        0]
+    filters:
+      estacao_nome.pe_ecomp: Estação de Compressão
+
+    sorts: [nota_manutencao_zspmlistnote.area_sistema_3, nota_manutencao_zspmlistnote.qmdat_month
+        desc]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -207,13 +210,13 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: false
-    show_x_axis_ticks: true
+    show_x_axis_ticks: false
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
     plot_size_by_field: false
     trellis: ''
-    stacking: ''
+    stacking: normal
     limit_displayed_rows: false
     legend_position: center
     point_style: none
@@ -229,22 +232,27 @@
     y_axes: [{label: '', orientation: left, series: [{axisId: nota_manutencao_zspmlistnote.count,
             id: Entrada e Saída do Ponto de Entrega - nota_manutencao_zspmlistnote.count,
             name: Entrada e Saída do Ponto de Entrega}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: OUTROS - nota_manutencao_zspmlistnote.count, name: OUTROS}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: Sistema de Aquecimento de Gás - nota_manutencao_zspmlistnote.count,
-            name: Sistema de Aquecimento de Gás}, {axisId: nota_manutencao_zspmlistnote.count,
+            id: Outros - nota_manutencao_zspmlistnote.count, name: Outros}, {axisId: nota_manutencao_zspmlistnote.count,
+            id: Ponto de Entrega - nota_manutencao_zspmlistnote.count, name: Ponto de
+              Entrega}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema Auxiliares
+              - nota_manutencao_zspmlistnote.count, name: Sistema Auxiliares}, {axisId: nota_manutencao_zspmlistnote.count,
             id: Sistema de Automação e Controle - nota_manutencao_zspmlistnote.count,
             name: Sistema de Automação e Controle}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: Sistema de Filtragem de Gás - nota_manutencao_zspmlistnote.count,
-            name: Sistema de Filtragem de Gás}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: Sistema de Medição de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
-              de Medição de Gás}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema
-              de Redução de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
+            id: Sistema de Filtragem de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
+              de Filtragem de Gás}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema
+              de Medição de Gás para CDL - nota_manutencao_zspmlistnote.count, name: Sistema
+              de Medição de Gás para CDL}, {axisId: nota_manutencao_zspmlistnote.count,
+            id: Sistema de Redução de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
               de Redução de Gás}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema
-              de Utilidades - nota_manutencao_zspmlistnote.count, name: Sistema de
-              Utilidades}], showLabels: false, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}]
+              Utilidades - nota_manutencao_zspmlistnote.count, name: Sistema Utilidades}],
+        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    hidden_pivots: {}
     show_row_numbers: true
     transpose: false
     truncate_text: true
@@ -258,25 +266,24 @@
     rows_font_size: 12
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    defaults_version: 1
     listen:
-      Tipo Instalação: estacao_nome.pe_ecomp
       Ano: nota_manutencao_zspmlistnote.ano_nota
+      Mês: nota_manutencao_zspmlistnote.mes_nota
+      Tipo Instalação: estacao_nome.pe_ecomp
     row: 12
     col: 12
     width: 12
     height: 8
-  - title: Total de Eventos Por Tipo No Ano
-    name: Total de Eventos Por Tipo No Ano
+  - name: Total de Eventos Por Tipo No Ano
+    title: Total de Eventos Por Tipo No Ano
     model: cortex_sap_operational
     explore: analise_eventos
     type: looker_column
-    fields: [local_instalacao.tipo_instalacao, nota_manutencao_zspmlistnote.count,
-      nota_manutencao_zspmlistnote.ano_nota]
-    pivots: [local_instalacao.tipo_instalacao]
-    filters: {}
-    sorts: [local_instalacao.tipo_instalacao, nota_manutencao_zspmlistnote.count desc
-        0]
+    fields: [nota_manutencao_zspmlistnote.count, nota_manutencao_zspmlistnote.area_sistema_3]
+    pivots: [nota_manutencao_zspmlistnote.area_sistema_3]
+    filters:
+      estacao_nome.pe_ecomp: Estação de Compressão
+    sorts: [nota_manutencao_zspmlistnote.area_sistema_3]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -287,7 +294,7 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: false
-    show_x_axis_ticks: true
+    show_x_axis_ticks: false
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
@@ -309,28 +316,43 @@
     y_axes: [{label: '', orientation: left, series: [{axisId: nota_manutencao_zspmlistnote.count,
             id: Entrada e Saída do Ponto de Entrega - nota_manutencao_zspmlistnote.count,
             name: Entrada e Saída do Ponto de Entrega}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: OUTROS - nota_manutencao_zspmlistnote.count, name: OUTROS}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: Sistema de Aquecimento de Gás - nota_manutencao_zspmlistnote.count,
-            name: Sistema de Aquecimento de Gás}, {axisId: nota_manutencao_zspmlistnote.count,
+            id: Outros - nota_manutencao_zspmlistnote.count, name: Outros}, {axisId: nota_manutencao_zspmlistnote.count,
+            id: Ponto de Entrega - nota_manutencao_zspmlistnote.count, name: Ponto de
+              Entrega}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema Auxiliares
+              - nota_manutencao_zspmlistnote.count, name: Sistema Auxiliares}, {axisId: nota_manutencao_zspmlistnote.count,
             id: Sistema de Automação e Controle - nota_manutencao_zspmlistnote.count,
             name: Sistema de Automação e Controle}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: Sistema de Filtragem de Gás - nota_manutencao_zspmlistnote.count,
-            name: Sistema de Filtragem de Gás}, {axisId: nota_manutencao_zspmlistnote.count,
-            id: Sistema de Medição de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
-              de Medição de Gás}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema
-              de Redução de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
+            id: Sistema de Filtragem de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
+              de Filtragem de Gás}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema
+              de Medição de Gás para CDL - nota_manutencao_zspmlistnote.count, name: Sistema
+              de Medição de Gás para CDL}, {axisId: nota_manutencao_zspmlistnote.count,
+            id: Sistema de Redução de Gás - nota_manutencao_zspmlistnote.count, name: Sistema
               de Redução de Gás}, {axisId: nota_manutencao_zspmlistnote.count, id: Sistema
-              de Utilidades - nota_manutencao_zspmlistnote.count, name: Sistema de
-              Utilidades}], showLabels: false, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}]
+              Utilidades - nota_manutencao_zspmlistnote.count, name: Sistema Utilidades}],
+        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
     show_null_points: true
     interpolation: linear
     defaults_version: 1
+    hidden_pivots: {}
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
     listen:
-      Tipo Instalação: estacao_nome.pe_ecomp
       Ano: nota_manutencao_zspmlistnote.ano_nota
+      Tipo Instalação: estacao_nome.pe_ecomp
     row: 12
     col: 0
     width: 12

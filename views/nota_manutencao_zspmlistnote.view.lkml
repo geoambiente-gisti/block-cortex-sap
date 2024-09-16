@@ -43,6 +43,48 @@ view: nota_manutencao_zspmlistnote {
     sql:  ${TABLE}.prioridade;;
   }
 
+  dimension: area_sistema {
+    label: "Area Sistema"
+    type: string
+    sql:  ${TABLE}.area_sistema;;
+  }
+
+
+  dimension: area_sistema_length {
+    label: "Area Sistema Length"
+    type: number
+    sql: array_length(split(left(${TABLE}.area_sistema, 9), '-')) ;;
+  }
+
+  dimension: area_sistema_split {
+    label: "Area Sistema Split"
+    type: number
+    sql: split(left(${TABLE}.area_sistema, 9), '-');;
+  }
+  dimension: area_sistema_3 {
+    label: "Sistemas"
+    type: string
+    sql: case
+    when
+      ${area_sistema_length} < 3 then ${estacao_nome.pe_ecomp}
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'ST%' then 'Sistema Tubulações dentro da instalação'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'AD%' then 'Sucção, Filtragem e Desc de Gás da ECOMP'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'GA%' then 'Grupo Compressão de Gás A'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'GB%' then 'Grupo Compressão de Gás B'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'GC%' then 'Grupo Compressão de Gás C'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SU%' then 'Sistema Utilidades'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'AT%' then 'Sistema de Automação e Controle'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'ES%' then 'Entrada e Saída do Ponto de Entrega'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SF%' then 'Sistema de Filtragem de Gás'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SM%' then 'Sistema de Medição de Gás para CDL'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SU%' then 'Sistema Utilidades'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SR%' then 'Sistema de Redução de Gás'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'MQ%' then 'Sistema de Qualidade do Gás'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'GD%' then 'Grupo Compressão de Gás D'
+    when ${area_sistema_length} >= 3 and  ${area_sistema_split}[2] like 'SA%' then 'Sistema Auxiliares' else 'Outros' end
+    ;;
+  }
+
   dimension: equipamento {
     order_by_field: qmdat_date
     label: "Equipamento"
@@ -140,7 +182,7 @@ view: nota_manutencao_zspmlistnote {
 
   measure: count {
     type: count
-    drill_fields: [qmnum, tplnr, name]
+    drill_fields: [qmnum, tplnr, area_sistema, name]
   }
 
   dimension: n_nota_operacao {
