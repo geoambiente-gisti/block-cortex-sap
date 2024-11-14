@@ -1,5 +1,5 @@
 view: instabilidade_mes {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.instabilidade_mes` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{ALARME_DATASET}.instabilidade_mes` ;;
 
   dimension: horas_instaveis {
     type: number

@@ -4,12 +4,12 @@ view: alarmes_suprimidos {
       with supreesed as(select
         FORMAT_DATETIME("%Y-%m-%d %H:%M:%S", eventstamp) as event_time,
         count(1) as qtd
-        from `@{GCP_PROJECT}.@{LOG_DATASET}.alarmes`
+        from `@{GCP_PROJECT}.@{ALARME_DATASET}.alarmes`
         where alarmstate = 'UNACK_ALM'
         group by 1
         having count(1) >= cast('{{ _user_attributes['threshold'] }}' as integer) and count(distinct tagname) >= 3
         order by 1 desc)
-      select * from `@{GCP_PROJECT}.@{LOG_DATASET}.alarmes` a join supreesed s on FORMAT_DATETIME("%Y-%m-%d %H:%M:%S", a.eventstamp) = s.event_time ;;
+      select * from `@{GCP_PROJECT}.@{ALARME_DATASET}.alarmes` a join supreesed s on FORMAT_DATETIME("%Y-%m-%d %H:%M:%S", a.eventstamp) = s.event_time ;;
   }
 
   dimension: alarmid {

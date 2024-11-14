@@ -1,5 +1,5 @@
 view: alarmes_por_hora {
-  sql_table_name: `@{GCP_PROJECT}.@{LOG_DATASET}.alarmes_por_hora` ;;
+  sql_table_name: `@{GCP_PROJECT}.@{ALARME_DATASET}.alarmes_por_hora` ;;
 
   dimension: hora_mes {
     type: string

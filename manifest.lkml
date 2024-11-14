@@ -18,6 +18,12 @@ constant: LOG_DATASET {
   export: override_required
 }
 
+constant: ALARME_DATASET {
+  value: "looker_alarmes"
+  export: override_required
+}
+
+
 constant: CLIENT {
   value: "800"
   export: override_required
