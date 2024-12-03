@@ -1,7 +1,8 @@
 view: alarmes_suprimidos {
   derived_table: {
     sql:
-      select * from `@{GCP_PROJECT}.looker_alarmes.alarmes_omitidos` ;;
+      select * from `@{GCP_PROJECT}.looker_alarmes.alarmes_omitidos` ao
+      join `@{GCP_PROJECT}.looker_alarmes.alarmes_omitidos_agrupados` aog on ao.event_time = aog.event_time;;
   }
 
   dimension: alarmid {
@@ -112,6 +113,11 @@ view: alarmes_suprimidos {
   dimension: event_hour {
     type: string
     sql: TIMESTAMP_SECONDS(CAST(FLOOR(UNIX_SECONDS(timestamp(eventstamp)) / 600) * 600 AS INT64)) ;;
+  }
+
+  dimension: is_enxurrada {
+    type: yesno
+    sql: ${TABLE}.is_enxurrada ;;
   }
 
   measure: diff_min {

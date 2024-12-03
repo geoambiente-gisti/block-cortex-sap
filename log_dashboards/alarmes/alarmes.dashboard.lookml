@@ -879,17 +879,73 @@
     col: 0
     width: 8
     height: 6
-  - name: Total de Alarmes Mensal por Categoria
-    title: Untitled Visualization
-    model: Total de Alarmes Mensal por Categoria
-    explore: alarmes
+  # - name: Total de Alarmes Mensal por Categoria
+  #   title: Untitled Visualization
+  #   model: Total de Alarmes Mensal por Categoria
+  #   explore: alarmes
+  #   type: looker_column
+  #   fields: [alarmes.eventstamp_month, alarmes.count, alarmes.category]
+  #   pivots: [alarmes.category]
+  #   filters:
+  #     alarmes.eventstamp_month: 1 years
+  #     alarmes.alarmstate: '"UNACK_ALM"'
+  #   sorts: [alarmes.category, alarmes.eventstamp_month desc]
+  #   limit: 500
+  #   column_limit: 50
+  #   x_axis_gridlines: false
+  #   y_axis_gridlines: true
+  #   show_view_names: false
+  #   show_y_axis_labels: true
+  #   show_y_axis_ticks: true
+  #   y_axis_tick_density: default
+  #   y_axis_tick_density_custom: 5
+  #   show_x_axis_label: false
+  #   show_x_axis_ticks: true
+  #   y_axis_scale_mode: linear
+  #   x_axis_reversed: false
+  #   y_axis_reversed: false
+  #   plot_size_by_field: false
+  #   trellis: ''
+  #   stacking: ''
+  #   limit_displayed_rows: false
+  #   legend_position: center
+  #   point_style: none
+  #   show_value_labels: true
+  #   label_density: 25
+  #   x_axis_scale: auto
+  #   y_axis_combined: true
+  #   ordering: none
+  #   show_null_labels: false
+  #   show_totals_labels: false
+  #   show_silhouette: false
+  #   totals_color: "#808080"
+  #   y_axes: [{label: '', orientation: left, series: [{axisId: alarmes.count, id: alarmes.count,
+  #           name: Alarmes, __FILE: cortex-sap/log_dashboards/alarmes/alarmes.dashboard.lookml,
+  #           __LINE_NUM: 866}], showLabels: false, showValues: true, unpinAxis: false,
+  #       tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: cortex-sap/log_dashboards/alarmes/alarmes.dashboard.lookml,
+  #       __LINE_NUM: 866}]
+  #   x_axis_label: Mês
+  #   x_axis_zoom: true
+  #   y_axis_zoom: true
+  #   hide_legend: false
+  #   show_null_points: true
+  #   interpolation: linear
+  #   defaults_version: 1
+  #   hidden_pivots: {}
+
+  - title: Alarmes Omitidos
+    name: Alarmes Omitidos
+    model: cortex_sap_operational
+    explore: alarmes_suprimidos
     type: looker_column
-    fields: [alarmes.eventstamp_month, alarmes.count, alarmes.category]
-    pivots: [alarmes.category]
+    fields: [alarmes_suprimidos.minute_alarm, alarmes_suprimidos.count, alarmes_suprimidos.is_enxurrada]
+    pivots: [alarmes_suprimidos.is_enxurrada]
+    fill_fields: [alarmes_suprimidos.is_enxurrada]
     filters:
-      alarmes.eventstamp_month: 1 years
-      alarmes.alarmstate: '"UNACK_ALM"'
-    sorts: [alarmes.category, alarmes.eventstamp_month desc]
+      alarmes_suprimidos.eventstamp_date: 1 years
+      alarmes_suprimidos.alarmstate: '"UNACK_ALM"'
+      alarmes_suprimidos.minute_alarm: ''
+    sorts: [alarmes_suprimidos.is_enxurrada, alarmes_suprimidos.minute_alarm]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -919,61 +975,24 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    y_axes: [{label: '', orientation: left, series: [{axisId: alarmes.count, id: alarmes.count,
-            name: Alarmes, __FILE: cortex-sap/log_dashboards/alarmes/alarmes.dashboard.lookml,
-            __LINE_NUM: 866}], showLabels: false, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear, __FILE: cortex-sap/log_dashboards/alarmes/alarmes.dashboard.lookml,
-        __LINE_NUM: 866}]
-    x_axis_label: Mês
     x_axis_zoom: true
     y_axis_zoom: true
-    hide_legend: false
-    show_null_points: true
-    interpolation: linear
+    limit_displayed_rows_values:
+    show_hide: hide
+    first_last: first
+    num_rows: 0
+    hide_legend: true
+    font_size: '10'
+    series_colors:
+    Yes - alarmes_suprimidos.count: "#1A73E8"
+    No - alarmes_suprimidos.count: "#80868B"
+    series_labels:
+    Yes - alarmes_suprimidos.count: Automatico
+    No - alarmes_suprimidos.count: Manual
+    label_color: [black]
     defaults_version: 1
+    hidden_fields: []
     hidden_pivots: {}
-
-  - title: Alarmes Omitidos
-    name: Alarmes Omitidos
-    model: cortex_sap_operational
-    explore: alarmes_suprimidos
-    type: looker_column
-    fields: [alarmes_suprimidos.minute_alarm, alarmes_suprimidos.count]
-    filters:
-      alarmes_suprimidos.eventstamp_date: 1 years
-      alarmes_suprimidos.alarmstate: '"UNACK_ALM"'
-    sorts: [alarmes_suprimidos.minute_alarm]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 1
-    listen: {}
     row: 40
     col: 0
     width: 24
