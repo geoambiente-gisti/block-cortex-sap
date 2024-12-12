@@ -1,8 +1,8 @@
 view: alarmes_suprimidos {
   derived_table: {
     sql:
-      select * from `@{GCP_PROJECT}.looker_alarmes.alarmes_omitidos` ao
-      join `@{GCP_PROJECT}.looker_alarmes.alarmes_omitidos_agrupados` aog on ao.event_time = aog.event_time;;
+      select * from `tbg-app-prod.dataform.alarmes_omitidos` a
+join `tbg-app-prod.dataform.alarmes_omitidos_agrupados` b on a.event_time = b.event_time;;
   }
 
   dimension: alarmid {
